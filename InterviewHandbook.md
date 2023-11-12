@@ -14,7 +14,6 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 **[Logging](#logging)**<br>
 **[Identity](#identity)**<br>
 **[IOC](#ioc)**<br>
-**[Logging](#logging)**<br>
 **[Observability and Monitoring](#observability-and-monitoring)**<br>
 **[system Design and Architecture](#system-design-and-architecture)**<br>
 **[AWS Cloud](#aws-cloud)**<br>
@@ -151,7 +150,6 @@ https://developer-interview.com/p/oop-ood/what-are-advantages-of-composition-and
 ## Logging
 ## Identity
 ## IOC
-## Logging
 ## Observability and Monitoring
 ## system Design and Architecture
 ## AWS Cloud
