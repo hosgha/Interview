@@ -24,7 +24,76 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 
 ## OOP Concepts
 ### Summary
-C# is an object-oriented programming language. The four basic principles of object-oriented programming are:
+Object oriented programming generally support **4 types of relationships**, which include **inheritance**, **association**, **composition**, and **aggregation**.
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/RelationsInOOP.png?raw=true).
+
+<br>**1. Inheritance**: (is-a)
+Inheritance is “IS-A” type of relationship. “IS-A” relationship is a totally based on Inheritance, which can be of two types Class Inheritance or Interface Inheritance. Inheritance is a parent-child relationship where we create a new class by using existing class code. It is just like saying that “A is type of B”. For example is “Apple is a fruit”, “Ferrari is a car”.
+
+<br>**2. Composition**: (part-of _ Is composed of another object and when BMW dies so Engine dies)
+Composition is a "part-of" relationship. Simply composition means mean use of instance variables that are references to other objects. In composition relationship both entities are interdependent of each other for example “engine is part of car”, “heart is part of body”.
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/composition.jpg?raw=true).
+
+<br>Example of Inheritance and Composition
+
+```csharp
+    public class BMW : Car // ******Inheritance (BMW is a Car)******
+    {
+        public Engine Engine { get; set; } // ******Composition (Engine part of BMW)******
+
+        public void Info()
+        {
+             Console.WriteLine($"{Color} BMW {ModelName}, Engine:{Engine.Name}," +
+                $" MaxSpeed: {Engine.MaxSpeed} km, Power: {Engine.Power} horsepower");
+        }
+    }
+```
+
+<br>**3. Association**: (has-a)
+
+Association is a “has-a” type relationship. Association establish the relationship b/w two classes using through their objects. Association relationship can be one to one, One to many, many to one and many to many. For example suppose we have two classes then these two classes are said to be “has-a” relationship if both of these entities share each other’s object for some work and at the same time they can exists without each others dependency or both have their **own life time**.
+
+
+<br>Example
+```csharp
+class Employee
+{
+    public string EmployeeName { get; set; }
+    public void ManagerInfo(Manager manager)
+    {
+        manager.Info(this);
+    }
+}
+class Manager
+{
+    public string ManagerName { get; set; }
+    public void Info(Employee employee)
+    {
+        Console.WriteLine($"Manager of Employee {employee.EmployeeName} is {this.ManagerName}");
+    }
+}
+```
+
+
+<br>**4. Aggregation** (Has-a. It has an existing object of another type)
+
+Aggregation is based is on "has-a" relationship. Aggregation is a special form of association. In association there is not any classes (entity) work as owner but in aggregation one entity work as owner. In aggregation both entities meet for some work and then get separated. Aggregation is a one way association.
+
+
+
+**Coupling**
+Coupling in Java refers to the information or dependency of one class on another class. It occurs when classes are aware of each other or interact with each other. If a class contains detailed information about another class, then we say that there is strong coupling between them.
+
+We can use interfaces to have weaker coupling between classes because there is no concrete implementation in interfaces.
+
+**Cohesion**
+Cohesion refers to the level of performing a single well-defined task by a component. A highly cohesive method performs a single well-defined task. While, the weakly cohesive method will split the task into different parts.
+
+The java.io package is a highly cohesive package in Java because this package contains the classes and interfaces related to I/O(Input/Output). The java.util package is considered as a weakly cohesive package because there are unrelated classes and interfaces in it.
+
+
+####The four basic principles of object-oriented programming are:
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/oops-concept.jpg?raw=true).
 
 **Abstraction** Modeling the relevant attributes and interactions of entities as classes to define an abstract representation of a system. <br>
 In the book "Object Thinking" by David West, The Author emphasizes that abstraction is the process of hiding the internal details of an application from the outer world.
@@ -50,7 +119,6 @@ inheritance is used in OOP to create a hierarchy of classes that share a set of 
 <br>**Polymorphism** Ability to implement inherited properties or methods in different ways across multiple abstractions.<br>
 olymorphism means "many forms", and it occurs when we have many classes that are related to each other by inheritance. <br>
 There are two types of polymorphism: https://www.c-sharpcorner.com/UploadFile/ff2f08/understanding-polymorphism-in-C-Sharp/ <br>
-
 
 #### Question_1:  What are advantages of composition and aggregation over inheritance?
 #### Answer: 
