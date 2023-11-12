@@ -44,8 +44,13 @@ You just interact with a simple interface that doesn’t require any knowledge a
 <br>**Encapsulation** Hiding the internal state and functionality of an object and only allowing access through a public set of functions.<br>
 By definition, encapsulation describes bundling data and methods that work on that data within one unit, like a class in Java. We often often use this concept to hide an object’s internal representation or state from the outside. This is called information hiding.<br>
 The general idea of this mechanism is simple. For example, you have an attribute that is not visible from the outside of an object. You bundle it with methods that provide read or write access. Encapsulation allows you to hide specific information and control access to the object’s internal state.<br>
-<br>**Inheritance** Ability to create new abstractions based on existing abstractions.
-<br>**Polymorphism** Ability to implement inherited properties or methods in different ways across multiple abstractions.
+<br>**Inheritance** Ability to create new abstractions based on existing abstractions.<br>
+inheritance is used in OOP to create a hierarchy of classes that share a set of attributes and methods, and it provides a powerful mechanism for code reuse and better code structure.<br>
+
+<br>**Polymorphism** Ability to implement inherited properties or methods in different ways across multiple abstractions.<br>
+olymorphism means "many forms", and it occurs when we have many classes that are related to each other by inheritance. <br>
+There are two types of polymorphism: https://www.c-sharpcorner.com/UploadFile/ff2f08/understanding-polymorphism-in-C-Sharp/ <br>
+
 
 #### Question_1:  What are advantages of composition and aggregation over inheritance?
 #### Answer: 
