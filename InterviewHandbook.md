@@ -40,7 +40,7 @@ Making coffee with a coffee machine is a good example of abstraction.
 You need to know how to use your coffee machine to make coffee. You need to provide water and coffee beans, switch it on and select the kind of coffee you want to get.
 The thing you don’t need to know is how the coffee machine is working internally to brew a fresh cup of delicious coffee. You don’t need to know the ideal temperature of the water or the amount of ground coffee you need to use.
 Someone else worried about that and created a coffee machine that now acts as an abstraction and hides all these details. 
-You just interact with a simple interface that doesn’t require any knowledge about the internal implementation.
+You just interact with a simple interface that doesn’t require any knowledge about the internal implementation.<br>
 <br>**Encapsulation** Hiding the internal state and functionality of an object and only allowing access through a public set of functions.<br>
 By definition, encapsulation describes bundling data and methods that work on that data within one unit, like a class in Java. We often often use this concept to hide an object’s internal representation or state from the outside. This is called information hiding.<br>
 The general idea of this mechanism is simple. For example, you have an attribute that is not visible from the outside of an object. You bundle it with methods that provide read or write access. Encapsulation allows you to hide specific information and control access to the object’s internal state.<br>
