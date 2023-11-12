@@ -26,7 +26,23 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 ### Summary
 C# is an object-oriented programming language. The four basic principles of object-oriented programming are:
 
-**Abstraction** Modeling the relevant attributes and interactions of entities as classes to define an abstract representation of a system.
+**Abstraction** Modeling the relevant attributes and interactions of entities as classes to define an abstract representation of a system. 
+In the book "Object Thinking" by David West, abstraction is discussed as one of the key concepts of object-oriented programming (OOP)
+The book emphasizes that abstraction is the process of hiding the internal details of an application from the outer world.
+ Abstraction is used to describe things in simple terms and create a boundary between the application and the client programs. 
+ The book explains that abstraction is a general concept that can be found in the real world as well as in OOP languages. 
+ It involves showing only relevant data and hiding unnecessary details of an object from the user.
+ The main purpose of abstraction is to reduce programming complexity and efforts. 
+ The book also highlights that abstraction is implemented in OOPs through interfaces and abstract classes.
+ They are used to create a base implementation or contract for the actual implementation classes. 
+ The book emphasizes that abstraction is a key concept in OOP that enables the user to implement more complex logic on top of the provided abstraction without understanding or even thinking about all the hidden complexity.
+ Abstraction in the real world :
+I’m a coffee addict. So, when I wake up in the morning, I go into my kitchen, switch on the coffee machine and make coffee. Sounds familiar?
+Making coffee with a coffee machine is a good example of abstraction.
+You need to know how to use your coffee machine to make coffee. You need to provide water and coffee beans, switch it on and select the kind of coffee you want to get.
+The thing you don’t need to know is how the coffee machine is working internally to brew a fresh cup of delicious coffee. You don’t need to know the ideal temperature of the water or the amount of ground coffee you need to use.
+Someone else worried about that and created a coffee machine that now acts as an abstraction and hides all these details. 
+You just interact with a simple interface that doesn’t require any knowledge about the internal implementation.
 <br>**Encapsulation** Hiding the internal state and functionality of an object and only allowing access through a public set of functions.
 <br>**Inheritance** Ability to create new abstractions based on existing abstractions.
 <br>**Polymorphism** Ability to implement inherited properties or methods in different ways across multiple abstractions.
