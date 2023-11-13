@@ -24,13 +24,13 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 ## OOP Concepts
 ### Summary
 Object oriented programming generally support **4 types of relationships**, which include **inheritance**, **association**, **composition**, and **aggregation**.
-![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/RelationsInOOP.png?raw=true).
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/relations-in-oop.png?raw=true).
 
 <br>**1. Inheritance**: (is-a)
-Inheritance is “IS-A” type of relationship. “IS-A” relationship is a totally based on Inheritance, which can be of two types Class Inheritance or Interface Inheritance. Inheritance is a parent-child relationship where we create a new class by using existing class code. It is just like saying that “A is type of B”. For example is “Apple is a fruit”, “Ferrari is a car”.
+<br>Inheritance is “IS-A” type of relationship. “IS-A” relationship is a totally based on Inheritance, which can be of two types Class Inheritance or Interface Inheritance. Inheritance is a parent-child relationship where we create a new class by using existing class code. It is just like saying that “A is type of B”. For example is “Apple is a fruit”, “Ferrari is a car”.
 
 <br>**2. Composition**: (part-of _ Is composed of another object and when BMW dies so Engine dies)
-Composition is a "part-of" relationship. Simply composition means mean use of instance variables that are references to other objects. In composition relationship both entities are interdependent of each other for example “engine is part of car”, “heart is part of body”.
+<br>Composition is a "part-of" relationship. Simply composition means mean use of instance variables that are references to other objects. In composition relationship both entities are interdependent of each other for example “engine is part of car”, “heart is part of body”.
 ![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/composition.jpg?raw=true).
 
 <br>Example of Inheritance and Composition
@@ -50,7 +50,7 @@ Composition is a "part-of" relationship. Simply composition means mean use of in
 
 <br>**3. Association**: (has-a)
 
-Association is a “has-a” type relationship. Association establish the relationship b/w two classes using through their objects. Association relationship can be one to one, One to many, many to one and many to many. For example suppose we have two classes then these two classes are said to be “has-a” relationship if both of these entities share each other’s object for some work and at the same time they can exists without each others dependency or both have their **own life time**.
+<br>Association is a “has-a” type relationship. Association establish the relationship b/w two classes using through their objects. Association relationship can be one to one, One to many, many to one and many to many. For example suppose we have two classes then these two classes are said to be “has-a” relationship if both of these entities share each other’s object for some work and at the same time they can exists without each others dependency or both have their **own life time**.
 
 
 <br>Example
@@ -73,10 +73,8 @@ class Manager
 }
 ```
 
-
 <br>**4. Aggregation** (has-a. It has an existing object of another type)
-
-Aggregation is based is on "has-a" relationship. Aggregation is a special form of association. **In association there is not any classes (entity) work as owner but in aggregation one entity work as owner**. In aggregation both entities meet for some work and then get separated. **Aggregation is a one way association**.
+<br>Aggregation is based is on "has-a" relationship. Aggregation is a special form of association. **In association there is not any classes (entity) work as owner but in aggregation one entity work as owner**. In aggregation both entities meet for some work and then get separated. **Aggregation is a one way association**.
 
 Example
 Let us take an example of “Student” and “address”. Each student must have an address so relationship b/w Student **class and Address class will be “Has-A” type relationship but vice versa is not true(it is not necessary that each address contain by any student)**. So Student work as owner entity. This will be a aggregation relationship.
@@ -112,18 +110,16 @@ public class Address
 ```
 
 
-**Coupling**
-Coupling in Java refers to the information or dependency of one class on another class. It occurs when classes are aware of each other or interact with each other. If a class contains detailed information about another class, then we say that there is strong coupling between them.
+**Cohesion**
+<br>Cohesion refers to the degree to which the elements of a module/class belong together, it is suggested that the related code should be close to each other, so we should strive for high cohesion and bind all related code together as close as possible. It has to do with the elements within the module/class.
 
+**Coupling**
+<br>Coupling refers to the degree to which the different modules/classes depend on each other, it is suggested that all modules should be independent as far as possible, that's why low coupling. It has to do with the elements among different modules/classes.
 We can use interfaces to have weaker coupling between classes because there is no concrete implementation in interfaces.
 
-**Cohesion**
-Cohesion refers to the level of performing a single well-defined task by a component. A highly cohesive method performs a single well-defined task. While, the weakly cohesive method will split the task into different parts.
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/coupling-and-cohesion.png?raw=true).
 
-The java.io package is a highly cohesive package in Java because this package contains the classes and interfaces related to I/O(Input/Output). The java.util package is considered as a weakly cohesive package because there are unrelated classes and interfaces in it.
-
-
-####The four basic principles of object-oriented programming are:
+### The four basic principles of object-oriented programming are:
 ![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/oops-concept.jpg?raw=true).
 
 **Abstraction** Modeling the relevant attributes and interactions of entities as classes to define an abstract representation of a system. <br>
