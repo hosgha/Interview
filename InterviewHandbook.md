@@ -58,7 +58,7 @@ Association is a “has-a” type relationship. Association establish the relati
 class Employee
 {
     public string EmployeeName { get; set; }
-    public void ManagerInfo(Manager manager)
+    public void ManagerInfo(Manager manager) // *****Employee HAS-A Manager*****
     {
         manager.Info(this);
     }
@@ -66,7 +66,7 @@ class Employee
 class Manager
 {
     public string ManagerName { get; set; }
-    public void Info(Employee employee)
+    public void Info(Employee employee) // *****Manager HAS-A Employee*****
     {
         Console.WriteLine($"Manager of Employee {employee.EmployeeName} is {this.ManagerName}");
     }
@@ -74,10 +74,42 @@ class Manager
 ```
 
 
-<br>**4. Aggregation** (Has-a. It has an existing object of another type)
+<br>**4. Aggregation** (has-a. It has an existing object of another type)
 
-Aggregation is based is on "has-a" relationship. Aggregation is a special form of association. In association there is not any classes (entity) work as owner but in aggregation one entity work as owner. In aggregation both entities meet for some work and then get separated. Aggregation is a one way association.
+Aggregation is based is on "has-a" relationship. Aggregation is a special form of association. **In association there is not any classes (entity) work as owner but in aggregation one entity work as owner**. In aggregation both entities meet for some work and then get separated. **Aggregation is a one way association**.
 
+Example
+Let us take an example of “Student” and “address”. Each student must have an address so relationship b/w Student **class and Address class will be “Has-A” type relationship but vice versa is not true(it is not necessary that each address contain by any student)**. So Student work as owner entity. This will be a aggregation relationship.
+
+```csharp
+public class Student
+{
+    public string Name { get; set; }
+    public Address Address;// *****Employee HAS-A Address but Address hasn't a Student*****  
+    public Student(string name, Address address)
+    {
+        Name = name ?? throw new ArgumentNullException(nameof(name));
+        Address = address ?? throw new ArgumentNullException(nameof(address));
+    }    
+    public void GetStudentInfo()
+    {
+        Console.WriteLine($"Student Info => Name: {Name}\n Address => Street: {Address.Street}, City: {Address.City}, State: {Address.State}");
+    }
+}
+
+public class Address
+{
+    public string Street { get; set; }
+    public string City { get; set; }
+    public string State { get; set; }
+    public Address(string street, string city, string state)
+    {
+        Street = street ?? throw new ArgumentNullException(nameof(street));
+        City = city ?? throw new ArgumentNullException(nameof(city));
+        State = state ?? throw new ArgumentNullException(nameof(state));
+    }
+}
+```
 
 
 **Coupling**
