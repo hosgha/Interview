@@ -36,14 +36,25 @@ Object oriented programming generally support **4 types of relationships**, whic
 <br>Example of Inheritance and Composition
 
 ```csharp
-    public class BMW : Car // ******Inheritance (BMW is a Car)******
+    public class BMW : Car // Inheritance (BMW is a Car)
     {
-        public Engine Engine { get; set; } // ******Composition (Engine part of BMW)******
-
-        public void Info()
+        public Engine Engine { get; set; } // Sample usage of composition in C#
+        public BMW()
         {
-             Console.WriteLine($"{Color} BMW {ModelName}, Engine:{Engine.Name}," +
-                $" MaxSpeed: {Engine.MaxSpeed} km, Power: {Engine.Power} horsepower");
+            Engine = new Engine("V-8", 300, 1200); // death dependency
+        }
+    }
+    public class Engine
+    {
+        public string Name { get; set; }
+        public int MaxSpeed { get; set; }
+        public int Power { get; set; }
+
+        public Engine(string name, int maxSpeed, int power)
+        {
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+            MaxSpeed = maxSpeed;
+            Power = power;
         }
     }
 ```
@@ -58,7 +69,7 @@ Object oriented programming generally support **4 types of relationships**, whic
 class Employee
 {
     public string EmployeeName { get; set; }
-    public void ManagerInfo(Manager manager) // *****Employee HAS-A Manager*****
+    public void ManagerInfo(Manager manager)
     {
         manager.Info(this);
     }
@@ -66,7 +77,7 @@ class Employee
 class Manager
 {
     public string ManagerName { get; set; }
-    public void Info(Employee employee) // *****Manager HAS-A Employee*****
+    public void Info(Employee employee)
     {
         Console.WriteLine($"Manager of Employee {employee.EmployeeName} is {this.ManagerName}");
     }
@@ -82,28 +93,24 @@ Let us take an example of “Student” and “address”. Each student must hav
 ```csharp
 public class Student
 {
+    // Aggregation is a one way dependency relation
     public string Name { get; set; }
-    public Address Address;// *****Employee HAS-A Address but Address hasn't a Student*****  
+    public Address Address;// Employee HAS-A Address  _ Address has a standalone lifetime
     public Student(string name, Address address)
     {
         Name = name ?? throw new ArgumentNullException(nameof(name));
         Address = address ?? throw new ArgumentNullException(nameof(address));
-    }    
-    public void GetStudentInfo()
-    {
-        Console.WriteLine($"Student Info => Name: {Name}\n Address => Street: {Address.Street}, City: {Address.City}, State: {Address.State}");
     }
 }
 
 public class Address
 {
     public string Street { get; set; }
-    public string City { get; set; }
     public string State { get; set; }
-    public Address(string street, string city, string state)
+
+    public Address(string street, string state)
     {
         Street = street ?? throw new ArgumentNullException(nameof(street));
-        City = city ?? throw new ArgumentNullException(nameof(city));
         State = state ?? throw new ArgumentNullException(nameof(state));
     }
 }
