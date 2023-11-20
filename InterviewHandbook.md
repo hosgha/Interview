@@ -27,30 +27,13 @@ Object-oriented programming (OOP) is a programming style that helps solve proble
 ### The four basic principles of object-oriented programming are:
 ![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/oops-concept.jpg?raw=true).
 
-**Abstraction** Modeling the relevant attributes and interactions of entities as classes to define an abstract representation of a system. <br>
-In the book "Object Thinking" by David West, The Author emphasizes that abstraction is the process of hiding the internal details of an application from the outer world.
- Abstraction is used to describe things in simple terms and create a boundary between the application and the client programs. 
- It involves showing only relevant data and hiding unnecessary details of an object from the user.
- The main purpose of abstraction is to reduce programming complexity and efforts. 
- The book also highlights that abstraction is implemented in OOPs through interfaces and abstract classes.
- They are used to create a base implementation or contract for the actual implementation classes. 
- The book emphasizes that abstraction is a key concept in OOP that enables the user to implement more complex logic on top of the provided abstraction without understanding or even thinking about all the hidden complexity.<br>
- Abstraction in the real world :<br>
-I’m a coffee addict. So, when I wake up in the morning, I go into my kitchen, switch on the coffee machine and make coffee. Sounds familiar?
-Making coffee with a coffee machine is a good example of abstraction.
-You need to know how to use your coffee machine to make coffee. You need to provide water and coffee beans, switch it on and select the kind of coffee you want to get.
-The thing you don’t need to know is how the coffee machine is working internally to brew a fresh cup of delicious coffee. You don’t need to know the ideal temperature of the water or the amount of ground coffee you need to use.
-Someone else worried about that and created a coffee machine that now acts as an abstraction and hides all these details. 
-You just interact with a simple interface that doesn’t require any knowledge about the internal implementation.<br>
-<br>**Encapsulation** Hiding the internal state and functionality of an object and only allowing access through a public set of functions.<br>
-By definition, encapsulation describes bundling data and methods that work on that data within one unit, like a class in Java. We often often use this concept to hide an object’s internal representation or state from the outside. This is called information hiding.<br>
-The general idea of this mechanism is simple. For example, you have an attribute that is not visible from the outside of an object. You bundle it with methods that provide read or write access. Encapsulation allows you to hide specific information and control access to the object’s internal state.<br>
-<br>**Inheritance** Ability to create new abstractions based on existing abstractions.<br>
-inheritance is used in OOP to create a hierarchy of classes that share a set of attributes and methods, and it provides a powerful mechanism for code reuse and better code structure.<br>
+**Abstraction** Abstraction in OOP is the concept of hiding the complex implementation details of a class and only exposing the necessary features and functionality to the outside world. It allows for the creation of simplified and easy-to-use interfaces for interacting with objects.<br>
 
-<br>**Polymorphism** Ability to implement inherited properties or methods in different ways across multiple abstractions.<br>
-olymorphism means "many forms", and it occurs when we have many classes that are related to each other by inheritance. <br>
-There are two types of polymorphism: https://www.c-sharpcorner.com/UploadFile/ff2f08/understanding-polymorphism-in-C-Sharp/ <br>
+<br>**Encapsulation** Encapsulation in OOP involves bundling the data and methods that operate on the data into a single unit, while restricting direct access to some of the object's members. This ensures that the members are accessed and modified in a controlled manner, promoting a consistent interface independent of the internal implementation. Encapsulation helps in maintaining code integrity, security, and organization by preventing unauthorized access to an object's internal state.<br>
+
+<br>**Inheritance** Ability to create new abstractions (Class, Abstract Class and Interface) based on existing abstractions (Class, Abstract Class and Interface).<br>inheritance is used in OOP to create a hierarchy of classes that share a set of attributes and methods, and it provides a powerful mechanism for code reuse and better code structure.<br>
+
+<br>**Polymorphism** Polymorphism in oop allows objects to take on different forms or behave differently based on the context in which they are used. It also enables derived classes to override specific functionality based on a common interface. There are two types of polymorphism: compile-time (static polymorphism), which uses method overloading, and runtime (dynamic polymorphism), which uses method overriding to implement. <br>
 
 
 Object oriented programming generally support **4 types of relationships**, which include **inheritance**, **association**, **composition**, and **aggregation**.
