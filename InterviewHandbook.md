@@ -8,6 +8,8 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 **[Testing in Dotnet](#testing-in-dotnet)**<br>
 **[Design Patterns](#design-patterns)**<br>
 **[Design Principals](#design-principals)**<br>
+**[Clean Code](#clean-code)**<br>
+**[Refactoring](#refactoring)**<br>
 **[Relational Databeses](#relational-databeses)**<br>
 **[NoSql](#nosql)**<br>
 **[Caching](#caching)**<br>
@@ -16,7 +18,7 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 **[IOC](#ioc)**<br>
 **[Observability and Monitoring](#observability-and-monitoring)**<br>
 **[system Design and Architecture](#system-design-and-architecture)**<br>
-**[AWS Cloud](#aws-cloud)**<br>
+**[Cloud](#cloud)**<br>
 
 
 
@@ -190,6 +192,8 @@ A design pattern is a general repeatable solution to a commonly occurring proble
 2.    https://arindam-das.medium.com/design-patterns-demystified-unlocking-the-power-of-creational-structural-behavioral-and-f50e3a5b6cd7#:~:text=Creational%20patterns%20focus%20on%20object%20creation%2C%20structural%20patterns%20deal%20with,guide%20the%20overall%20system%20structure.
 
 ## Design Principals
+## Clean Code
+## Refactoring
 ## Relational Databeses
 ## NoSql
 ## Caching
@@ -198,6 +202,6 @@ A design pattern is a general repeatable solution to a commonly occurring proble
 ## IOC
 ## Observability and Monitoring
 ## system Design and Architecture
-## AWS Cloud
+## Cloud
 
 
