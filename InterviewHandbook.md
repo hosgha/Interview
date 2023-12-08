@@ -181,11 +181,11 @@ A design pattern is a general repeatable solution to a commonly occurring proble
 ### After GOF, some other types of design patterns are defined, such as Architectural design patterns and Cloud design patterns:
 ### Architectural design patterns: 
 <br>Architectural patterns focus on the **overall structure and organization** of a software system. These patterns provide guidelines and **high-level structures** for designing **large-scale applications**.
-<br>Architectural patterns list: 1. Model-View-Controller (MVC) 2. Model-View-ViewModel (MVVM) 3. Microservices Architecture 4. Event-Driven Architecture (EDA) and etc.
+<br>Architectural patterns list: 1. **Model-View-Controller (MVC)**  2. **Model-View-ViewModel (MVVM)**  3. **Microservices Architecture**  4. **Event-Driven Architecture (EDA)** and etc.
 ### Cloud design patterns:
 <br>These patterns provide **guidance and best practices for designing and implementing cloud-based systems**, and are widely used in the industry to ensure that cloud applications are reliable, scalable, and secure. They provide solutions for a wide range of problems, including **data management**, **messaging**, and **application resilience** (Design and Implemention). Cloud design patterns are essential for ensuring that cloud-based applications are **well-architected** and **can meet the demands of modern, distributed systems**. 
 
-<br>Cloud patterns list: 1. Ambassador pattern 2. Retry pattern 3. Circuit Breaker pattern 4. Anti-Corruption Layer 5. Bulkhead 6. Queue-based load leveling 7. Throttling 8. Saga 9. CQRS and etc. 
+<br>Cloud patterns list: 1. **Ambassador pattern**  2. **Retry pattern**  3. **Circuit Breaker pattern**  4. **Anti-Corruption Layer**  5. **Bulkhead**  6. **Queue-based load leveling**  7. **Throttling**  8. **Saga**  9. **CQRS** and etc. 
 
 ### Resources:
 1.    https://www.freecodecamp.org/news/the-basic-design-patterns-all-developers-need-to-know/
