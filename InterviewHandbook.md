@@ -168,11 +168,11 @@ A design pattern is a general repeatable solution to a commonly occurring proble
 ### 1. Creational Design Patterns: 
 <br>Focus on **object creation** (class instantiation). These patterns often use for **reducing complexity** of class instantiation and providing **flexibility** in creating objects while **decoupling** the system from specific classes or implementations. These patterns aim to ensure that the process of creating objects is **efficient, extensible, and easily maintainable**. They can be further divided into **class-creation patterns** and **object-creational patterns**. While class-creation patterns use **inheritance** effectively in the instantiation process, object-creation patterns use **delegation** to get the job done. 
 <br> Creational patterns list: 1. Singltone 2. Factory Method 3. Abstraction Factory 4. Prototype 5. Builder
-### 2. Structural Design Patterns:
+### 2. Structural Design Patterns: (composition and relationships)
 <br> Structural patterns deal with **composition and relationships**. These patterns are intended for organizing larger class structures and compositions. The main goal of most of these patterns is to **increase the functionality of the class(es) involved, without changing much of its composition**. 
  These patterns **help define relationships between objects, ensuring flexibility, and ease of modification**.
 <br> Structural patterns list: 1. Adapter 2. Facade 3. Composition 4. Proxy 5. Decorator 6. Bridge 7. Flyweight
-### 3. Behavioral Design Patterns: 
+### 3. Behavioral Design Patterns: (interaction and communication)
 <br>Behavioral patterns focus on the **interaction and communication** between objects. These patterns define communication patterns and the delegation of responsibilities between objects.
 <br> Behavioral patterns list: 1. Strategy 2. Observer 3. Command 4. Template method  5. State 6. Vistor 7. Chain of responsibility 8. Iterator 9. Decorator 10. Memento
 
