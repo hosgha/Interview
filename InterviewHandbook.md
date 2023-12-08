@@ -178,7 +178,7 @@ A design pattern is a general repeatable solution to a commonly occurring proble
 <br>Behavioral patterns focus on the **interaction and communication** between objects. These patterns define communication patterns and the delegation of responsibilities between objects.
 <br> Behavioral patterns list: 1. **Strategy**  2. **Observer**  3. **Command**  4. **Template method**  5. **State**  6. **Vistor**  7. **Chain of responsibility**  8. **Iterator**  9. **Mediator**  10. **Memento**
 
-### After GOF, some other types of design patterns are defined, such as Architectural design patterns and Cloud design patterns:
+#### After GOF, some other types of design patterns are defined, such as Architectural design patterns and Cloud design patterns:
 ### Architectural design patterns: 
 <br>Architectural patterns focus on the **overall structure and organization** of a software system. These patterns provide guidelines and **high-level structures** for designing **large-scale applications**.
 <br>Architectural patterns list: 1. **Model-View-Controller (MVC)**  2. **Model-View-ViewModel (MVVM)**  3. **Microservices Architecture**  4. **Event-Driven Architecture (EDA)** and etc.
