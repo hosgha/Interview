@@ -103,7 +103,7 @@ class Manager
 <br>Aggregation is based is on "has-a" relationship. Aggregation is a special form of association. **In association there is not any classes (entity) work as owner but in aggregation one entity work as owner**. In aggregation both entities meet for some work and then get separated. **Aggregation is a one way association**.
 
 Example
-Let us take an example of “Student” and “address”. Each student must have an address so relationship b/w Student **class and Address class will be “Has-A” type relationship but vice versa is not true(it is not necessary that each address contain by any student)**. So Student work as owner entity. This will be a aggregation relationship.
+Let us take an example of “Student” and “address”. Each student must have an address so relationship between Student **class and Address class will be “Has-A” type relationship but vice versa is not true(it is not necessary that each address contain by any student)**. So Student work as owner entity. This will be a aggregation relationship.
 
 ```csharp
 public class Student
