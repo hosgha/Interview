@@ -144,11 +144,9 @@ public class Address
 
 
 More details of coupling and cohesion in the link below that include types of coupling and cohesion, etc.
-
-![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/coupling-and-cohesion-details.jpg?raw=true).
-
 https://www.geeksforgeeks.org/software-engineering-coupling-and-cohesion/
 
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/coupling-and-cohesion-details.jpg?raw=true).
 
 
 #### Question_1:  What are advantages of composition and aggregation over inheritance?
