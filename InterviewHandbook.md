@@ -76,7 +76,7 @@ Object oriented programming generally support **4 types of relationships**, whic
 
 <br>**3. Association**: (has-a)
 
-<br>Association is a “has-a” type relationship. Association establish the relationship b/w two classes using through their objects. Association relationship can be one to one, One to many, many to one and many to many. For example suppose we have two classes then these two classes are said to be “has-a” relationship if both of these entities share each other’s object for some work and at the same time they can exists without each others dependency or both have their **own life time**.
+<br>Association is a “has-a” type relationship. Association establish the relationship between two classes using through their objects. Association relationship can be one to one, One to many, many to one and many to many. For example suppose we have two classes then these two classes are said to be “has-a” relationship if both of these entities share each other’s object for some work and at the same time they can exists without each others dependency or both have their **own life time**.
 
 
 <br>Example
