@@ -25,7 +25,7 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 
 ## OOP Concepts
 ### Summary
-Object-oriented programming (OOP) is a programming style that helps solve problems by thinking in terms of real-world objects. Each object has some behaviours and attributes. These concepts help organize code, improve code readability, reusability, maintainability, and security. 
+Object-oriented programming (OOP) is a programming style that helps solve problems by thinking in terms of real-world objects. Each object has some behaviors and attributes. These concepts help organize code, improve code readability, reusability, maintainability, and security. 
 ### The four basic principles of object-oriented programming are:
 ![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/oops-concept.jpg?raw=true).
 
