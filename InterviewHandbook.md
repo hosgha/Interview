@@ -142,7 +142,7 @@ public class Address
 ![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/coupling-and-cohesion.png?raw=true).
 
 There are more detials of coupling and cohesion in bellow link includes types of coupling and cohesion and etc.
-![alt text]([https://github.com/hosgha/Interview/blob/master/assets/images/coupling-and-cohesion.png?raw=true](https://www.geeksforgeeks.org/software-engineering-coupling-and-cohesion/)).
+https://github.com/hosgha/Interview/blob/master/assets/images/coupling-and-cohesion.png?raw=true](https://www.geeksforgeeks.org/software-engineering-coupling-and-cohesion
 
 
 
