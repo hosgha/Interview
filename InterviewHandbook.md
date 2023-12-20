@@ -199,6 +199,19 @@ A design pattern is a general repeatable solution to a commonly occurring proble
 2.    https://arindam-das.medium.com/design-patterns-demystified-unlocking-the-power-of-creational-structural-behavioral-and-f50e3a5b6cd7#:~:text=Creational%20patterns%20focus%20on%20object%20creation%2C%20structural%20patterns%20deal%20with,guide%20the%20overall%20system%20structure.
 
 ## Design Principals
+### SOLID
+The SOLID principles were introduced by Robert C. Martin in his 2000 paper “Design Principles and Design Patterns.” These concepts were later built upon by Michael Feathers, who introduced us to the SOLID acronym.
+
+The SOLID acronym stands for:
+
+* Single Responsibility Principle (SRP)
+* Open-Closed Principle (OCP)
+* Liskov Substitution Principle (LSP)
+* Interface Segregation Principle (ISP)
+* Dependency Inversion Principle (DIP)
+
+
+
 ## Clean Code
 ## Refactoring
 ## Relational Databeses
