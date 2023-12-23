@@ -5,7 +5,6 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 **[OOP Concepts](#oop-concepts)**<br>
 **[Git Essentials](#git-essentials)**<br>
 **[Concurrency and Parallelism In Depth](#concurrency-and-parallelism-in-depth)**<br>
-**[Testing in Dotnet](#testing-in-dotnet)**<br>
 **[Design Patterns](#design-patterns)**<br>
 **[Design Principals](#design-principals)**<br>
 **[Clean Code](#clean-code)**<br>
@@ -172,7 +171,6 @@ https://developer-interview.com/p/oop-ood/what-are-advantages-of-composition-and
 
 ## Git Essentials
 ## Concurrency and Parallelism In Depth
-## Testing in Dotnet
 ## Design Patterns
 A design pattern is a general repeatable solution to a commonly occurring problem in software design. According to GOF, there are 3 types of design patterns, which include 22 patterns:
 ### 1. Creational Design Patterns: 
@@ -215,6 +213,7 @@ The SOLID acronym stands for:
 
 ## Clean Code
 ## Testing
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/types-of-testing.png?raw=true).
 
 ## Refactoring
 ## Relational Databeses
