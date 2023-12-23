@@ -9,6 +9,7 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 **[Design Patterns](#design-patterns)**<br>
 **[Design Principals](#design-principals)**<br>
 **[Clean Code](#clean-code)**<br>
+**[Testing](#testing)**<br>
 **[Refactoring](#refactoring)**<br>
 **[Relational Databeses](#relational-databeses)**<br>
 **[NoSql](#nosql)**<br>
@@ -213,6 +214,8 @@ The SOLID acronym stands for:
 
 
 ## Clean Code
+## Testing
+
 ## Refactoring
 ## Relational Databeses
 ## NoSql
