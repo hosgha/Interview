@@ -168,6 +168,15 @@ It is possible to implement "multiple inheritance" in languages which do not sup
 https://developer-interview.com/p/oop-ood/what-are-advantages-of-composition-and-aggregation-over-inheritance-14
 
 ## Git Essentials
+
+### Clone Repository
+
+Clones a repository onto your local machine. You can replace <repository_url> with either a remote URL or a path to a local repository.
+
+```
+git clone <repository_url>
+```
+
 ## Concurrency and Parallelism In Depth
 ## Design Patterns
 A design pattern is a general repeatable solution to a commonly occurring problem in software design. According to GOF, there are 3 types of design patterns, which include 22 patterns:
