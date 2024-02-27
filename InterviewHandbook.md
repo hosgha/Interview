@@ -318,7 +318,7 @@ git blame -p -l <filename>
 ```
 
 #### Cherry pick
-Cherry-picking in Git means choosing a commit from one branch and applying it to another.
+Selects a specific commit from one branch and applies it to another, helpful for incorporating individual changes.
 This contrasts with other ways such as merge and rebase which normally apply many commits to another branch.
 It's also possible to cherry-pick multiple commits but merge is the preferred way over cherry-picking.
 
@@ -352,6 +352,31 @@ If conflicts arise, resolve them manually.
 Commit Changes:
 After resolving conflicts, commit the changes.
 
+#### Git Rebase
+Reapplies commits on top of another base tip, useful for maintaining a clean commit history.
+```
+git checkout feature_branch
+git rebase main
+```
+#### Git Stash
+Temporarily shelves changes to work on something else, then reapply them later.
+```
+git stash
+git checkout other_branch
+git stash pop
+```
+#### Git Bisect
+Helps find the commit that introduced a bug by performing a binary search through the commit history.
+```
+git bisect start
+git bisect bad <commit_hash>
+git bisect good <commit_hash>
+```
+#### Git Reflog
+Shows a log of all Git references, useful for recovering lost commits or branches.
+```
+git reflog
+```
 
 ## Concurrency and Parallelism In Depth
 ## Design Patterns
