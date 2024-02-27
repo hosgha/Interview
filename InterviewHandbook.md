@@ -169,13 +169,176 @@ https://developer-interview.com/p/oop-ood/what-are-advantages-of-composition-and
 
 ## Git Essentials
 
-### Clone Repository
-
+#### Clone Repository
 Clones a repository onto your local machine. You can replace <repository_url> with either a remote URL or a path to a local repository.
-
 ```
 git clone <repository_url>
 ```
+
+#### Add Files
+Stages files for the next commit. The first command stages a specific file, while the second stages all modified files in the current directory.
+```
+git add <file_name>
+git add .
+```
+
+#### Commit Changes
+Creates a new commit containing changes staged previously. Use a descriptive commit message to help others understand what has changed.
+```
+git commit -m "<commit_message>"
+```
+
+#### View Status
+Displays the state of working tree and cached content. Shows which files are added, deleted, or modified compared to the last commit.
+```
+git status
+```
+
+#### Check Log
+Shows the complete revision history of the project. Each line represents a single commit.
+```
+git log
+```
+
+### Manage Branches
+#### List Branches 
+Lists all branches locally. By default, this command shows only non-remote branches.
+```
+git branch
+```
+
+#### Switch Between Branches
+Switches to a specified branch.
+```
+git checkout <branch_name>
+```
+
+#### Create New Branch
+Creates a new branch and switches to it immediately.
+```
+git branch <new_branch_name>
+git checkout -b <new_branch_name>
+```
+
+#### Merge Branches
+Merges changes from the target branch into the currently checked out branch.
+```
+git merge <target_branch_name>
+```
+
+#### Delete Branch
+Deletes a local branch.
+```
+git branch -d <branch_name>
+```
+
+### Remote Operations
+#### Add Remote Repository
+Establishes a connection between your local repository and a remote repository.
+```
+git remote add origin <repository_url>
+```
+
+#### Pull From Remote
+Retrieves changes from the remote repository and merges them into the current branch.
+```
+git pull origin <branch_name>
+```
+
+#### Push to Remote
+Uploads commits made in the current branch to the remote repository.
+```
+git push origin <branch_name>
+```
+
+#### Git Diff
+Git's diff command compares the contents of files between commits, showing the differences visually or in patch form.
+Comparisons can be done between any pair of commits, including the current head (HEAD), previous head (HEAD~1), and so forth. Specify the paths of interest after the double dash (--).
+```
+git diff <first_commit>..<second_commit> -- <path_to_file>
+git diff HEAD~1 HEAD -- <path_to_file>
+```
+#### Git Diff (with staged)
+With --staged option or without arguments, `git diff` displays differences between the working tree and the index (unstaged changes). 
+```
+git diff --staged
+```
+#### Git Diff (with cached)
+With --cached option, it shows differences between the index and the latest committed version (staged changes).
+```
+git diff --cached
+```
+
+### Git Reset
+Git's reset command modifies the history of your repository, moving the tip of the current branch back to a particular commit.
+
+#### Hard Resets
+Hard resets discard all changes since the specified commit. Be cautious when using hard resets because they cannot be undone easily.
+```
+git reset --hard <commit_hash>
+```
+
+#### Soft Resets
+Soft resets move the tip of the current branch back to the specified commit but keep the changes in the working tree.
+```
+git reset --soft <commit_hash>
+```
+
+#### Partial Resets
+Partial resets allow reverting selected files while keeping others intact.
+```
+git reset <path_to_file> -- <other_paths>...
+```
+### Git Blame
+Git's blame command assigns responsibility for each line of code in a file to the author who last modified it.
+
+#### Basic Usage
+By default, git blame lists the most recent commit at the top and works backward through the history.
+```
+git blame <filename>
+```
+
+#### Show Author Information
+With the -p flag, git blame also includes parent information, displaying the relationship between commits. The -l flag removes unnecessary whitespace and makes output easier to read.
+```
+git blame -p -l <filename>
+```
+
+#### Cherry pick
+Cherry-picking in Git means choosing a commit from one branch and applying it to another.
+This contrasts with other ways such as merge and rebase which normally apply many commits to another branch.
+It's also possible to cherry-pick multiple commits but merge is the preferred way over cherry-picking.
+
+1. Ensure Clean Working Directory:
+Make sure there are no changes in both branches:
+```
+git status
+```
+
+2. Select the Source Branch:
+Checkout the branch containing the commit you want to pick:
+```
+git checkout <source_branch>
+```
+3. Identify the Commit:
+Use git log to find the commit you want to cherry-pick and copy its hash.
+Move to Target Branch:
+Checkout the branch where you want to apply the cherry-picked commit:
+```
+git checkout <target_branch>
+```
+
+4. Cherry-Pick the Commit:
+Execute the cherry-pick command with the commit hash:
+```
+git cherry-pick <commit_hash>
+```
+
+5. Resolve Conflicts (if any):
+If conflicts arise, resolve them manually.
+Commit Changes:
+After resolving conflicts, commit the changes.
+
 
 ## Concurrency and Parallelism In Depth
 ## Design Patterns
