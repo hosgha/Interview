@@ -16,6 +16,7 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 **[Logging](#logging)**<br>
 **[Identity](#identity)**<br>
 **[IOC](#ioc)**<br>
+**[Message Broker](#message-broker)**<br>
 **[Observability and Monitoring](#observability-and-monitoring)**<br>
 **[system Design and Architecture](#system-design-and-architecture)**<br>
 **[Cloud](#cloud)**<br>
@@ -222,6 +223,40 @@ The SOLID acronym stands for:
 ## Logging
 ## Identity
 ## IOC
+## Message Broker
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/rabbitmq.png?raw=true).
+
+Producing messages with RabbitMQ does not require the sender to wait for a response from consumers; instead, it places data into an exchange without knowing if or when consumers will retrieve them. This approach promotes decoupling and minimizes dependencies.
+If you want to deliver data to multiple recipients, using messaging eliminates the need to create separate APIs for each recipient. Instead, you simply publish data to an exchange where consumers can subscribe to receive those messages. This design helps achieve scalable and available systems in distributed environments.
+Key features of RabbitMQ include:
+### Support for various programming languages
+* Open source
+* Easy to use
+* Multiple protocol support
+* Written in Erlang
+* Enables high scalability and availability in distributed and federated environments.
+### Best practices for RabbitMQ usage:
+Create one queue per consumer.
+Publish messages to exchanges, not directly to queues.
+Exchanges act like routers for messages.
+Routing keys are attributes included in message headers.
+Four primary types of exchanges plus additional customizable ones.
+Messages in RabbitMQ follow FIFO order by default but prioritization can be applied through message and queue settings.
+Time To Live (TTL).
+Priorities.
+### Exchange Types:
+* Direct: Delivers messages only to queues whose binding keys exactly match the routing key of the message (default behavior in RabbitMQ).
+* Fanout: Broadcasts messages to all bound queues, ignoring routing keys or patterns.
+* Topic: Matches messages based on wildcards between the routing key and binding's routing pattern.
+* Header: Similar to Topic but uses header fields instead of routing keys.
+** Additional Features: **
+Dead Letter Exchange: Forwards unprocessed messages to another exchange for reprocessing. Some consumers may fail to process messages correctly, or queues might reject messages due to certain conditions. In such cases, dead letter exchange provides a mechanism for republishing these messages.
+### Protocols supported by RabbitMQ:
+* AMQP (Advanced Message Queuing Protocol)
+* STOMP (Simple (or Streaming) Text Orientated Messaging Protocol)
+* MQTT (MQ Telemetry Transport)
+* HTTP & WebSocket.
+
 ## Observability and Monitoring
 ## system Design and Architecture
 ## Cloud
