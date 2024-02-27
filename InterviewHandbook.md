@@ -423,6 +423,106 @@ The SOLID acronym stands for:
 ## Testing
 ![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/types-of-testing.png?raw=true).
 
+### Unit Testing Best Practices
+1. Write simple, readable tests: Easy-to-understand tests enable quick identification of issues and reduce maintenance efforts
+2. Write deterministic tests: Ensure that tests yield predictable outputs, regardless of the environment or input variations
+3. Test one scenario per test case: Each test should focus on a single aspect of the code, preventing confusion and reducing false positives
+4. Automate unit tests: Set up an automated process for unit testing to catch errors early and allow frequent execution
+5. Write isolated tests: Utilize test doubles to isolate units from external dependencies, enhancing test stability and speed
+6. Avoid test interdependence: Independent tests minimize the risk of cascading failures and increase test repeatability
+7. Avoid active API calls: Reduce reliance on live services to decrease test setup times and improve test stability
+8. Combine unit and integration testing: Implement a hybrid approach to gain the advantages of both testing paradigms
+9. Ensure test coverage: Maximize test coverage to increase confidence in the codebase
+10. Design tests for speed: Fast tests encourage frequent executions and promote agility in the development process
+12. Test for security issues: Incorporate security checks into unit tests to proactively mitigate vulnerabilities
+13. Review and maintain tests: Regularly audit and update tests to reflect changes in the codebase and ensure ongoing effectiveness
+14. Adopt test-driven development (TDD): Write tests prior to implementing features, fostering cleaner designs and improved code quality
+15. Collaboratively develop tests: Encourage collaboration among developers to foster shared ownership of tests and improve code reviews
+16. Treat test failures seriously: Address test failures immediately to prevent defect propagation and maintain code health
+
+Adhering to these best practices promotes robust unit testing, leading to increased code quality, reduced defect rates, and enhanced developer productivity.
+
+### Integration Testing Best Practices:
+1. Maintain Dedicated Test Suites:
+    Keep separate and dedicated test suites for unit testing and integration testing to ensure efficient testing processes.
+2. Keep Business Logic Separate:
+    Avoid testing business logic along with integration testing to simplify the testing process and ensure faster execution of unit tests.
+3. Craft Integration Testing Plan:
+   Develop a comprehensive integration testing plan outlining the components, interfaces, and interactions to be tested.
+4. Define Relevant Tests & Use Cases:
+   Determine specific test cases and use cases based on software units, features, and requirements for efficient integration testing.
+5. Run Testing Methods:
+   Utilize various integration testing methods such as top-down, bottom-up, or sandwich approaches to ensure thorough testing coverage.
+6. Scan & Detect Errors:
+    Conduct detailed scans to identify errors in the combined functionalities of modules or components during integration testing.
+7. Retest After Fixing Errors:
+    Perform retesting iteratively until all issues or bugs are resolved to achieve optimal software quality and functionality.
+8. Combine Manual and Automated Testing:
+    Blend manual and automated testing methods to cover all aspects of integration and ensure effective validation.
+9. Document and Track Issues:
+   Document and track issues discovered during testing to address them promptly and improve the overall testing process over time.
+10. Test Early and Often:
+    Initiate integration testing early in the development process and continue testing throughout the project lifecycle to identify issues promptly.
+11. Use Various Testing Methods:
+    Employ a variety of testing methods to ensure thorough evaluation of integrated systems and components.
+12. Make Continuous Improvements:
+    Continuously evaluate and enhance the integration testing process based on metrics, feedback, and lessons learned from previous cycles.
+13. Maintain the Testing Environment:
+    Ensure the stability and consistency of the testing environment by keeping hardware and software updated and isolated from production systems.
+14. Define Acceptance Criteria:
+    Establish clear acceptance criteria based on functional requirements to validate that the integrated system meets stakeholder needs.
+    By following these best practices in integration testing, teams can enhance the reliability, functionality, and performance of their software systems while e      nsuring seamless interactions between different components or modules.
+
+### Types of Test Doubles in Software Testing with Examples:
+1. Dummy:
+Description: Objects passed around but not used, typically to fill parameter lists.
+Example: Passing a dummy object as a placeholder parameter in a function call during testing.
+2. Fake:
+Description: Provides a working implementation but may take shortcuts not suitable for production.
+Example: Using an in-memory test database as a fake to simulate database interactions in tests.
+3. Stub:
+Description: Provides canned answers to calls made during the test, responding only to programmed scenarios.
+Example: Creating a stub object that returns predefined responses to specific method calls during testing.
+4. Spy:
+Description: Records information about its state and usage, combining aspects of stubs and mocks.
+Example: Using a test spy to track how many times a specific method is called within a test scenario.
+5. Mock:
+Description: Pre-programmed with expectations for specific calls, verifying they are received as expected.
+Example: Setting up a mock object to expect certain method calls and parameters during unit testing.
+
+These types of test doubles play crucial roles in software testing by replacing real dependencies with controlled substitutes, enabling focused and reliable testing of code functionality without external dependencies
+
+### Four-Phase Test in Software Testing:
+1. Setup:
+Description: In the setup phase, the system under test is prepared for the test.
+Example: Creating an instance of a class or setting up necessary data before executing the test.
+2. Exercise:
+Description: The exercise phase involves executing the system under test to perform the intended operation.
+Example: Invoking a method or function to trigger a specific behavior for testing.
+3. Verify:
+Description: During verification, the outcome of the exercise is compared against expected results.
+Example: Checking if the result matches the expected output or behavior.
+4. Teardown:
+Description: In the teardown phase, the system under test is reset to its pre-setup state.
+Example: Releasing memory, cleaning up resources, or resetting data structures used during the test.
+
+### Types of Teardown in Software Testing:
+1. Manual Teardown:
+Description: Involves physically disassembling hardware or software components for inspection or analysis.
+Example: A quality assurance engineer manually disassembles a prototype device to examine its internal components and identify any potential defects.
+2. Transactional Teardown:
+Description: Reverts database transactions or temporary modifications made during a test to restore the system to its pre-test state.
+Example: During an online banking application test, transactions made during the test are rolled back to ensure the account balances return to their original values.
+3. Sandbox Teardown:
+Description: Restores the testing environment to its original state after executing tests within a controlled environment.
+Example: A software developer runs unit tests in a sandbox environment, where each test case is isolated and the environment is reset after each test run.
+4. No Teardown:
+Description: Skips the teardown phase, leaving the system in its current state after test execution.
+Example: In a simple UI testing scenario, where no cleanup is necessary as the actions performed during the test do not impact subsequent tests.
+5. Truncate Table:
+Description: Empties a database table by removing all rows, effectively resetting its contents.
+Example: Before running regression tests on a customer database, the testing script truncates the "Orders" table to ensure a clean starting point for each test iteration.
+
 ## Refactoring
 ## Relational Databeses
 ## NoSql
