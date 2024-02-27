@@ -262,35 +262,37 @@ Message Producers are those systems or applications which produce messages and s
 
 There can be any number of message producers which can connect to the broker as producers.
 
-RabbitMQ Exchange
+* RabbitMQ Exchange
 Exchange is a routing manager in RabbitMQ message broker which routes the messages towards different queues which are produced by the producer.  Contrary to ActiveMQ or other JMS based message brokers, in RabbitMQ messages are not sent by producers directly to the queues; rather Exchanges are used to route the messages as per binding associations.
 
 There are different RabbitMQ Exchange types which route the message differently towards the queues.
 
-Following are the Exchange Types in RabbitMQ:
+### Following are the Exchange Types in RabbitMQ:
 
-Direct Exchange
+* Direct Exchange
 A direct Exchange in RabbitMQ routes messages to the queues based on the routing key and binding key association. A message received in a direct exchange with a routing key abc is routed to any queue with binding key abc (same as routing key).
 
-Topic Exchange
+* Topic Exchange
 A Topic Exchange is used for multi-cast purposes where a message received on a Topic Exchange is routed to multiple queues based on a wildcard match between routing key of the message and the binding key pattern of the queues.
 
-Fanout Exchange
+* Fanout Exchange
 Fanout Exchange is used in order to broadcast a message to all the queues which are bound it it without checking any association between routing and binding keys. A copy of same message is sent to every queue by ignoring any routing keys.
 
-Header Exchange
+* Header Exchange
 Header Exchange in RabbitMQ is used to send messages to queues based on matching header fields. There can be a binding with either one header property (using Match-Any) or all header fields (Match-All) and accordingly messages are routed to the queues.
 
 When using Header exchange, routing key is ignored as routing decisions are purely based on header attributes.
 
-How RabbitMQ Works?
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/rabbitmq.png?raw=true).
+
+### How RabbitMQ Works?
 In order to understand basic concepts of RabbitMQ further and to understand how RabbitMQ works, refer to below video on TutorialsPedia YouTube channel where I have explained the concepts in detail. Since this is RabbitMQ beginners tutorial, you should be able to grasp the concepts easily without going into the advanced topics or much details.
 
 At a high level, below diagram depicts how RabbitMQ works as a Message Broker:
 
 ![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/how-rabbitmq-works.png?raw=true).
 
-*Microservices Communication:
+* Microservices Communication:
 In a microservices architecture where services are distributed and communicate through messages, a message broker like RabbitMQ can streamline communication between services, reducing the complexity of direct API calls and enabling scalable and reliable interactions
 
 * Long-Running Tasks:
@@ -327,15 +329,6 @@ Messages in RabbitMQ follow FIFO order by default but prioritization can be appl
 Time To Live (TTL).
 Priorities.
 
-![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/rabbitmq.png?raw=true).
-
-### Exchange Types:
-* Direct: Delivers messages only to queues whose binding keys exactly match the routing key of the message (default behavior in RabbitMQ).
-* Fanout: Broadcasts messages to all bound queues, ignoring routing keys or patterns.
-* Topic: Matches messages based on wildcards between the routing key and binding's routing pattern.
-* Header: Similar to Topic but uses header fields instead of routing keys.
-** Additional Features: **
-Dead Letter Exchange: Forwards unprocessed messages to another exchange for reprocessing. Some consumers may fail to process messages correctly, or queues might reject messages due to certain conditions. In such cases, dead letter exchange provides a mechanism for republishing these messages.
 ### Protocols supported by RabbitMQ:
 * AMQP (Advanced Message Queuing Protocol)
 * STOMP (Simple (or Streaming) Text Orientated Messaging Protocol)
