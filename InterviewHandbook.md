@@ -224,12 +224,97 @@ The SOLID acronym stands for:
 ## Identity
 ## IOC
 ## Message Broker
-![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/rabbitmq.png?raw=true).
+
+### When to use a message broker instead of other communication methods in programming:
+When integrating heterogeneous applications and systems and enabling message communication between these systems to achieve desired business goals, choosing the right messaging platform is always a key decision in any organization. Legacy approach of Point to Point Integration between a set of systems and applications is neither scalable nor performance efficient and that’s why organizations tend to opt for more agile and efficient approaches including ESB based Integrations and inclusion of a message broker as a Message Oriented Middleware to achieve a loosely coupled or ideally a decoupled messaging in the applications and systems eco-system.
+
+When we talk about Message Brokers, there are plenty of options available — proprietary as well as open-source which fulfil the required goal of achieving efficient, scalable and robust messaging for complex business scenarios involving huge number of information generating and information consuming applications. We already talked about ActiveMQ Message Broker in another tutorial which is a widely used open-source message broker which can be used to integrate various systems and applications supporting a rich set of protocols and data formats. ActiveMQ is a JMS provider which is based on JMS specifications.
+
+In this tutorial, we will cover another widely known and popular open-source message broker– RabbitMQ and we will have a high level overview of RabbitMQ in which we cover RabbitMQ Introduction, RabbitMQ basic Concepts as a RabbitMQ Beginners Tutorial without going into the complexities associated.
+Before we dig deeper and talk about RabbitMQ Message Broker, It is important to first talk a bit about Message Broker in general to set the context.
+
+What is a Message Broker?
+A message broker is an application which sits in the middle of the two or more systems or applications which need to communicate with each other uni-directional or bi-directional in the forms of messages. A message broker with its ability to store, route, filter messages originated from a message producing application can help a message consuming application or system to receive the messages as and when desired without a direct tightly coupled link between the source and destination parties.
+
+In the below diagram, we have a simple example where we have multiple Producers and multiple consumers connected to a Message Broker in order to produce and consume messages respectively.
+
+Different message brokers can have additional features and abilities for message mediation, transformation, filtering and routing but in general, all of these brokers primarily serve the purpose of a middle-man to deliver the messages to the consumers on behalf of producer.
+
+RabbitMQ Introduction: What is RabbitMQ Message Broker
+RabbitMQ is a widely used and a well known open-source Message Broker which is used as a queuing system to enable message communication in an asynchronous fashion between different applications and system.
+
+RabbitMQ is based on AMQP (Advanced Message Queuing Protocol) with a support of various communication protocol including HTTP, STOMP, MQTT etc. making it a flexible choice to utilize it as a Message Oriented Middleware for integrating systems and applications of different nature in a seamless and efficient manner.
+
+RabbitMQ Core Concepts
+To understand how RabbitMQ as a message broker works, we need to first have a clarity on various concepts which are the basic building block of message brokers in general and RabbitMQ in particular.
+
+Message
+A message is a piece of information that contains useful content that needs to be shared between communicating parties. A message consists of following elements:
+
+Message Header
+Message header contains meta-data about the message and helps understanding various useful information about the actual message. E.g. data format or encoding format can be part of a message header.
+
+Message Body
+A message body contains the actual information or the core of a message. For example a message about an account can have details of the account holder in JSON or XML format in the body of a message.
+
+Message Properties (Optional)
+Additional properties can be associated with a message which can be used to filter the messages. For example, we can think of having AccountType property for a message about Accounts and consuming applications can filter messages based on this property to pick only relevant messages from the broker queues.
+
+Message Producers
+Message Producers are those systems or applications which produce messages and send it to the broker to make those messages available for potential consumers to pick from the broker queues and consume it as desired.
+
+There can be any number of message producers which can connect to the broker as producers.
+
+RabbitMQ Exchange
+Exchange is a routing manager in RabbitMQ message broker which routes the messages towards different queues which are produced by the producer.  Contrary to ActiveMQ or other JMS based message brokers, in RabbitMQ messages are not sent by producers directly to the queues; rather Exchanges are used to route the messages as per binding associations.
+
+There are different RabbitMQ Exchange types which route the message differently towards the queues.
+
+Following are the Exchange Types in RabbitMQ:
+
+Direct Exchange
+A direct Exchange in RabbitMQ routes messages to the queues based on the routing key and binding key association. A message received in a direct exchange with a routing key abc is routed to any queue with binding key abc (same as routing key).
+
+Topic Exchange
+A Topic Exchange is used for multi-cast purposes where a message received on a Topic Exchange is routed to multiple queues based on a wildcard match between routing key of the message and the binding key pattern of the queues.
+
+Fanout Exchange
+Fanout Exchange is used in order to broadcast a message to all the queues which are bound it it without checking any association between routing and binding keys. A copy of same message is sent to every queue by ignoring any routing keys.
+
+Header Exchange
+Header Exchange in RabbitMQ is used to send messages to queues based on matching header fields. There can be a binding with either one header property (using Match-Any) or all header fields (Match-All) and accordingly messages are routed to the queues.
+
+When using Header exchange, routing key is ignored as routing decisions are purely based on header attributes.
+
+How RabbitMQ Works?
+In order to understand basic concepts of RabbitMQ further and to understand how RabbitMQ works, refer to below video on TutorialsPedia YouTube channel where I have explained the concepts in detail. Since this is RabbitMQ beginners tutorial, you should be able to grasp the concepts easily without going into the advanced topics or much details.
+
+At a high level, below diagram depicts how RabbitMQ works as a Message Broker:
+
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/how-rabbitmq-works.png?raw=true).
+
+*Microservices Communication:
+In a microservices architecture where services are distributed and communicate through messages, a message broker like RabbitMQ can streamline communication between services, reducing the complexity of direct API calls and enabling scalable and reliable interactions
+
+* Long-Running Tasks:
+  When tasks triggered by messages, such as video processing or background tasks, require extended processing time, a message broker can efficiently manage these  
+  long-running operations without blocking the main application flow
+
+* Mobile Apps:
+  Message brokers are beneficial for mobile apps where asynchronous communication is essential for handling events, notifications, and data updates efficiently across different devices and platforms
+
+* Scalability:
+As the volume of messages exchanged between components increases, a message broker becomes crucial for managing message delivery, ensuring reliability, and handling potential spikes in traffic effectively
+
+*Decoupling Services:
+Message brokers promote loose coupling between services by allowing them to communicate without direct knowledge of each other. This decoupling enhances system flexibility, resilience, and maintainability
+
+In summary, consider using a message broker like RabbitMQ when dealing with distributed systems, asynchronous communication requirements, scalability challenges, long-running tasks, or the need for decoupling services to enhance the overall robustness and efficiency of your application architecture
 
 Producing messages with RabbitMQ does not require the sender to wait for a response from consumers; instead, it places data into an exchange without knowing if or when consumers will retrieve them. This approach promotes decoupling and minimizes dependencies.
 If you want to deliver data to multiple recipients, using messaging eliminates the need to create separate APIs for each recipient. Instead, you simply publish data to an exchange where consumers can subscribe to receive those messages. This design helps achieve scalable and available systems in distributed environments.
-Key features of RabbitMQ include:
-### Support for various programming languages
+### Key features of RabbitMQ include:
+* Support for various programming languages
 * Open source
 * Easy to use
 * Multiple protocol support
@@ -244,6 +329,9 @@ Four primary types of exchanges plus additional customizable ones.
 Messages in RabbitMQ follow FIFO order by default but prioritization can be applied through message and queue settings.
 Time To Live (TTL).
 Priorities.
+
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/rabbitmq.png?raw=true).
+
 ### Exchange Types:
 * Direct: Delivers messages only to queues whose binding keys exactly match the routing key of the message (default behavior in RabbitMQ).
 * Fanout: Broadcasts messages to all bound queues, ignoring routing keys or patterns.
