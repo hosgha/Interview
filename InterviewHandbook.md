@@ -21,9 +21,6 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 **[system Design and Architecture](#system-design-and-architecture)**<br>
 **[Cloud](#cloud)**<br>
 
-
-
-
 ## OOP Concepts
 ### Summary
 Object-oriented programming (OOP) is a programming style that helps solve problems by thinking in terms of real-world objects. Each object has some behaviors and attributes. These concepts help organize code, improve code readability, reusability, maintainability, and security. 
@@ -306,7 +303,7 @@ In a microservices architecture where services are distributed and communicate t
 * Scalability:
 As the volume of messages exchanged between components increases, a message broker becomes crucial for managing message delivery, ensuring reliability, and handling potential spikes in traffic effectively
 
-*Decoupling Services:
+* Decoupling Services:
 Message brokers promote loose coupling between services by allowing them to communicate without direct knowledge of each other. This decoupling enhances system flexibility, resilience, and maintainability
 
 In summary, consider using a message broker like RabbitMQ when dealing with distributed systems, asynchronous communication requirements, scalability challenges, long-running tasks, or the need for decoupling services to enhance the overall robustness and efficiency of your application architecture
