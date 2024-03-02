@@ -389,6 +389,20 @@ Shows a log of all Git references, useful for recovering lost commits or branche
 ```
 git reflog
 ```
+#### Git Squash
+In Git, squashing commits involves combining multiple commits into a single commit to simplify the commit history and make it more organized. This process is useful for cleaning up the branch history and creating more meaningful commits. There are several ways to squash commits in Git:
+
+**1. Interactive Rebase Method:**
+Use the command **git rebase -i HEAD~<number_of_commits>** to enter interactive mode.
+In the interactive editor, change "pick" to "squash" for the commits you want to squash.
+Save the file, enter a new commit message, and complete the process
+
+**2. Merge Command with --squash Flag:**
+Create and switch to a new branch where you want to merge the commits.
+Use **git merge --squash <Branch>** to merge the branch with the --squash option.
+Resolve any merge conflicts and commit the changes
+
+Squashing commits helps in easier code reviewing, reducing clutter in the repository, simplifying rollback of changes, and facilitating merging branches with fewer conflicts. It is recommended to squash related commits before submitting a pull request for better code understanding and maintenance
 
 ## Concurrency and Parallelism In Depth
 ## Design Patterns
