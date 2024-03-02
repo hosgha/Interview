@@ -298,7 +298,11 @@ Soft resets move the tip of the current branch back to the specified commit but 
 ```
 git reset --soft <commit_hash>
 ```
-
+#### Mixed Resets
+This command resets the index to the specified commit while keeping the changes in the working directory but not staged. It allows you to review the changes before committing them again. It is a mix of hard and soft resets.
+```
+git reset --mixed <commit_hash>
+```
 #### Partial Resets
 Partial resets allow reverting selected files while keeping others intact.
 ```
