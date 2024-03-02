@@ -142,6 +142,9 @@ In Object-Oriented Programming (OOP), both aggregation and composition are ways 
 * The composed class's lifecycle is tied to the container class, and when the container is destroyed, so are its parts.
 ** Example: ** A car has an engine. The engine is an integral part of the car, and if the car is destroyed, the engine goes with it.
 
+
+### Cohesion and Coupling: 
+
 **Cohesion**
 <br>Cohesion refers to the degree to which the elements of a module/class belong together, **it is suggested that the related code should be close to each other**, so we should strive for high cohesion and bind all related code together as close as possible. It has to do with the elements within the module/class.
 
