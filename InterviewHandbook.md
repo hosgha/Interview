@@ -309,17 +309,10 @@ Partial resets allow reverting selected files while keeping others intact.
 git reset <path_to_file> -- <other_paths>...
 ```
 
-The difference between ** git reset soft **, ** git reset partial ** (not a standard Git command), and ** git reset hard ** is as follows:
-** Git Reset Soft: **
-Effect: Resets the commit history back to a previous state while keeping the index and filesystem unchanged. Files in the working directory remain untouched.
-Command: git reset --soft <commit_hash>
-** Git Reset Partial ** (Not a standard Git command):
-Hypothetical Effect: Conceptually mentioned for selectively reverting changes in specific files while leaving others intact. This command is not part of standard Git functionality.
-Usage: Would be beneficial for reverting changes in selected files without affecting the entire working directory.
-** Git Reset Hard: **
-Effect: Resets the commit history back to a previous state, resetting both the index and the working directory to the state at that commit. This can result in losing changes in the working directory.
-Command: git reset --hard <commit_hash>
-In summary, git reset soft preserves the working directory and index, git reset partial is not a standard Git command but would conceptually allow selective file reversion, and git reset hard resets both the index and working directory to a previous commit, potentially leading to loss of changes in the working directory
+#### The differences between git reset --hard, git reset --soft, and git reset --mixed in Git are as follows:
+* **git reset --hard:** This command resets the index and working directory to the specified commit. **It discards all changes and history after that commit**. It is a destructive operation, meaning all changes are permanently lost.
+* **git reset --soft:** This command resets the index to the specified commit while **keeping the changes in the working directory and it unstages the changes**, allowing you to recommit them if needed. It is a non-destructive operation.
+* **git reset --mixed:** This command resets the index to the specified commit while **keeping the changes in the working directory but not staged**. It allows you to review the changes before committing them again. It is a mix of hard and soft resets.
 
 ### Git Blame
 Git's blame command assigns responsibility for each line of code in a file to the author who last modified it.
