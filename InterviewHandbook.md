@@ -129,6 +129,18 @@ public class Address
 }
 ```
 
+### Difference between Aggregation and Composition Relationship in OOP
+In Object-Oriented Programming (OOP), both aggregation and composition are ways to represent relationships between classes, but they differ in the strength of the relationship and the lifecycle management of the objects involved.
+#### Aggregation Relationship:
+* Aggregation is a "has-a" relationship where one class is a part of another class but can exist independently.
+* It represents a weaker relationship where objects can be shared among multiple classes.
+* The aggregated class can exist without the container class.
+** Example: ** A university has departments. A department can exist independently of the university and can be part of multiple universities.
+#### Composition Relationship:
+* Composition is a stronger form of aggregation where one class is composed of another class and cannot exist without it.
+* It signifies a whole-part relationship where the part cannot exist independently outside the whole.
+* The composed class's lifecycle is tied to the container class, and when the container is destroyed, so are its parts.
+** Example: ** A car has an engine. The engine is an integral part of the car, and if the car is destroyed, the engine goes with it.
 
 **Cohesion**
 <br>Cohesion refers to the degree to which the elements of a module/class belong together, **it is suggested that the related code should be close to each other**, so we should strive for high cohesion and bind all related code together as close as possible. It has to do with the elements within the module/class.
