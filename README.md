@@ -3,7 +3,7 @@
 Welcome to the Software Engineer (Backend Developer) Interview Preparation Repository! This repository is designed to help you prepare for backend developer interviews focusing on C# and .NET stack. Below is the table of contents outlining the topics covered in this repository:
 
 ### Table of Contents
-**[OOP Concepts](#oop-concepts)**<br>
+**[OOP Concepts](https://github.com/hosgha/Interview/blob/master/InterviewHandbook.md?plain=1#oop-concepts)**<br>
 **[Git Essentials](#git-essentials)**<br>
 **[Concurrency and Parallelism In Depth](#concurrency-and-parallelism-in-depth)**<br>
 **[Design Patterns](#design-patterns)**<br>
