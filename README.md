@@ -2,24 +2,25 @@
 
 Welcome to the Software Engineer (Backend Developer) Interview Preparation Repository! This repository is designed to help you prepare for backend developer interviews focusing on C# and .NET stack. Below is the table of contents outlining the topics covered in this repository:
 
-**1. OOP Concepts
-2. Git Essentials
-3. Concurrency and Parallelism In Depth
-4. Design Patterns
-5. Design Principles
-6. Clean Code
-7. Testing
-8. Refactoring
-9. Relational Databases
-10. NoSQL
-11. Caching
-12. Logging
-13. Identity
-14. IoC (Inversion of Control)
-15. Message Broker
-16. Observability and Monitoring
-17. System Design and Architecture
-18. Cloud**
+### Table of Contents
+**[OOP Concepts](#oop-concepts)**<br>
+**[Git Essentials](#git-essentials)**<br>
+**[Concurrency and Parallelism In Depth](#concurrency-and-parallelism-in-depth)**<br>
+**[Design Patterns](#design-patterns)**<br>
+**[Design Principals](#design-principals)**<br>
+**[Clean Code](#clean-code)**<br>
+**[Testing](#testing)**<br>
+**[Refactoring](#refactoring)**<br>
+**[Relational Databeses](#relational-databeses)**<br>
+**[NoSql](#nosql)**<br>
+**[Caching](#caching)**<br>
+**[Logging](#logging)**<br>
+**[Identity](#identity)**<br>
+**[IOC](#ioc)**<br>
+**[Message Broker](#message-broker)**<br>
+**[Observability and Monitoring](#observability-and-monitoring)**<br>
+**[system Design and Architecture](#system-design-and-architecture)**<br>
+**[Cloud](#cloud)**<br>
 
 For a more detailed roadmap, you can refer to the roadmap created by **Moein Tajik** available at [AspNetCore-Developer-Roadmap]([https://www.google.com](https://github.com/MoienTajik/AspNetCore-Developer-Roadmap)).
 
