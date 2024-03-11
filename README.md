@@ -1,4 +1,4 @@
-# Software Engineer (Backend Developer) Interview Preparation Repository
+# Software Engineer (Backend Developer) Interview Preparation (Focusing on C# and .NET Stack)
 
 Welcome to the Software Engineer (Backend Developer) Interview Preparation Repository! This repository is designed to help you prepare for backend developer interviews focusing on C# and .NET stack. Below is the table of contents outlining the topics covered in this repository:
 
