@@ -1,4 +1,4 @@
-# Interview Handbook
+# Technical Interview Handbook
 We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a short time :)
 
 ### Table of Contents
