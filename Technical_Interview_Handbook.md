@@ -441,15 +441,17 @@ This is all about multiple tasks **running on multiple cores simultaneously** (p
 
 ### Locking
 
-| LockingName           | LockingMode | In or Cross Process |
+| Locking Name           | Locking Mode | In or Cross Process |
 | ---------------------- | ----------- | ------------------- |
 | Monitor               | User Mode   | In Process          |
 | SemaphoreSlim         | User Mode   | In Process          |
 | SpinLock              | User Mode   | In Process          |
 | Interlocked           | User Mode   | In Process          |
 | AsyncLock             | User Mode   | In Process          |
+| ---------------------- | ----------- | ------------------- |
 | Mutex                 | Kernel Mode | In Process          |
 | Semaphore             | Kernel Mode | In Process          |
+| ---------------------- | ----------- | ------------------- |
 | ReaderWriterLockSlim  | Hybrid Mode | In Process          |
 | Concurrent Collections| Hybrid Mode | In Process          |
 | RedLock.net           | Hybrid Mode | Cross Process       |
