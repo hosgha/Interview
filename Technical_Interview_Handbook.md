@@ -414,6 +414,31 @@ Squashing commits helps in easier code reviewing, reducing clutter in the reposi
 1. https://nvie.com/posts/a-successful-git-branching-model/
 
 ## Concurrency and Parallelism In Depth
+
+**Multithreading** and **Asynchronous Programming** are two different programming paradigms used to achieve **concurrency** and **parallelism** in computer systems.
+
+Multithreading and asynchronous programming are indeed subsets of parallel programming, each serving distinct purposes within the realm of concurrent execution. 
+
+### Parallel Programming: 
+This is all about multiple tasks **running on multiple cores simultaneously**. Parallel programming involves breaking down a computational task into smaller parts that can be executed simultaneously,
+
+### Concurrency:
+- Concurrency is a concept where several tasks appear to run simultaneously, **but not necessarily in parallel**.
+- It’s about dealing with multiple tasks at once, which can be achieved in various ways, including parallelism (using multiple processors), interleaved processing (time-slicing on a single processor), or even distributed processing across multiple machines.
+- It’s about managing access to shared resources, ensuring that data remains consistent, and tasks are executed in an orderly manner.
+
+### Multithreading: 
+- This is all about a single process split into multiple threads. 
+- Multithreading is a form of concurrency where multiple threads, it's important to note that multithreading is not necessarily limited to physical threads and can involve logical threads as well.
+- Unlike asynchronous programming, which may or may not use threads, multithreading always involves multiple threads
+- Managing multithreaded applications can be complex due to issues like race conditions, deadlocks, and the need for synchronization mechanisms. 
+
+### Asynchronous Programming: 
+- Asynchronous programming is a form of concurrency where **tasks start and then move on without waiting for the previous task to finish** (This is all about a single thread initiating multiple tasks without waiting for each to complete). This can be achieved using callbacks, promises, futures, events, etc.
+- It’s especially popular in I/O-bound operations (like reading files, making network requests) where tasks don’t need to wait for the operation to complete and can proceed with other operations, improving responsiveness.
+- Asynchronicity doesn’t necessarily imply parallel execution. The tasks may still be executed in a single thread (like in JavaScript’s Node.js), but the system can handle other tasks while waiting for some tasks to complete.
+
+
 ## Design Patterns
 A design pattern is a general repeatable solution to a commonly occurring problem in software design. According to GOF, there are 3 types of design patterns, which include 22 patterns:
 ### 1. Creational Design Patterns: 
