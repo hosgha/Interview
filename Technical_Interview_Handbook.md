@@ -437,6 +437,57 @@ This is all about multiple tasks **running on multiple cores simultaneously** (p
 - Asynchronicity doesn’t necessarily imply parallel execution. The tasks may still be executed in a single thread (like in JavaScript’s Node.js), but the system can handle other tasks while waiting for some tasks to complete.
 
 
+### Locking
+
+<table>
+  <tr>
+    <th>LockingName</th>
+    <th>LockingMode</th>
+    <th>In or Cross Process</th>
+  </tr>
+  <tr>
+    <td>Monitor</td>
+    <td>User Mode</td>
+    <td>In Process</td>
+  </tr>
+  <tr>
+    <td>ReaderWriterLockSlim</td>
+    <td>Hybrid Mode</td>
+    <td>In Process</td>
+  </tr>
+  <tr>
+    <td>Mutex</td>
+    <td>Kernel Mode</td>
+    <td>In Process</td>
+  </tr>
+  <tr>
+    <td>Semaphore</td>
+    <td>Kernel Mode</td>
+    <td>In Process</td>
+  </tr>
+  <tr>
+    <td>SemaphoreSlim</td>
+    <td>User Mode</td>
+    <td>In Process</td>
+  </tr>
+  <tr>
+    <td>SpinLock</td>
+    <td>User Mode</td>
+    <td>In Process</td>
+  </tr>
+  <tr>
+    <td>Interlocked</td>
+    <td>User Mode</td>
+    <td>In Process</td>
+  </tr>
+  <tr>
+    <td>Concurrent Collections</td>
+    <td>Hybrid Mode</td>
+    <td>In Process</td>
+  </tr>
+  <tr>
+    <td>AsyncLock</td>
+
 ## Design Patterns
 A design pattern is a general repeatable solution to a commonly occurring problem in software design. According to GOF, there are 3 types of design patterns, which include 22 patterns:
 ### 1. Creational Design Patterns: 
