@@ -442,12 +442,12 @@ This is all about multiple tasks **running on multiple cores simultaneously** (p
 ### Locking
 
 <table>
-  <tr style="background-color:#defcf9">
+  <tr>
     <th>LockingName</th>
     <th>LockingMode</th>
     <th>In or Cross Process</th>
   </tr>
-  <tr >
+  <tr style="background:#defcf9">
     <td>Monitor</td>
     <td>User Mode</td>
     <td>In Process</td>
