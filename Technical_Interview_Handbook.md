@@ -454,7 +454,7 @@ This is all about multiple tasks **running on multiple cores simultaneously** (p
 
 #### CPU Starvation
 
-#### Best Practice for locking
+#### Tips and Best Practice
 
 #### Exclusive Locking and Non-Exclusive Locking 
 
