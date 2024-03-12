@@ -447,7 +447,7 @@ This is all about multiple tasks **running on multiple cores simultaneously** (p
     <th>LockingMode</th>
     <th>In or Cross Process</th>
   </tr>
-  <tr style="background:#defcf9">
+  <tr style="color:red">
     <td>Monitor</td>
     <td>User Mode</td>
     <td>In Process</td>
