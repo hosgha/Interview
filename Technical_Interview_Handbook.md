@@ -417,8 +417,6 @@ Squashing commits helps in easier code reviewing, reducing clutter in the reposi
 
 **Multithreading** and **Asynchronous Programming** are two different programming paradigms used to achieve **concurrency** and **parallelism** in computer systems.
 
-Multithreading and asynchronous programming are indeed subsets of parallel programming, each serving distinct purposes within the realm of concurrent execution. 
-
 ### Parallel Programming: 
 This is all about multiple tasks **running on multiple cores simultaneously**. Parallel programming involves breaking down a computational task into smaller parts that can be executed simultaneously,
 
