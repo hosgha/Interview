@@ -184,6 +184,12 @@ https://developer-interview.com/p/oop-ood/what-are-advantages-of-composition-and
 
 ## Git Essentials
 
+### Here are some popular Git workflows
+1. **Trunk-Based Workflow:** This workflow is considered a best practice for modern continuous software development and DevOps practices. It involves committing changes directly to the main branch, simplifying the development process and increasing stability
+2. **Feature Branch Workflow:** In this workflow, developers create a branch for each feature they are working on, make changes, submit a merge request, and then merge it back into the main branch. It helps keep the main branch clean and avoids conflicts with unfinished features
+3. **GitHub Flow:** GitHub Flow is a simpler workflow that breaks down large sets of changes into smaller chunks that can be addressed more frequently. It is more conducive to iterative development and easier to manage compared to complex branching models like Gitflow
+4. **Gitflow Workflow:** Gitflow is a legacy Git branching model that involves feature branches and multiple primary branches. It has fallen in popularity in favor of trunk-based workflows due to its complexity and challenges with CI/CD integration
+
 #### Clone Repository
 Clones a repository onto your local machine. You can replace <repository_url> with either a remote URL or a path to a local repository.
 ```
@@ -403,6 +409,9 @@ Use **git merge --squash <Branch>** to merge the branch with the --squash option
 Resolve any merge conflicts and commit the changes
 
 Squashing commits helps in easier code reviewing, reducing clutter in the repository, simplifying rollback of changes, and facilitating merging branches with fewer conflicts. It is recommended to squash related commits before submitting a pull request for better code understanding and maintenance
+
+### resources:
+1. https://nvie.com/posts/a-successful-git-branching-model/
 
 ## Concurrency and Parallelism In Depth
 ## Design Patterns
