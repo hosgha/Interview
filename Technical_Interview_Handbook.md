@@ -455,61 +455,6 @@ This is all about multiple tasks **running on multiple cores simultaneously** (p
 | RedLock.net           | Hybrid Mode | Cross Process       |
 | Distributed Lock      | Hybrid Mode | Cross Process       |
 
-<details>
-  <summary>Click to view HTML table with row coloring</summary>
-
-  <table>
-    <tr style="background-color: #f2f2f2;">
-      <th>LockingName</th>
-      <th>LockingMode</th>
-      <th>In or Cross Process</th>
-    </tr>
-    <tr style="background-color: #f9ebae;">
-      <td>Monitor</td>
-      <td>User Mode</td>
-      <td>In Process</td>
-    </tr>
-    <tr style="background-color: #c7e9c0;">
-      <td>SemaphoreSlim</td>
-      <td>User Mode</td>
-      <td>In Process</td>
-    </tr>
-    <tr style="background-color: #aec6cf;">
-      <td>SpinLock</td>
-      <td>User Mode</td>
-      <td>In Process</td>
-    </tr>
-    <tr style="background-color: #f5c2aa;">
-      <td>Interlocked</td>
-      <td>User Mode</td>
-      <td>In Process</td>
-    </tr>
-    <tr style="background-color: #f5e6aa;">
-      <td>AsyncLock</td>
-      <td>User Mode</td>
-      <td>In Process</td>
-    </tr>
-    <tr style="background-color: #f2d4aa;">
-      <td>Mutex</td>
-      <td>Kernel Mode</td>
-      <td>In Process</td>
-    </tr>
-    <tr style="background-color: #d4f2aa;">
-      <td>Semaphore</td>
-      <td>Kernel Mode</td>
-      <td>In Process</td>
-    </tr>
-    <tr style="background-color: #aacff2;">
-      <td>ReaderWriterLockSlim</td>
-      <td>Hybrid Mode</td>
-      <td>In Process</td>
-    </tr>
-    <!-- Add more rows with different background colors as needed -->
-  </table>
-
-</details>
-
-
 ## Design Patterns
 A design pattern is a general repeatable solution to a commonly occurring problem in software design. According to GOF, there are 3 types of design patterns, which include 22 patterns:
 ### 1. Creational Design Patterns: 
