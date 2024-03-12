@@ -487,6 +487,20 @@ This is all about multiple tasks **running on multiple cores simultaneously** (p
   </tr>
   <tr>
     <td>AsyncLock</td>
+    <td>User Mode</td>
+    <td>In Process</td>
+  </tr>
+  <tr>
+    <td>RedLock.net</td>
+    <td>Hybrid Mode</td>
+    <td>Cross Process</td>
+  </tr>
+  <tr>
+    <td>Distributed Lock</td>
+    <td>Hybrid Mode</td>
+    <td>Cross Process</td>
+  </tr>
+</table>
 
 ## Design Patterns
 A design pattern is a general repeatable solution to a commonly occurring problem in software design. According to GOF, there are 3 types of design patterns, which include 22 patterns:
