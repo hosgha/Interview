@@ -438,8 +438,25 @@ This is all about multiple tasks **running on multiple cores simultaneously** (p
 - It’s especially popular in I/O-bound operations (like reading files, making network requests) where tasks don’t need to wait for the operation to complete and can proceed with other operations, improving responsiveness.
 - Asynchronicity doesn’t necessarily imply parallel execution. The tasks may still be executed in a single thread (like in JavaScript’s Node.js), but the system can handle other tasks while waiting for some tasks to complete.
 
+#### Racing Condition
 
-### Locking
+#### DeadLock
+
+#### Critical Section
+
+#### Physical and Logical Thread 
+
+#### Context Switching 
+
+#### Heisenbug
+
+#### Thread Safity
+
+#### CPU Starvation
+
+#### Best Practice for locking
+
+#### Exclusive Locking and Non-Exclusive Locking 
 
 | Locking Name           | Locking Mode | In or Cross Process |
 | ---------------------- | ----------- | ------------------- |
