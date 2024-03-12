@@ -26,15 +26,15 @@ For a more detailed roadmap, you can refer to the roadmap created by **Moein Taj
 
 ## HR Interview Vision:
 In addition to technical skills, it's crucial to prepare for HR interview questions that assess your soft skills, communication abilities, and cultural fit within the organization. Here are some key areas to focus on:
-### 1. Communication Skills:
+1. **Communication Skills:**
 Practice articulating your thoughts clearly, listening actively, and demonstrating effective communication in both technical and non-technical discussions.
-### 2. Problem-Solving Approach: 
+2. **Problem-Solving Approach:** 
 Showcase your problem-solving skills by discussing past challenges you've overcome, your thought process in resolving issues, and your ability to adapt to new situations.
-### 3. Teamwork and Collaboration: 
+3. **Teamwork and Collaboration:** 
 Highlight your experience working in teams, your role in collaborative projects, and how you contribute positively to team dynamics.
-### 4. Adaptability and Learning Agility: 
+4. **Adaptability and Learning Agility:** 
 Demonstrate your willingness to learn new technologies, adapt to changing environments, and continuously improve your skills through self-learning and feedback.
-### 5. Passion for Development:
+5. **Passion for Development:**
 Express your enthusiasm for software development, your motivation to stay updated with industry trends, and your commitment to personal and professional growth.
 
 ## How to Use This Repository:
