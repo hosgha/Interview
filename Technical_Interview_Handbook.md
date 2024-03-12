@@ -439,6 +439,8 @@ This is all about multiple tasks **running on multiple cores simultaneously** (p
 - Asynchronicity doesn’t necessarily imply parallel execution. The tasks may still be executed in a single thread (like in JavaScript’s Node.js), but the system can handle other tasks while waiting for some tasks to complete.
 
 #### Racing Condition
+![race_condition](https://github.com/hosgha/Interview/blob/master/assets/images/race-condition.png?raw=true).
+A race condition occurs when **two or more threads** can access **shared data** and they try to change it at the **same time**. 
 
 #### DeadLock
 
