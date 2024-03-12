@@ -448,10 +448,10 @@ This is all about multiple tasks **running on multiple cores simultaneously** (p
 | SpinLock              | User Mode   | In Process          |
 | Interlocked           | User Mode   | In Process          |
 | AsyncLock             | User Mode   | In Process          |
-| ---------------------- | ----------- | ------------------- |
+|                       |             |                     |
 | Mutex                 | Kernel Mode | In Process          |
 | Semaphore             | Kernel Mode | In Process          |
-| ---------------------- | ----------- | ------------------- |
+|                       |             |                     |
 | ReaderWriterLockSlim  | Hybrid Mode | In Process          |
 | Concurrent Collections| Hybrid Mode | In Process          |
 | RedLock.net           | Hybrid Mode | Cross Process       |
