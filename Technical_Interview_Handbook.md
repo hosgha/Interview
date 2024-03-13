@@ -456,9 +456,11 @@ Deadlock describes a condition in which two or more threads are blocked (hung) f
 
 <img src="https://github.com/hosgha/Interview/blob/master/assets/images/deadlock.png?raw=true" alt="Deadlock" width=350; height=220>
 
-#### Physical and Logical Thread 
-**Physical threading** relates to the actual hardware threads available on a processor, where each physical core can execute multiple tasks simultaneously, often achieved through technologies like hyper-threading. 
-**Logical threading** involves the software perspective, where threads are virtual constructs that allow a single core to handle multiple tasks concurrently. While physical threads are tied to the hardware capabilities of the processor, logical threads are more flexible and can be managed at a higher level by the operating system or programming environment
+#### Physical threading
+Physical threading relates to the actual hardware threads available on a processor, where each physical core can execute multiple tasks simultaneously, often achieved through technologies like hyper-threading. 
+
+#### Logical threading
+Logical threading involves the software perspective, where threads are virtual constructs that allow a single core to handle multiple tasks concurrently. While physical threads are tied to the hardware capabilities of the processor, logical threads are more flexible and can be managed at a higher level by the operating system or programming environment
 
 #### I/O Bound and CPU Bound
 **CPU-bound tasks** The term CPU-bound describes a scenario where the execution of a task or program is highly dependent on the CPU.
@@ -479,12 +481,19 @@ Because  the thread scheduling algorithm can swap between threads at any time, y
     5. **Garbage Collection Impact:** Creating and discarding many objects can trigger frequent garbage collection cycles, causing unnecessary context switches.  
 
 #### CPU Starvation
+CPU starvation occurs when a thread is consistently denied access to resources, hindering its progress and potentially leading to significant delays in task execution.
+For instance, **inefficient thread management**, **improper synchronization mechanisms**, and **excessive thread creation without proper resource sharing strategies** can all lead to CPU starvation by causing delays in task execution and resource contention.
 
-#### Heisenbug
+A popular mistake in C# programming that can lead to CPU starvation is inefficient usage of the Task.Run method, especially for I/O-bound operations. Incorrectly using Task.Run for I/O-bound tasks can result in inefficient resource utilization, potentially causing CPU starvation. It is crucial to use the async-await pattern for I/O-bound operations instead of Task.Run to prevent such issues
+
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/deadlock.png?raw=true" alt="cpu-starvation.png" width=400; height=350>
 
 #### Thread Safity
 
-#### Tips and Best Practice
+#### Synchronization
+Control the computations of multiple threads to access any shared resource (protect access to resources that are accessed concurrently)
+
+#### Heisenbug
 
 #### Exclusive Locking and Non-Exclusive Locking 
 
@@ -503,6 +512,8 @@ Because  the thread scheduling algorithm can swap between threads at any time, y
 | Concurrent Collections| Hybrid Mode | In Process          |
 | RedLock.net           | Hybrid Mode | Cross Process       |
 | Distributed Lock      | Hybrid Mode | Cross Process       |
+
+#### Tips and Best Practice
 
 ## Design Patterns
 A design pattern is a general repeatable solution to a commonly occurring problem in software design. According to GOF, there are 3 types of design patterns, which include 22 patterns:
