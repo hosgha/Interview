@@ -454,7 +454,7 @@ A race condition occurs when **two or more threads** can access **shared data** 
 #### DeadLock
 Deadlock describes a condition in which two or more threads are blocked (hung) forever because they are waiting for each other.
 
-<img src="https://github.com/hosgha/Interview/blob/master/assets/images/deadlock.png?raw=true" alt="Deadlock" width=600; height=300>
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/deadlock.png?raw=true" alt="Deadlock" width=400; height=250>
 
 #### Physical and Logical Thread 
 
