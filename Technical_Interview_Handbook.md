@@ -486,7 +486,7 @@ For instance, **inefficient thread management**, **improper synchronization mech
 
 A popular mistake in C# programming that can lead to CPU starvation is inefficient usage of the Task.Run method, especially for I/O-bound operations. Incorrectly using Task.Run for I/O-bound tasks can result in inefficient resource utilization, potentially causing CPU starvation. It is crucial to use the async-await pattern for I/O-bound operations instead of Task.Run to prevent such issues
 
-<img src="https://github.com/hosgha/Interview/blob/master/assets/images/deadlock.png?raw=true" alt="cpu-starvation.png" width=400; height=350>
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/cpu-starvation.png?raw=true" alt="cpu-starvation.png" width=400; height=350>
 
 #### Thread Safity
 
