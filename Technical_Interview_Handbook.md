@@ -449,7 +449,7 @@ A critical section in programming is a specific part of code where shared resour
 #### Racing Condition
 A race condition occurs when **two or more threads** can access **shared data** and they try to change it at the **same time**. 
 
-<img src="https://github.com/hosgha/Interview/blob/master/assets/images/race-conditions.png?raw=true" alt="Race Conditions" style="max-width: 50%;">
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/race-conditions.png?raw=true" alt="Race Conditions" style="max-width: 20%;">
 
 #### DeadLock
 
