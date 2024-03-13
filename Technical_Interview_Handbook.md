@@ -489,6 +489,24 @@ A popular mistake in C# programming that can lead to CPU starvation is inefficie
 <img src="https://github.com/hosgha/Interview/blob/master/assets/images/cpu-starvation.png?raw=true" alt="cpu-starvation.png" width=700; height=600>
 
 #### Thread Safity
+This means that different threads can access the same resources without exposing erroneous behavior or producing unpredictable results.
+
+**Three Ways to Achieve Thread Safety**:
+1. Design a class that is inherently thread-safe.
+2. Implement thread safety when using a class designed without thread safety in mind.
+3. Utilize a flag within a class to toggle between thread-safe and non-thread-safe behavior. 
+
+**Thread-Safe Objects in .NET Core**:
+1. Immutable Objects: Objects whose state cannot be changed after creation, ensuring thread safety by design.
+2. ConcurrentDictionary<TKey,TValue>: A thread-safe collection of key/value pairs accessible by multiple threads concurrently.
+3. ConcurrentQueue<T>: Thread-safe implementation of a first-in, first-out (FIFO) queue.
+4. ConcurrentStack<T>: Thread-safe implementation of a last-in, first-out (LIFO) stack.
+5. BlockingCollection<T>: Provides blocking and bounding capabilities for thread-safe collections.
+6. OrderablePartitioner<TSource>: Represents a way to split an orderable data source into multiple partitions.
+
+**Non-Thread-Safe Objects in .NET Core**:
+1. ArrayList and Hashtable: These classes provide some thread safety through the Synchronized property but are not scalable and can lead to performance degradation.
+2. List<T> and Dictionary<TKey,TValue>: Classes in the System.Collections.Generic namespace that do not provide inherent thread synchronization, requiring manual 3. synchronization when used concurrently.
 
 #### Synchronization
 Control the computations of multiple threads to access any shared resource (protect access to resources that are accessed concurrently)
