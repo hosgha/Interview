@@ -438,14 +438,23 @@ This is all about multiple tasks **running on multiple cores simultaneously** (p
 - It’s especially popular in I/O-bound operations (like reading files, making network requests) where tasks don’t need to wait for the operation to complete and can proceed with other operations, improving responsiveness.
 - Asynchronicity doesn’t necessarily imply parallel execution. The tasks may still be executed in a single thread (like in JavaScript’s Node.js), but the system can handle other tasks while waiting for some tasks to complete.
 
-#### Racing Condition
-![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/race-conditions.png?raw=true).
+#### Critical Section
+A critical section in programming is a specific part of code where shared resources are accessed, requiring exclusive execution to prevent data conflicts. It ensures that only one thread or process can access these resources at a time, maintaining data integrity and avoiding race conditions. By using synchronization mechanisms like mutexes or semaphores, critical sections enforce mutual exclusion, essential for preventing issues like data corruption and deadlock in concurrent programming. Properly managing critical sections is crucial for effective resource sharing and synchronization in multi-threaded environments.
 
+#### Critical Section Pillars
+*  Two or more threads are required
+*  Shared data must exist
+*  Shared data must be changed  
+
+#### Racing Condition
 A race condition occurs when **two or more threads** can access **shared data** and they try to change it at the **same time**. 
 
-#### DeadLock
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/race-conditions.png?raw=true" alt="Race Conditions" width=600; height=300>
 
-#### Critical Section
+#### DeadLock
+Deadlock describes a condition in which two or more threads are blocked (hung) forever because they are waiting for each other.
+
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/deadlock.png?raw=true" alt="Deadlock" width=600; height=300>
 
 #### Physical and Logical Thread 
 
@@ -454,6 +463,8 @@ A race condition occurs when **two or more threads** can access **shared data** 
 #### Heisenbug
 
 #### Thread Safity
+
+#### I/O Bound and CPU Bound
 
 #### CPU Starvation
 
