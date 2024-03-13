@@ -457,16 +457,32 @@ Deadlock describes a condition in which two or more threads are blocked (hung) f
 <img src="https://github.com/hosgha/Interview/blob/master/assets/images/deadlock.png?raw=true" alt="Deadlock" width=350; height=220>
 
 #### Physical and Logical Thread 
+**Physical threading** relates to the actual hardware threads available on a processor, where each physical core can execute multiple tasks simultaneously, often achieved through technologies like hyper-threading. 
+**Logical threading** involves the software perspective, where threads are virtual constructs that allow a single core to handle multiple tasks concurrently. While physical threads are tied to the hardware capabilities of the processor, logical threads are more flexible and can be managed at a higher level by the operating system or programming environment
+
+#### I/O Bound and CPU Bound
+**CPU-bound tasks** The term CPU-bound describes a scenario where the execution of a task or program is highly dependent on the CPU.
+**I/O-bound tasks**, spend time waiting for input/output operations to complete, such as reading from databases or interacting with files. 
 
 #### Context Switching 
+Execution of multiple threads on a single CPU core causes thread or context switching that is managed by the **schedular**. <br>
+Because  the thread scheduling algorithm can swap between threads at any time, you don't know the order in which threads will attemp to access the shared data.
+* The period during which a thread is allocated time to execute a specific task before a context switch occurs is known as the **quantum time or time slice**. This interval defines how long a thread can run before the operating system switches to another thread, managing resource allocation and ensuring fair execution among concurrent processes. Efficient management of quantum time is crucial for optimizing system performance and balancing task execution in multitasking environments.
+* **Thread and process priority** determine the order of **task execution and resource allocation**. Higher-priority threads and processes are given precedence during context switching, ensuring critical tasks are handled promptly. **Managing priorities helps prevent issues like CPU starvation**, where low-priority tasks may wait indefinitely for resources due to higher-priority tasks constantly using the CPU. Techniques like aging can help balance priorities over time to avoid such scenarios and optimize system performance.
+* During each context switch, **the system saves the state of the currently running process or thread**, including registers and other essential data, to a data structure like a process control block (PCB). This saved state allows the process to be paused and later resumed from the same point when it regains CPU time. Subsequently, **the system loads the saved state of the next process or thread that is scheduled to run, enabling seamless execution transitions between multiple tasks**
+* To minimize overhead and costs, it is advisable to **reduce unnecessary context switches** due to their high impact.
+* Mistakes in C# programming leading to unnecessary context switches:
+    1. **Avoiding Exceptions:** Missing error handling can cause extra context switches, impacting efficiency.
+    2. **Naming Conventions:** Incorrect naming can confuse and trigger unnecessary context switches in C# code.
+    3. **Inefficient Data Access:** Poor data retrieval practices like excessive I/O operations can lead to unnecessary context switches.
+    4. **Multithreading Errors:** Improper thread management or excessive synchronization can increase context switching overhead in C#.
+    5. **Garbage Collection Impact:** Creating and discarding many objects can trigger frequent garbage collection cycles, causing unnecessary context switches.  
+
+#### CPU Starvation
 
 #### Heisenbug
 
 #### Thread Safity
-
-#### I/O Bound and CPU Bound
-
-#### CPU Starvation
 
 #### Tips and Best Practice
 
