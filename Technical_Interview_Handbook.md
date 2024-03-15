@@ -541,21 +541,20 @@ An exclusive lock allows only one thread to enter the lock block at a time, prov
 A non-exclusive lock permits multiple threads to enter the lock block and read or write simultaneously.
 
 
-| Locking Name           | Locking Mode | In or Cross Process |
-| ---------------------- | ----------- | ------------------- |
-| Monitor               | User Mode   | In Process          |
-| SemaphoreSlim         | User Mode   | In Process          |
-| SpinLock              | User Mode   | In Process          |
-| Interlocked           | User Mode   | In Process          |
-| AsyncLock             | User Mode   | In Process          |
-|                       |             |                     |
-| Mutex                 | Kernel Mode | In Process          |
-| Semaphore             | Kernel Mode | In Process          |
-|                       |             |                     |
-| ReaderWriterLockSlim  | Hybrid Mode | In Process          |
-| Concurrent Collections| Hybrid Mode | In Process          |
-| RedLock.net           | Hybrid Mode | Cross Process       |
-| Distributed Lock      | Hybrid Mode | Cross Process       |
+| Locking Name           | Locking Mode | In or Cross Process | Functionality Mode | Exclusive/Non-Exclusive | Timeout | Description |
+| ---------------------- | ----------- | ------------------- | ----------------- | ---------------------- | ------- | ----------- |
+| Monitor               | User Mode   | In Process          | Signaling          | Exclusive              | No      | Provides a way for threads to wait for a condition to become true |
+| SemaphoreSlim         | User Mode   | In Process          | Automatic         | Exclusive              | No      | A lightweight synchronization primitive that can be used to control access to a shared resource |
+| SpinLock              | User Mode   | In Process          | Locking            | Exclusive              | No      | A lock that uses spinning instead of context switching to protect a shared resource |
+| Interlocked           | User Mode   | In Process          | Locking            | Exclusive              | No      | A set of methods that can be used to perform atomic operations on shared variables |
+| AsyncLock             | User Mode   | In Process          | Locking            | Exclusive              | No      | A lock that can be used to synchronize access to a shared resource in an asynchronous context |
+| Mutex                 | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to protect access to a shared resource |
+| Semaphore             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
+| ReaderWriterLockSlim 	| Hybrid Mode 	| In Process 		| Automatic 		| Exclusive 				| Yes 		| A lock that allows multiple threads to read a shared resource simultaneously while preventing writes |
+| Concurrent Collections 	| Hybrid Mode 	| In Process 		| Locking 			| Exclusive 				| No 		| A set of collections that can be used to perform concurrent operations on shared data |
+| RedLock.net 			| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				| No 		| A distributed lock that can be used to synchronize access to a shared resource across multiple processes |
+| Distributed Lock 		| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				| No 		| A lock that can be used to protect access to a shared resource across multiple processes |
+
 
 #### Tips and Best Practice
 
