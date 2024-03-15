@@ -542,7 +542,7 @@ A non-exclusive lock permits multiple threads to enter the lock block and read o
 
 
 |#| Locking Name           | Locking Mode | In or Cross Process | Functionality Mode | Exclusive/Non-Exclusive | Timeout | Description |
- ---------------------- | ----------- | ------------------- | ----------------- | ---------------------- | ------- | ----------- |
+|-- | ---------------------- | ----------- | ------------------- | ----------------- | ---------------------- | ------- | ----------- |
 |1| Monitor               | User Mode   | In Process          | Signaling          | Exclusive              | No      | Provides a way for threads to wait for a condition to become true |
 |2| SemaphoreSlim         | User Mode   | In Process          | Automatic         | Exclusive              | No      | A lightweight synchronization primitive that can be used to control access to a shared resource |
 |3| SpinLock              | User Mode   | In Process          | Locking            | Exclusive              | No      | A lock that uses spinning instead of context switching to protect a shared resource |
