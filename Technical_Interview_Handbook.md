@@ -512,8 +512,34 @@ This means that different threads can access the same resources without exposing
 Control the computations of multiple threads to access any shared resource (protect access to resources that are accessed concurrently)
 
 #### Heisenbug
+A heisenbug is a software bug that changes its behavior or disappears when you try to observe or debug it.
+Problems occurring in production systems can therefore disappear when runnig in debug mode, when additional logging is added, or when attaching a debugger, often referred to as a heisenbug.
+Preventing race conditions through thoughtful software design is more effective than trying to resolve them later.
 
-#### Exclusive Locking and Non-Exclusive Locking 
+#### User mode
+User mode is a restricted operational state where software has limited access to system resources. 
+It is where normal applications run, and any crashes typically affect only the faulty process, not the entire system.
+* Extremely **fast and light**
+* Does not switch to kernel mode
+* Only **in-process**
+
+#### Kernel mode
+Kernel mode is a privileged operational state where software enjoys unrestricted access to hardware, memory, and other system resources.
+It allows processes to execute critical operations like managing I/O hardware and memory. However, any crashes in kernel mode can bring down the entire system.
+* It is a wrapper around OS **Kernel API**
+* It is **slow** because of the switching between kernel and user mode.
+* **Cross Process** or **Inter Process** (Kernel mode works at the OS level and is not limited to an internal process)
+  
+#### Hybrid mode
+It uses both user mode and kernel mode. First it tries to run in user mode because user mode is faster and lighter than kernel mode. Whenever necessary, it switches to kernel mode to perform tasks that require cross-process access.
+* Hybrid Mode is optimized and fast. 
+
+#### Exclusive Locking
+An exclusive lock allows only one thread to enter the lock block at a time, providing exclusive access to shared data.
+
+#### Non-Exclusive Locking 
+A non-exclusive lock permits multiple threads to enter the lock block and read or write simultaneously.
+
 
 | Locking Name           | Locking Mode | In or Cross Process |
 | ---------------------- | ----------- | ------------------- |
