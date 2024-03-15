@@ -547,7 +547,7 @@ A non-exclusive lock permits multiple threads to enter the lock block and read o
 |2| SemaphoreSlim         | User Mode   | In Process          | Automatic         | Exclusive              | No      | A lightweight synchronization primitive that can be used to control access to a shared resource |
 |3| SpinLock              | User Mode   | In Process          | Locking            | Exclusive              | No      | A lock that uses spinning instead of context switching to protect a shared resource |
 |4| Interlocked           | User Mode   | In Process          | Locking            | Exclusive              | No      | A set of methods that can be used to perform atomic operations on shared variables |
-|5 AsyncLock             | User Mode   | In Process          | Locking            | Exclusive              | No      | A lock that can be used to synchronize access to a shared resource in an asynchronous context |
+|5| AsyncLock             | User Mode   | In Process          | Locking            | Exclusive              | No      | A lock that can be used to synchronize access to a shared resource in an asynchronous context |
 |6| Mutex                 | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to protect access to a shared resource |
 |7| Semaphore             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
 |8| ReaderWriterLockSlim 	| Hybrid Mode 	| In Process 		| Automatic 		| Exclusive 				| Yes 		| A lock that allows multiple threads to read a shared resource simultaneously while preventing writes |
