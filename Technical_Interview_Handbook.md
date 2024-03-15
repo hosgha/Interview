@@ -550,7 +550,6 @@ A non-exclusive lock permits multiple threads to enter the lock block and read o
 |6| Mutex                 | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to protect access to a shared resource |
 |7| Semaphore             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
 |8| ReaderWriterLockSlim 	| Hybrid Mode 	| In Process 		| Automatic 		| Exclusive 				| Yes 		| A lock that allows multiple threads to read a shared resource simultaneously while preventing writes |
-
 |9| Concurrent Collections 	| Hybrid Mode 	| In Process 		| Locking 			| Exclusive 				| No 		| A set of collections that can be used to perform concurrent operations on shared data |
 |10| Distributed Lock 		| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				| No 		| A lock that can be used to protect access to a shared resource across multiple processes |
 |11| RedLock.net 			| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				| No 		| A distributed lock that can be used to synchronize access to a shared resource across multiple processes |
