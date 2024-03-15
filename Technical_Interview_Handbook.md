@@ -540,7 +540,6 @@ An exclusive lock allows only one thread to enter the lock block at a time, prov
 #### Non-Exclusive Locking 
 A non-exclusive lock permits multiple threads to enter the lock block and read or write simultaneously.
 
-
 |#| Locking Name           | Locking Mode | In or Cross Process | Functionality Mode | Exclusive/Non-Exclusive | Timeout | Description |
 |-- | ---------------------- | ----------- | ------------------- | ----------------- | ---------------------- | ------- | ----------- |
 |1| Monitor               | User Mode   | In Process          | Signaling          | Exclusive              | No      | Provides a way for threads to wait for a condition to become true |
@@ -551,13 +550,105 @@ A non-exclusive lock permits multiple threads to enter the lock block and read o
 |6| Mutex                 | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to protect access to a shared resource |
 |7| Semaphore             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
 |8| ReaderWriterLockSlim 	| Hybrid Mode 	| In Process 		| Automatic 		| Exclusive 				| Yes 		| A lock that allows multiple threads to read a shared resource simultaneously while preventing writes |
+
 |9| Concurrent Collections 	| Hybrid Mode 	| In Process 		| Locking 			| Exclusive 				| No 		| A set of collections that can be used to perform concurrent operations on shared data |
 |10| Distributed Lock 		| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				| No 		| A lock that can be used to protect access to a shared resource across multiple processes |
 |11| RedLock.net 			| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				| No 		| A distributed lock that can be used to synchronize access to a shared resource across multiple processes |
 
-
-
 #### Tips and Best Practice
+
+#### volatile keyword
+In C#, the volatile keyword ensures that reads and writes to a variable go directly to memory, bypassing caching. This guarantees data freshness in a uniprocessor system. In a multiprocessor system, volatile reads and writes don't guarantee data staleness. It's crucial for multithreaded programming to maintain data consistency across threads by preventing caching of volatile variables.
+
+The volatile keyword indicates that a field might be modified by multiple threads that are executing at the same time. The compiler, the runtime system, and even hardware may rearrange reads and writes to memory locations for performance reasons. Fields that are declared volatile are excluded from certain kinds of optimizations. There is no guarantee of a single total ordering of volatile writes as seen from all threads of execution. For more information, see the Volatile class.
+
+**Note**
+On a multiprocessor system, a volatile read operation does not guarantee to obtain the latest value written to that memory location by any processor. Similarly, a volatile write operation does not guarantee that the value written would be immediately visible to other processors.
+
+#### The volatile keyword can be applied to fields of these types:
+* Reference types.
+* Pointer types (in an unsafe context). Note that although the pointer itself can be volatile, the object that it points to cannot. In other words, you cannot declare a "pointer to volatile."
+* Simple types such as sbyte, byte, short, ushort, int, uint, char, float, and bool.
+* An enum type with one of the following base types: byte, sbyte, short, ushort, int, or uint.
+* Generic type parameters known to be reference types.
+* IntPtr and UIntPtr.
+
+Other types, including double and long, cannot be marked volatile because reads and writes to fields of those types cannot be guaranteed to be atomic. To protect multi-threaded access to those types of fields, use the Interlocked class members or protect access using the lock statement.
+
+The volatile keyword can only be applied to fields of a class or struct. Local variables cannot be declared volatile.
+
+**Example**
+The following example shows how to declare a public field variable as volatile.
+```csharp
+class VolatileTest
+{
+    public volatile int sharedStorage;
+
+    public void Test(int i)
+    {
+        sharedStorage = i;
+    }
+}
+```
+
+The following example demonstrates how an auxiliary or worker thread can be created and used to perform processing in parallel with that of the primary thread.
+
+```csharp
+public class Worker
+{
+    // This method is called when the thread is started.
+    public void DoWork()
+    {
+        bool work = false;
+        while (!_shouldStop)
+        {
+            work = !work; // simulate some work
+        }
+        Console.WriteLine("Worker thread: terminating gracefully.");
+    }
+    public void RequestStop()
+    {
+        _shouldStop = true;
+    }
+    // Keyword volatile is used as a hint to the compiler that this data
+    // member is accessed by multiple threads.
+    private volatile bool _shouldStop;
+}
+
+public class WorkerThreadExample
+{
+    public static void Main()
+    {
+        // Create the worker thread object. This does not start the thread.
+        Worker workerObject = new Worker();
+        Thread workerThread = new Thread(workerObject.DoWork);
+
+        // Start the worker thread.
+        workerThread.Start();
+        Console.WriteLine("Main thread: starting worker thread...");
+
+        // Loop until the worker thread activates.
+        while (!workerThread.IsAlive)
+            ;
+
+        // Put the main thread to sleep for 500 milliseconds to
+        // allow the worker thread to do some work.
+        Thread.Sleep(500);
+
+        // Request that the worker thread stop itself.
+        workerObject.RequestStop();
+
+        // Use the Thread.Join method to block the current thread
+        // until the object's thread terminates.
+        workerThread.Join();
+        Console.WriteLine("Main thread: worker thread has terminated.");
+    }
+    // Sample output:
+    // Main thread: starting worker thread...
+    // Worker thread: terminating gracefully.
+    // Main thread: worker thread has terminated.
+}
+```
 
 ## Design Patterns
 A design pattern is a general repeatable solution to a commonly occurring problem in software design. According to GOF, there are 3 types of design patterns, which include 22 patterns:
