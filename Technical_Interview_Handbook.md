@@ -542,7 +542,7 @@ A non-exclusive lock permits multiple threads to enter the lock block and read o
 
 #### Synchronization Primitives
 
-|#| Locking Name           | Locking Mode | In or Cross Process | Functionality Mode | Exclusive/Non-Exclusive | Timeout | Description |
+|#| Locking Name           | Locking Mode | In or Cross Process | Functionality Mode | Exclusive or Non-Exclusive | Timeout Support | Description |
 |-- | ---------------------- | ----------- | ------------------- | ----------------- | ---------------------- | ------- | ----------- |
 |1| Monitor               | User Mode   | In Process          | Signaling          | Exclusive              | No      | Provides a way for threads to wait for a condition to become true |
 |2| SemaphoreSlim         | User Mode   | In Process          | Automatic         | Exclusive              | No      | A lightweight synchronization primitive that can be used to control access to a shared resource |
@@ -550,8 +550,8 @@ A non-exclusive lock permits multiple threads to enter the lock block and read o
 |4| Interlocked           | User Mode   | In Process          | Locking            | Exclusive              | No      | A set of methods that can be used to perform atomic operations on shared variables |
 |5| AsyncLock             | User Mode   | In Process          | Locking            | Exclusive              | No      | A lock that can be used to synchronize access to a shared resource in an asynchronous context |
 |6| Mutex                 | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to protect access to a shared resource |
-|7| Semaphore             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
-|8| Barrier             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
+|7| Semaphore             | Kernel Mode  | In Process         | Locking            | Non-Exclusive              | No      | Semaphore likes Monitor and Mutex but allows setting a limit on the number of threads accessing a critical section. It is used to manage access to a pool of resources |
+|8| Barrier             | Kernel Mode  | Cross Process         | Signaling            | Non-Exclusive              | No      | Enables multiple tasks to cooperatively work on an algorithm in parallel through multiple phases |
 |9| CountDownEvent             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
 |10| AutoResetEvent             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
 |11| ManualResetEvent             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
