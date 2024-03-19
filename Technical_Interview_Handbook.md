@@ -451,6 +451,11 @@ A race condition occurs when **two or more threads** can access **shared data** 
 
 <img src="https://github.com/hosgha/Interview/blob/master/assets/images/race-conditions.png?raw=true" alt="Race Conditions" width=600; height=300>
 
+#### Heisenbug
+A heisenbug is a software bug that changes its behavior or disappears when you try to observe or debug it.
+Problems occurring in production systems can therefore disappear when runnig in debug mode, when additional logging is added, or when attaching a debugger, often referred to as a heisenbug.
+Preventing race conditions through thoughtful software design is more effective than trying to resolve them later.
+
 #### DeadLock
 Deadlock describes a condition in which two or more threads are blocked (hung) forever because they are waiting for each other.
 
@@ -514,11 +519,6 @@ This means that different threads can access the same resources without exposing
 #### Synchronization
 Control the computations of multiple threads to access any shared resource (protect access to resources that are accessed concurrently)
 
-#### Heisenbug
-A heisenbug is a software bug that changes its behavior or disappears when you try to observe or debug it.
-Problems occurring in production systems can therefore disappear when runnig in debug mode, when additional logging is added, or when attaching a debugger, often referred to as a heisenbug.
-Preventing race conditions through thoughtful software design is more effective than trying to resolve them later.
-
 #### User mode
 User mode is a restricted operational state where software has limited access to system resources. 
 It is where normal applications run, and any crashes typically affect only the faulty process, not the entire system.
@@ -535,7 +535,8 @@ It allows processes to execute critical operations like managing I/O hardware an
   
 #### Hybrid mode
 It uses both user mode and kernel mode. First it tries to run in user mode because user mode is faster and lighter than kernel mode. Whenever necessary, it switches to kernel mode to perform tasks that require cross-process access.
-* Hybrid Mode is optimized and fast. 
+* Hybrid Mode is optimized and fast.
+* Hybrid Mode synchronization primitives are **In-Preocess**.
 
 #### Exclusive Locking
 An exclusive lock allows only one thread to enter the lock block at a time, providing exclusive access to shared data.
@@ -544,9 +545,7 @@ An exclusive lock allows only one thread to enter the lock block at a time, prov
 A non-exclusive lock permits multiple threads to enter the lock block and read or write simultaneously.
 
 ####  Thread Affinity
-Thread affinity is the **assignment of threads to specific processors or cores on a multi-core CPU**, which can **improve the performance of parallel programs using shared resources such as shared memory**. When a thread is bound to a specific processor or core, it is said to have affinity to that processor or core. This is in contrast to **thread migration**, where a thread can move between different processors or cores during its execution.
-
-**Thread affinity in synchronization context means**, when a thread locks a critical section, it is the only one that allowed to access and unlock it. **Using an async method in a lock block can cause issues** like **context switches that disrupt proper lock release**. Maintaining thread affinity is crucial to prevent **deadlocks** and ensure **efficient resource management** in synchronization scenarios.
+**Thread affinity in synchronization context means**, when a thread locks a critical section, it is the only one that allowed to access and unlock it. **Using an async method in a lock block can cause issues** like **context switches that disrupt proper lock release**.
 
 #### Synchronization Primitives
 
