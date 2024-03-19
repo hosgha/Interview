@@ -456,11 +456,11 @@ Deadlock describes a condition in which two or more threads are blocked (hung) f
 
 <img src="https://github.com/hosgha/Interview/blob/master/assets/images/deadlock.png?raw=true" alt="Deadlock" width=350; height=220>
 
-#### Physical threads
-Physical threading relates to the actual hardware threads available on a processor, where each physical core can execute multiple tasks simultaneously, often achieved through technologies like hyper-threading. 
+#### Physical Thread (Logical Processor or Logical Core)
+Physical thread relates to the actual hardware threads available on a processor, where each physical core can execute multiple tasks simultaneously, often achieved through technologies like hyper-threading.
 
-#### Logical threads
-Logical threading involves the software perspective, where threads are virtual constructs that allow a single core to handle multiple tasks concurrently. While physical threads are tied to the hardware capabilities of the processor, logical threads are more flexible and can be managed at a higher level by the operating system or programming environment
+#### Logical Thread (Virtual Thread or Software Thread)
+Logical thread involves the software perspective, where threads are virtual constructs that allow a single core to handle multiple tasks concurrently. While physical threads are tied to the hardware capabilities of the processor, logical threads are more flexible and can be managed at a higher level by the operating system or programming environment
 
 #### I/O Bound and CPU Bound
 **CPU-bound tasks** The term CPU-bound describes a scenario where the execution of a task or program is highly dependent on the CPU.
