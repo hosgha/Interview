@@ -540,6 +540,8 @@ An exclusive lock allows only one thread to enter the lock block at a time, prov
 #### Non-Exclusive Locking 
 A non-exclusive lock permits multiple threads to enter the lock block and read or write simultaneously.
 
+#### Synchronization Primitives
+
 |#| Locking Name           | Locking Mode | In or Cross Process | Functionality Mode | Exclusive/Non-Exclusive | Timeout | Description |
 |-- | ---------------------- | ----------- | ------------------- | ----------------- | ---------------------- | ------- | ----------- |
 |1| Monitor               | User Mode   | In Process          | Signaling          | Exclusive              | No      | Provides a way for threads to wait for a condition to become true |
@@ -549,10 +551,16 @@ A non-exclusive lock permits multiple threads to enter the lock block and read o
 |5| AsyncLock             | User Mode   | In Process          | Locking            | Exclusive              | No      | A lock that can be used to synchronize access to a shared resource in an asynchronous context |
 |6| Mutex                 | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to protect access to a shared resource |
 |7| Semaphore             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
-|8| ReaderWriterLockSlim 	| Hybrid Mode 	| In Process 		| Automatic 		| Exclusive 				| Yes 		| A lock that allows multiple threads to read a shared resource simultaneously while preventing writes |
-|9| Concurrent Collections 	| Hybrid Mode 	| In Process 		| Locking 			| Exclusive 				| No 		| A set of collections that can be used to perform concurrent operations on shared data |
-|10| Distributed Lock 		| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				| No 		| A lock that can be used to protect access to a shared resource across multiple processes |
-|11| RedLock.net 			| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				| No 		| A distributed lock that can be used to synchronize access to a shared resource across multiple processes |
+|8| Barrier             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
+|9| CountDownEvent             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
+|10| AutoResetEvent             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
+|11| ManualResetEvent             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
+|12| AutoResetEventSlim             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
+|13| SpinWait             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
+|14| ReaderWriterLockSlim 	| Hybrid Mode 	| In Process 		| Automatic 		| Exclusive 				| Yes 		| A lock that allows multiple threads to read a shared resource simultaneously while preventing writes |
+|15| Concurrent Collections 	| Hybrid Mode 	| In Process 		| Locking 			| Exclusive 				| No 		| A set of collections that can be used to perform concurrent operations on shared data |
+|16| Distributed Lock 		| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				| No 		| A lock that can be used to protect access to a shared resource across multiple processes |
+|17| RedLock.net 			| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				| No 		| A distributed lock that can be used to synchronize access to a shared resource across multiple processes |
 
 #### Tips and Best Practice
 
