@@ -547,11 +547,17 @@ A non-exclusive lock permits multiple threads to enter the lock block and read o
 ####  Thread Affinity
 **Thread affinity in synchronization context means**, when a thread locks a critical section, it is the only one that allowed to access and unlock it. **Using an async method in a lock block can cause issues** like **context switches that disrupt proper lock release**.
 
+#### We have the following ways for achieving synchronization:
+* Blocking constructs - block thread execution and make it wait for another thread or task to complete, e.g. Thread.Sleep, Thread.Join, Task.Wait
+* Locks - limits number of threads that can enter / access a “critical section” of code. In this category we have exclusive locks (allows only one thread) and non-exclusive locks (allows a limited number of threads)
+* Signals - thread can pause and wait until a notification is received from another thread
+* Nonblocking constructs - protects access to a common field
+
 #### Synchronization Primitives
 
 |#| Locking Name           | Locking Mode | In or Cross Process | Functionality Mode | Exclusive or Non-Exclusive | Thread Affinity | Timeout Support | Description |
 |-- | ---------------------- | ----------- | ------------------- | ----------------- | ---------------------- | -------------- | ------- | ----------- |
-|1| Monitor               | User Mode   | In Process          | Signaling          | Exclusive              | YES        | YES      | Provides a way for threads to wait for a condition to become true |
+|1| Monitor               | Hybrid Mode   | In Process          | Locking & Signaling          | Exclusive  | YES        | YES      | Provides a way for threads to wait for a condition to become true |
 |2| SemaphoreSlim         | User Mode   | In Process          | Automatic         | Non-Exclusive              | NO           | No      | A lightweight synchronization primitive that can be used to control access to a shared resource |
 |3| SpinLock              | User Mode   | In Process          | Locking            | Exclusive              |            | No      | A lock that uses spinning instead of context switching to protect a shared resource |
 |4| Interlocked           | User Mode   | In Process          | Lock-Free            | Exclusive              |            | No      | A set of methods that can be used to perform atomic operations on shared variables |
