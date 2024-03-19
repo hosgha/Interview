@@ -555,25 +555,26 @@ A non-exclusive lock permits multiple threads to enter the lock block and read o
 
 #### Synchronization Primitives
 
-|#| Locking Name           | Locking Mode | In or Cross Process | Functionality Mode | Exclusive or Non-Exclusive | Thread Affinity | Timeout Support | Description |
-|-- | ---------------------- | ----------- | ------------------- | ----------------- | ---------------------- | -------------- | ------- | ----------- |
-|1| Monitor               | Hybrid Mode   | In Process          | Locking & Signaling          | Exclusive  | YES        | YES      | Provides a way for threads to wait for a condition to become true |
-|2| SemaphoreSlim         | User Mode   | In Process          | Automatic         | Non-Exclusive              | NO           | No      | A lightweight synchronization primitive that can be used to control access to a shared resource |
-|3| SpinLock              | User Mode   | In Process          | Locking            | Exclusive              |            | No      | A lock that uses spinning instead of context switching to protect a shared resource |
-|4| Interlocked           | User Mode   | In Process          | Lock-Free            | Exclusive              |            | No      | A set of methods that can be used to perform atomic operations on shared variables |
-|5| AsyncLock             | User Mode   | In Process          | Locking            | Exclusive              |            | No      | A lock that can be used to synchronize access to a shared resource in an asynchronous context |
-|6| Mutex                 | Kernel Mode  | Cross Process         | Locking            | Exclusive              | YES        | YES      | Stands for “mutual exclusion”. It used to protect access to a shared resource that only one thread can access it at a time |
-|7| Semaphore             | Kernel Mode  | Inter Process         | Locking            | Non-Exclusive              | NO         | No      | Semaphore likes Monitor and Mutex but allows setting a limit on the number of threads accessing a critical section. It is used to manage access to a pool of resources |
-|8| Barrier             | Kernel Mode  | Cross Process         | Signaling            | Non-Exclusive             |            | No      | Enables multiple tasks to cooperatively work on an algorithm in parallel through multiple phases |
-|9| CountDownEvent             | Kernel Mode  | Cross Process         | Signaling            | Exclusive              |            | No      | Unblocks its waiting threads after it has been signaled a certain number of times (It's signaled when its count reaches zero) |
-|10| AutoResetEvent             | Kernel Mode  | Cross Process         | Signaling            | Exclusive              |            | No      | A synchronization object that can be used to control access to a shared resource |
-|11| ManualResetEvent             | Kernel Mode  | Cross Process         | Signaling            | Exclusive              |            | No      | A synchronization object that can be used to control access to a shared resource |
-|12| AutoResetEventSlim             | Kernel Mode  | Cross Process         | Signaling            | Exclusive              |            | No      | A synchronization object that can be used to control access to a shared resource |
-|13| SpinWait             | Kernel Mode  | Cross Process         | Locking            | Exclusive              |            | No      | Provides support for spin-based waiting (It runs for a specified number of iterations). In low-level scenarios to avoid the expensive context switches |
-|14| ReaderWriterLockSlim 	| Hybrid Mode 	| In Process 		| Locking 		| Exclusive Writing & Non-Exclusive Reading |            | Yes 		| A lock that protect a resource that is read by multiple threads and written to by one thread at a time. |
-|15| Concurrent Collections 	| Hybrid Mode 	| In Process 		| Locking 			| Exclusive 				|            | No 		| A set of collections that can be used to perform concurrent operations on shared data |
-|16| Distributed Lock 		| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				|            | No 		| A lock that can be used to protect access to a shared resource across multiple processes |
-|17| RedLock.net 			| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				|            | No 		| A distributed lock that can be used to synchronize access to a shared resource across multiple processes |
+|#| Locking Name           | Locking Mode | In or Cross Process | Functionality Mode | Exclusive or Non-Exclusive | Thread Affinity | Timeout Support| Recursive/Nestead | Description |
+|-- | ---------------------- | ----------- | ------------------- | ----------------- | ---------------------- | -------------- | ------- | ------- | ----------- |
+|1| Monitor               | Hybrid Mode   | In Process          | Locking & Signaling | Exclusive  | YES        | YES      |      | Provides a mechanism that synchronizes access to objects |
+|2| SemaphoreSlim         | Hybrid Mode   | In Process          | Locking | Non-Exclusive | NO | YES      |      | A lightweight alternative to Semaphore that limits the number of threads that can access a resource |
+|3| SpinLock              | User Mode   | In Process          | Locking           | Exclusive              |            | YES      |      | A lock that uses spinning instead of context switching to protect a shared resource |
+|4| Interlocked           | User Mode   | -   | Lock-Free            |  -  |   -   |  -   |   -   | Provides atomic operations for variables that are shared by multiple threads. |
+|5| Mutex                 | Kernel Mode  | Cross Process         | Locking            | Exclusive     | YES        | YES      | YES     | Stands for “mutual exclusion” |
+|6| Semaphore             | Kernel Mode  | Cross Process         | Locking            | Non-Exclusive              | NO         | YES      |  NO    | Allows setting a limit on the number of threads accessing a critical section |
+|7| Barrier             | Hybrid Mode  | In Process         | Signaling            | Non-Exclusive   |  NO   | YES      |    | Enables multiple tasks to cooperatively work on an algorithm in parallel through multiple phases |
+|8| Volatile | User Mode  |      -     | Lock-Free            |    -   |  -   |    -   |  -  | Enables multiple tasks to cooperatively work on an algorithm in parallel through multiple phases |
+|9| CountDownEvent | Hybrid Mode  | In Process         | Signaling            | Exclusive   |      | YES      |   -   | Ensures direct memory access for reads and writes, bypassing caching and prevents compiler and jitter optimizations on the variable. |
+|10| AutoResetEvent | Kernel Mode  | Cross Process (Only using EventWaitHandle) | Signaling            | Exclusive              |  -    | YES  | YES     | Represents a thread synchronization event that, when signaled, releases one single waiting thread, and the event resets automatically |
+|11| ManualResetEvent  | Kernel Mode  | Cross Process         | Signaling            | Non-Exclusive  | - | YES |   YES   | Represents a thread synchronization event that, when signaled, must be reset manually |
+|12| ManualResetEventSlim             | Hybrid Mode  | In Process         | Signaling            | Non-Exclusive   |     | YES      |    | This class is a lightweight alternative to ManualResetEvent |
+|13| ReaderWriterLock 	|          	|  	    	| Locking 		|          |            |  YES		|          | Not Recomended (Use Slim Version Instead) _ Defines a lock that supports single writers and multiple readers.| 
+|14| ReaderWriterLockSlim 	| Hybrid Mode 	| In Process 		| Locking 		|              |            |   Yes 	|      | A lock that protect a resource that is read by multiple threads and written to by one thread at a time |
+
+#### Synchronization Libraries
+
+#### Concurent Collections
 
 #### Tips and Best Practice
 * Avoid the need for synchronization, if possible. This is especially true for heavily used code. For example, an algorithm might be adjusted to tolerate a race condition rather than eliminate it. Unnecessary synchronization decreases performance and creates the possibility of deadlocks and race conditions. So **use locking mechanism if necessary** (1. More than one thread is required 2. Shared data exists. 3. Required to modify shared data)
