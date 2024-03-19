@@ -555,7 +555,7 @@ A non-exclusive lock permits multiple threads to enter the lock block and read o
 
 #### Synchronization Primitives
 
-|#| Locking Name           | Locking Mode | In or Cross Process | Functionality Mode | Exclusive or Non-Exclusive | Thread Affinity | Timeout Support| Recursive/Nestead | Description |
+|#| Locking Name           | Locking Mode | In or Cross Process | Functionality Mode | Exclusive or Non-Exclusive | Thread Affinity | Timeout Support| Recursive & Nestead | Description |
 |-- | ---------------------- | ----------- | ------------------- | ----------------- | ---------------------- | -------------- | ------- | ------- | ----------- |
 |1| Monitor               | Hybrid Mode   | In Process          | Locking & Signaling | Exclusive  | YES        | YES      |      | Provides a mechanism that synchronizes access to objects |
 |2| SemaphoreSlim         | Hybrid Mode   | In Process          | Locking | Non-Exclusive | NO | YES      |      | A lightweight alternative to Semaphore that limits the number of threads that can access a resource |
