@@ -442,9 +442,9 @@ This is all about multiple tasks **running on multiple cores simultaneously** (p
 A critical section in programming is a specific part of code where shared resources are accessed, requiring exclusive execution to prevent data conflicts. It ensures that only one thread or process can access these resources at a time, maintaining data integrity and avoiding race conditions. By using synchronization mechanisms like mutexes or semaphores, critical sections enforce mutual exclusion, essential for preventing issues like data corruption and deadlock in concurrent programming. Properly managing critical sections is crucial for effective resource sharing and synchronization in multi-threaded environments.
 
 #### Critical Section Pillars
-*  Two or more threads are required
+*  There are more than one thread in the application
 *  Shared data must exist
-*  Shared data must be changed  
+*  There is a need to modify the shared data
 
 #### Racing Condition
 A race condition occurs when **two or more threads** can access **shared data** and they try to change it at the **same time**. 
@@ -568,6 +568,11 @@ Thread affinity is the **assignment of threads to specific processors or cores o
 |17| RedLock.net 			| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				|            | No 		| A distributed lock that can be used to synchronize access to a shared resource across multiple processes |
 
 #### Tips and Best Practice
+* Avoid the need for synchronization, if possible. This is especially true for heavily used code. For example, an algorithm might be adjusted to tolerate a race condition rather than eliminate it. Unnecessary synchronization decreases performance and creates the possibility of deadlocks and race conditions. So **use locking mechanism if necessary** (1. More than one thread is required 2. Shared data exists. 3. Required to modify shared data)
+* **Keep the lock block (Critical Section Area) as short and quick as possible**. Locking can **degrade concurrency** if locks are held for too long. This can also **increase the chance of deadlock**.
+*  **Make static data thread safe by default**.
+*  **Do not make instance data thread safe by default**. Adding locks to create thread-safe code **decreases performance**, **increases lock contention**, and **creates the possibility for deadlocks** to occur. In common application models, only one thread at a time executes user code, which minimizes the need for thread safety. For this reason, the .NET class libraries are not thread safe by default.
+*  **Avoid providing static methods that alter static state**. In common server scenarios, static state is shared across requests, which means multiple threads can execute that code at the same time. This opens up the possibility of threading bugs. Consider using a design pattern that encapsulates data into instances that are not shared across requests. Furthermore, if static data are synchronized, calls between static methods that alter state can result in deadlocks or redundant synchronization, adversely affecting performance.
 
 #### volatile keyword
 In C#, the volatile keyword ensures that reads and writes to a variable go directly to memory, bypassing caching. This guarantees data freshness in a uniprocessor system. In a multiprocessor system, volatile reads and writes don't guarantee data staleness. It's crucial for multithreaded programming to maintain data consistency across threads by preventing caching of volatile variables.
