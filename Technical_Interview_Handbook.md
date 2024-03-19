@@ -508,6 +508,9 @@ This means that different threads can access the same resources without exposing
 1. **ArrayList and Hashtable**: These classes provide some thread safety through the Synchronized property but are not scalable and can lead to performance degradation.
 2. **List<T> and Dictionary<TKey,TValue>**: Classes in the System.Collections.Generic namespace that do not provide inherent thread synchronization, requiring manual synchronization when used concurrently.
 
+**Optional Thread-Safe or Non-Thread-Safe Objects in .NET Core**:
+1. **Lazy<T>**: Provides support for lazy initialization.
+
 #### Synchronization
 Control the computations of multiple threads to access any shared resource (protect access to resources that are accessed concurrently)
 
