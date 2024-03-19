@@ -540,24 +540,29 @@ An exclusive lock allows only one thread to enter the lock block at a time, prov
 #### Non-Exclusive Locking 
 A non-exclusive lock permits multiple threads to enter the lock block and read or write simultaneously.
 
+####  Thread Affinity
+Thread affinity is the **assignment of threads to specific processors or cores on a multi-core CPU**, which can **improve the performance of parallel programs using shared resources such as shared memory**. When a thread is bound to a specific processor or core, it is said to have affinity to that processor or core. This is in contrast to **thread migration**, where a thread can move between different processors or cores during its execution.
+
+**Thread affinity in synchronization context means**, when a thread locks a critical section, it is the only one that allowed to access and unlock it. **Using an async method in a lock block can cause issues** like **context switches that disrupt proper lock release**. Maintaining thread affinity is crucial to prevent **deadlocks** and ensure **efficient resource management** in synchronization scenarios.
+
 #### Synchronization Primitives
 
 |#| Locking Name           | Locking Mode | In or Cross Process | Functionality Mode | Exclusive or Non-Exclusive | Timeout Support | Description |
 |-- | ---------------------- | ----------- | ------------------- | ----------------- | ---------------------- | ------- | ----------- |
 |1| Monitor               | User Mode   | In Process          | Signaling          | Exclusive              | No      | Provides a way for threads to wait for a condition to become true |
-|2| SemaphoreSlim         | User Mode   | In Process          | Automatic         | Exclusive              | No      | A lightweight synchronization primitive that can be used to control access to a shared resource |
+|2| SemaphoreSlim         | User Mode   | In Process          | Automatic         | Non-Exclusive              | No      | A lightweight synchronization primitive that can be used to control access to a shared resource |
 |3| SpinLock              | User Mode   | In Process          | Locking            | Exclusive              | No      | A lock that uses spinning instead of context switching to protect a shared resource |
-|4| Interlocked           | User Mode   | In Process          | Locking            | Exclusive              | No      | A set of methods that can be used to perform atomic operations on shared variables |
+|4| Interlocked           | User Mode   | In Process          | Lock-Free            | Exclusive              | No      | A set of methods that can be used to perform atomic operations on shared variables |
 |5| AsyncLock             | User Mode   | In Process          | Locking            | Exclusive              | No      | A lock that can be used to synchronize access to a shared resource in an asynchronous context |
 |6| Mutex                 | Kernel Mode  | Cross Process         | Locking            | Exclusive              | YES      | Stands for “mutual exclusion”. It used to protect access to a shared resource that only one thread can access it at a time |
-|7| Semaphore             | Kernel Mode  | In Process         | Locking            | Non-Exclusive              | No      | Semaphore likes Monitor and Mutex but allows setting a limit on the number of threads accessing a critical section. It is used to manage access to a pool of resources |
+|7| Semaphore             | Kernel Mode  | Inter Process         | Locking            | Non-Exclusive              | No      | Semaphore likes Monitor and Mutex but allows setting a limit on the number of threads accessing a critical section. It is used to manage access to a pool of resources |
 |8| Barrier             | Kernel Mode  | Cross Process         | Signaling            | Non-Exclusive              | No      | Enables multiple tasks to cooperatively work on an algorithm in parallel through multiple phases |
-|9| CountDownEvent             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | Unblocks its waiting threads after it has been signaled a certain number of times (It's signaled when its count reaches zero) |
-|10| AutoResetEvent             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
-|11| ManualResetEvent             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
-|12| AutoResetEventSlim             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
+|9| CountDownEvent             | Kernel Mode  | In Process         | Signaling            | Exclusive              | No      | Unblocks its waiting threads after it has been signaled a certain number of times (It's signaled when its count reaches zero) |
+|10| AutoResetEvent             | Kernel Mode  | In Process         | Signaling            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
+|11| ManualResetEvent             | Kernel Mode  | In Process         | Signaling            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
+|12| AutoResetEventSlim             | Kernel Mode  | In Process         | Signaling            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
 |13| SpinWait             | Kernel Mode  | In Process         | Locking            | Exclusive              | No      | A synchronization object that can be used to control access to a shared resource |
-|14| ReaderWriterLockSlim 	| Hybrid Mode 	| In Process 		| Automatic 		| Exclusive 				| Yes 		| A lock that allows multiple threads to read a shared resource simultaneously while preventing writes |
+|14| ReaderWriterLockSlim 	| Hybrid Mode 	| In Process 		| Locking 		| Exclusive Writing & Non-Exclusive Reading  				| Yes 		| A lock that protect a resource that is read by multiple threads and written to by one thread at a time. |
 |15| Concurrent Collections 	| Hybrid Mode 	| In Process 		| Locking 			| Exclusive 				| No 		| A set of collections that can be used to perform concurrent operations on shared data |
 |16| Distributed Lock 		| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				| No 		| A lock that can be used to protect access to a shared resource across multiple processes |
 |17| RedLock.net 			| Hybrid Mode 	| Cross Process 	| Locking 			| Exclusive 				| No 		| A distributed lock that can be used to synchronize access to a shared resource across multiple processes |
