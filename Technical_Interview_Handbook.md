@@ -676,6 +676,9 @@ public class WorkerThreadExample
 }
 ```
 
+#### References
+1. https://learn.microsoft.com/en-us/dotnet/standard/threading/overview-of-synchronization-primitives
+
 ## Design Patterns
 A design pattern is a general repeatable solution to a commonly occurring problem in software design. According to GOF, there are 3 types of design patterns, which include 22 patterns:
 ### 1. Creational Design Patterns: 
@@ -944,6 +947,22 @@ Priorities.
 
 ## Observability and Monitoring
 ## system Design and Architecture
+### Domain-Driven Design (DDD)
+#### Domain-Driven Design?
+Domain-Driven Design is an approach to software development that centers the development on programming a domain model that has a rich understanding of the processes and rules of a domain. 
+The name comes from a 2003 book by Eric Evans that describes the approach through a catalog of patterns. 
+The approach is particularly **suited to complex domains**, where a lot of often-messy logic needs to be organized.
+
+#### Ubiquitous Language:
+Ubiquitous Language is a design approach that emphasizes using the **vocabulary of a specific business domain** consistently throughout all aspects of software development, from requirements discussions to actual code implementation. This practice aims to create **a common, rigorous language shared between developers and users**, enhancing communication and understanding within Agile projects.
+
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ubiquitous-language.jpg?raw=true).
+
+
+
+#### References
+1. https://martinfowler.com/bliki/DomainDrivenDesign.html 
+
 ## Cloud
 
 
