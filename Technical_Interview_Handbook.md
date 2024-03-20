@@ -442,25 +442,30 @@ This is all about multiple tasks **running on multiple cores simultaneously** (p
 A critical section in programming is a specific part of code where shared resources are accessed, requiring exclusive execution to prevent data conflicts. It ensures that only one thread or process can access these resources at a time, maintaining data integrity and avoiding race conditions. By using synchronization mechanisms like mutexes or semaphores, critical sections enforce mutual exclusion, essential for preventing issues like data corruption and deadlock in concurrent programming. Properly managing critical sections is crucial for effective resource sharing and synchronization in multi-threaded environments.
 
 #### Critical Section Pillars
-*  Two or more threads are required
+*  There are more than one thread in the application
 *  Shared data must exist
-*  Shared data must be changed  
+*  There is a need to modify the shared data
 
 #### Racing Condition
 A race condition occurs when **two or more threads** can access **shared data** and they try to change it at the **same time**. 
 
 <img src="https://github.com/hosgha/Interview/blob/master/assets/images/race-conditions.png?raw=true" alt="Race Conditions" width=600; height=300>
 
+#### Heisenbug
+A heisenbug is a software bug that changes its behavior or disappears when you try to observe or debug it.
+Problems occurring in production systems can therefore disappear when runnig in debug mode, when additional logging is added, or when attaching a debugger, often referred to as a heisenbug.
+Preventing race conditions through thoughtful software design is more effective than trying to resolve them later.
+
 #### DeadLock
 Deadlock describes a condition in which two or more threads are blocked (hung) forever because they are waiting for each other.
 
 <img src="https://github.com/hosgha/Interview/blob/master/assets/images/deadlock.png?raw=true" alt="Deadlock" width=350; height=220>
 
-#### Physical threading
-Physical threading relates to the actual hardware threads available on a processor, where each physical core can execute multiple tasks simultaneously, often achieved through technologies like hyper-threading. 
+#### Physical Thread (Logical Processor or Logical Core)
+Physical thread relates to the actual hardware threads available on a processor, where each physical core can execute multiple tasks simultaneously, often achieved through technologies like hyper-threading.
 
-#### Logical threading
-Logical threading involves the software perspective, where threads are virtual constructs that allow a single core to handle multiple tasks concurrently. While physical threads are tied to the hardware capabilities of the processor, logical threads are more flexible and can be managed at a higher level by the operating system or programming environment
+#### Logical Thread (Virtual Thread or Software Thread)
+Logical thread involves the software perspective, where threads are virtual constructs that allow a single core to handle multiple tasks concurrently. While physical threads are tied to the hardware capabilities of the processor, logical threads are more flexible and can be managed at a higher level by the operating system or programming environment
 
 #### I/O Bound and CPU Bound
 **CPU-bound tasks** The term CPU-bound describes a scenario where the execution of a task or program is highly dependent on the CPU.
@@ -486,34 +491,190 @@ For instance, **inefficient thread management**, **improper synchronization mech
 
 A popular mistake in C# programming that can lead to CPU starvation is inefficient usage of the Task.Run method, especially for I/O-bound operations. Incorrectly using Task.Run for I/O-bound tasks can result in inefficient resource utilization, potentially causing CPU starvation. It is crucial to use the async-await pattern for I/O-bound operations instead of Task.Run to prevent such issues
 
-<img src="https://github.com/hosgha/Interview/blob/master/assets/images/deadlock.png?raw=true" alt="cpu-starvation.png" width=400; height=350>
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/cpu-starvation.png?raw=true" alt="cpu-starvation.png" width=700; height=600>
 
 #### Thread Safity
+This means that different threads can access the same resources without exposing erroneous behavior or producing unpredictable results.
+
+**Three Ways to Achieve Thread Safety**:
+1. Design a class that is inherently thread-safe.
+2. Implement thread safety when using a class designed without thread safety in mind.
+3. Utilize a flag within a class to toggle between thread-safe and non-thread-safe behavior. 
+
+**Thread-Safe Objects in .NET Core**:
+1. **Immutable Objects**: Objects whose state cannot be changed after creation, ensuring thread safety by design.
+2. **ConcurrentDictionary<TKey,TValue>**: A thread-safe collection of key/value pairs accessible by multiple threads concurrently.
+3. **ConcurrentQueue<T>**: Thread-safe implementation of a first-in, first-out (FIFO) queue.
+4. **ConcurrentStack<T>**: Thread-safe implementation of a last-in, first-out (LIFO) stack.
+5. **BlockingCollection<T>**: Provides blocking and bounding capabilities for thread-safe collections.
+6. **OrderablePartitioner<TSource>**: Represents a way to split an orderable data source into multiple partitions.
+
+**Non-Thread-Safe Objects in .NET Core**:
+1. **ArrayList and Hashtable**: These classes provide some thread safety through the Synchronized property but are not scalable and can lead to performance degradation.
+2. **List<T> and Dictionary<TKey,TValue>**: Classes in the System.Collections.Generic namespace that do not provide inherent thread synchronization, requiring manual synchronization when used concurrently.
+
+**Optional Thread-Safe or Non-Thread-Safe Objects in .NET Core**:
+1. **Lazy<T>**: Provides support for lazy initialization.
 
 #### Synchronization
 Control the computations of multiple threads to access any shared resource (protect access to resources that are accessed concurrently)
 
-#### Heisenbug
+#### User mode
+User mode is a restricted operational state where software has limited access to system resources. 
+It is where normal applications run, and any crashes typically affect only the faulty process, not the entire system.
+* Extremely **fast and light**
+* Does not switch to kernel mode
+* Only **in-process**
 
-#### Exclusive Locking and Non-Exclusive Locking 
+#### Kernel mode
+Kernel mode is a privileged operational state where software enjoys unrestricted access to hardware, memory, and other system resources.
+It allows processes to execute critical operations like managing I/O hardware and memory. However, any crashes in kernel mode can bring down the entire system.
+* It is a wrapper around OS **Kernel API**
+* It is **slow** because of the switching between kernel and user mode.
+* **Cross Process** or **Inter Process** (Kernel mode works at the OS level and is not limited to an internal process)
+  
+#### Hybrid mode
+It uses both user mode and kernel mode. First it tries to run in user mode because user mode is faster and lighter than kernel mode. Whenever necessary, it switches to kernel mode to perform tasks that require cross-process access.
+* Hybrid Mode is optimized and fast.
+* Hybrid Mode synchronization primitives are **In-Preocess**.
 
-| Locking Name           | Locking Mode | In or Cross Process |
-| ---------------------- | ----------- | ------------------- |
-| Monitor               | User Mode   | In Process          |
-| SemaphoreSlim         | User Mode   | In Process          |
-| SpinLock              | User Mode   | In Process          |
-| Interlocked           | User Mode   | In Process          |
-| AsyncLock             | User Mode   | In Process          |
-|                       |             |                     |
-| Mutex                 | Kernel Mode | In Process          |
-| Semaphore             | Kernel Mode | In Process          |
-|                       |             |                     |
-| ReaderWriterLockSlim  | Hybrid Mode | In Process          |
-| Concurrent Collections| Hybrid Mode | In Process          |
-| RedLock.net           | Hybrid Mode | Cross Process       |
-| Distributed Lock      | Hybrid Mode | Cross Process       |
+#### Exclusive Locking
+An exclusive lock allows only one thread to enter the lock block at a time, providing exclusive access to shared data.
+
+#### Non-Exclusive Locking 
+A non-exclusive lock permits multiple threads to enter the lock block and read or write simultaneously.
+
+####  Thread Affinity
+**Thread affinity in synchronization context means**, when a thread locks a critical section, it is the only one that allowed to access and unlock it. **Using an async method in a lock block can cause issues** like **context switches that disrupt proper lock release**.
+
+#### We have the following ways for achieving synchronization:
+* Blocking constructs - block thread execution and make it wait for another thread or task to complete, e.g. Thread.Sleep, Thread.Join, Task.Wait
+* Locks - limits number of threads that can enter / access a “critical section” of code. In this category we have exclusive locks (allows only one thread) and non-exclusive locks (allows a limited number of threads)
+* Signals - thread can pause and wait until a notification is received from another thread
+* Nonblocking constructs - protects access to a common field
+
+#### Synchronization Primitives
+
+|#| Locking Name           | Locking Mode | In or Cross Process | Functionality Mode | Exclusive or Non-Exclusive | Thread Affinity | Timeout Support| Recursive & Nestead | Description |
+|-- | ---------------------- | ----------- | ------------------- | ----------------- | ---------------------- | -------------- | ------- | ------- | ----------- |
+|1| Monitor               | Hybrid Mode   | In Process          | Locking & Signaling | Exclusive  | YES        | YES      |      | Provides a mechanism that synchronizes access to objects |
+|2| SemaphoreSlim         | Hybrid Mode   | In Process          | Locking | Non-Exclusive | NO | YES      |      | A lightweight alternative to Semaphore that limits the number of threads that can access a resource |
+|3| SpinLock              | User Mode   | In Process          | Locking           | Exclusive              |            | YES      |      | A lock that uses spinning instead of context switching to protect a shared resource |
+|4| Interlocked           | User Mode   | -   | Lock-Free            |  -  |   -   |  -   |   -   | Provides atomic operations for variables that are shared by multiple threads. |
+|5| Mutex                 | Kernel Mode  | Cross Process         | Locking            | Exclusive     | YES        | YES      | YES     | Stands for “mutual exclusion” |
+|6| Semaphore             | Kernel Mode  | Cross Process         | Locking            | Non-Exclusive              | NO         | YES      |  NO    | Allows setting a limit on the number of threads accessing a critical section |
+|7| Barrier             | Hybrid Mode  | In Process         | Signaling            | Non-Exclusive   |  NO   | YES      |    | Enables multiple tasks to cooperatively work on an algorithm in parallel through multiple phases |
+|8| Volatile | User Mode  |      -     | Lock-Free            |    -   |  -   |    -   |  -  | Enables multiple tasks to cooperatively work on an algorithm in parallel through multiple phases |
+|9| CountDownEvent | Hybrid Mode  | In Process         | Signaling            | Exclusive   |      | YES      |   -   | Ensures direct memory access for reads and writes, bypassing caching and prevents compiler and jitter optimizations on the variable. |
+|10| AutoResetEvent | Kernel Mode  | Cross Process (Only using EventWaitHandle) | Signaling            | Exclusive              |  -    | YES  | YES     | Represents a thread synchronization event that, when signaled, releases one single waiting thread, and the event resets automatically |
+|11| ManualResetEvent  | Kernel Mode  | Cross Process         | Signaling            | Non-Exclusive  | - | YES |   YES   | Represents a thread synchronization event that, when signaled, must be reset manually |
+|12| ManualResetEventSlim             | Hybrid Mode  | In Process         | Signaling            | Non-Exclusive   |     | YES      |    | This class is a lightweight alternative to ManualResetEvent |
+|13| ReaderWriterLock 	|          	|  	    	| Locking 		|          |            |  YES		|          | Not Recomended (Use Slim Version Instead) _ Defines a lock that supports single writers and multiple readers.| 
+|14| ReaderWriterLockSlim 	| Hybrid Mode 	| In Process 		| Locking 		|              |            |   Yes 	|      | A lock that protect a resource that is read by multiple threads and written to by one thread at a time |
+
+#### Synchronization Libraries
+
+#### Concurent Collections
 
 #### Tips and Best Practice
+* Avoid the need for synchronization, if possible. This is especially true for heavily used code. For example, an algorithm might be adjusted to tolerate a race condition rather than eliminate it. Unnecessary synchronization decreases performance and creates the possibility of deadlocks and race conditions. So **use locking mechanism if necessary** (1. More than one thread is required 2. Shared data exists. 3. Required to modify shared data)
+* **Keep the lock block (Critical Section Area) as short and quick as possible**. Locking can **degrade concurrency** if locks are held for too long. This can also **increase the chance of deadlock**.
+*  **Make static data thread safe by default**.
+*  **Do not make instance data thread safe by default**. Adding locks to create thread-safe code **decreases performance**, **increases lock contention**, and **creates the possibility for deadlocks** to occur. In common application models, only one thread at a time executes user code, which minimizes the need for thread safety. For this reason, the .NET class libraries are not thread safe by default.
+*  **Avoid providing static methods that alter static state**. In common server scenarios, static state is shared across requests, which means multiple threads can execute that code at the same time. This opens up the possibility of threading bugs. Consider using a design pattern that encapsulates data into instances that are not shared across requests. Furthermore, if static data are synchronized, calls between static methods that alter state can result in deadlocks or redundant synchronization, adversely affecting performance.
+
+#### volatile keyword
+In C#, the volatile keyword ensures that reads and writes to a variable go directly to memory, bypassing caching. This guarantees data freshness in a uniprocessor system. In a multiprocessor system, volatile reads and writes don't guarantee data staleness. It's crucial for multithreaded programming to maintain data consistency across threads by preventing caching of volatile variables.
+
+The volatile keyword indicates that a field might be modified by multiple threads that are executing at the same time. The compiler, the runtime system, and even hardware may rearrange reads and writes to memory locations for performance reasons. Fields that are declared volatile are excluded from certain kinds of optimizations. There is no guarantee of a single total ordering of volatile writes as seen from all threads of execution. For more information, see the Volatile class.
+
+**Note**
+On a multiprocessor system, a volatile read operation does not guarantee to obtain the latest value written to that memory location by any processor. Similarly, a volatile write operation does not guarantee that the value written would be immediately visible to other processors.
+
+#### The volatile keyword can be applied to fields of these types:
+* Reference types.
+* Pointer types (in an unsafe context). Note that although the pointer itself can be volatile, the object that it points to cannot. In other words, you cannot declare a "pointer to volatile."
+* Simple types such as sbyte, byte, short, ushort, int, uint, char, float, and bool.
+* An enum type with one of the following base types: byte, sbyte, short, ushort, int, or uint.
+* Generic type parameters known to be reference types.
+* IntPtr and UIntPtr.
+
+Other types, including double and long, cannot be marked volatile because reads and writes to fields of those types cannot be guaranteed to be atomic. To protect multi-threaded access to those types of fields, use the Interlocked class members or protect access using the lock statement.
+
+The volatile keyword can only be applied to fields of a class or struct. Local variables cannot be declared volatile.
+
+**Example**
+The following example shows how to declare a public field variable as volatile.
+```csharp
+class VolatileTest
+{
+    public volatile int sharedStorage;
+
+    public void Test(int i)
+    {
+        sharedStorage = i;
+    }
+}
+```
+
+The following example demonstrates how an auxiliary or worker thread can be created and used to perform processing in parallel with that of the primary thread.
+
+```csharp
+public class Worker
+{
+    // This method is called when the thread is started.
+    public void DoWork()
+    {
+        bool work = false;
+        while (!_shouldStop)
+        {
+            work = !work; // simulate some work
+        }
+        Console.WriteLine("Worker thread: terminating gracefully.");
+    }
+    public void RequestStop()
+    {
+        _shouldStop = true;
+    }
+    // Keyword volatile is used as a hint to the compiler that this data
+    // member is accessed by multiple threads.
+    private volatile bool _shouldStop;
+}
+
+public class WorkerThreadExample
+{
+    public static void Main()
+    {
+        // Create the worker thread object. This does not start the thread.
+        Worker workerObject = new Worker();
+        Thread workerThread = new Thread(workerObject.DoWork);
+
+        // Start the worker thread.
+        workerThread.Start();
+        Console.WriteLine("Main thread: starting worker thread...");
+
+        // Loop until the worker thread activates.
+        while (!workerThread.IsAlive)
+            ;
+
+        // Put the main thread to sleep for 500 milliseconds to
+        // allow the worker thread to do some work.
+        Thread.Sleep(500);
+
+        // Request that the worker thread stop itself.
+        workerObject.RequestStop();
+
+        // Use the Thread.Join method to block the current thread
+        // until the object's thread terminates.
+        workerThread.Join();
+        Console.WriteLine("Main thread: worker thread has terminated.");
+    }
+    // Sample output:
+    // Main thread: starting worker thread...
+    // Worker thread: terminating gracefully.
+    // Main thread: worker thread has terminated.
+}
+```
 
 ## Design Patterns
 A design pattern is a general repeatable solution to a commonly occurring problem in software design. According to GOF, there are 3 types of design patterns, which include 22 patterns:
