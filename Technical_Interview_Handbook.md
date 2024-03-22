@@ -948,21 +948,103 @@ Priorities.
 ## Observability and Monitoring
 ## system Design and Architecture
 ### Domain-Driven Design (DDD)
-#### Domain-Driven Design?
-Domain-Driven Design is an approach to software development that centers the development on programming a domain model that has a rich understanding of the processes and rules of a domain. 
-The name comes from a 2003 book by Eric Evans that describes the approach through a catalog of patterns. 
-The approach is particularly **suited to complex domains**, where a lot of often-messy logic needs to be organized.
+
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ddd.jpg?raw=true)
+
+Writing software involves software architects and programmers. They understand software concepts, tools and implementation details. But they may be disconnected from the business and hence have an incomplete understanding of the problem they're trying to solve. Domain-Driven Design (DDD) is an approach towards a shared understanding within the context of the domain. 
+
+Large software projects are complex. DDD manages this complexity by decomposing the domain into smaller subdomains. Then it establishes a consistent language within each subdomain so that everyone understands the problem (and the solution) without ambiguity. 
+
+DDD is object-oriented design done right. Among its many benefits are better communication, common understanding, flexible design, improved patterns, meeting deadlines, and minimizing technical debt. However, DDD requires domain experts, additional effort and hence best applied for complex applications.
+
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ddd-concepts.png?raw=true)
+
+#### There are two main phases in DDD
+
+1. Strategical design phase
+ Includes the strategic principles and methodologies for analysing and modeling domains as well as organised techniques for forming the development process.
+
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ddd-strategic-design-phase.png?raw=true)
+  
+2. Tactical design phase
+Comes after the strategic phase and focuses on the refinement domain model to the point where it can be translated into working code.
+
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ddd-tactical-design-phase.png?raw=true)
 
 #### Ubiquitous Language:
-Ubiquitous Language is a design approach that emphasizes using the **vocabulary of a specific business domain** consistently throughout all aspects of software development, from requirements discussions to actual code implementation. This practice aims to create **a common, rigorous language shared between developers and users**, enhancing communication and understanding within Agile projects.
+One of the most important aspects is clear communication and to handle the communication better, it promotes Ubiquitous language which is a language shared between the development teams and domain experts.
+It is the language used in discussions, domain model, code of the application, classes and methods.
 
-![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ubiquitous-language.jpg?raw=true).
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ubiquitous-language.jpg?raw=true)
+
+If the development team and business team don’t work together in improving this language, they will result in two different languages which will introduce language barriers that can cause inaccuracies and technical misinterpretation in the application.
+
+for example, the term booking can be referred to a reservation of a seat or it could also mean punishment by a referee in a soccer match for foul play. so depending on the context the meaning is different and it is important to define the meaning and the term being used in large scaled applications with in the context.
+
+The main goal is to close the gap between domain, problem, and detailed technical knowledge and to keep the well-known user programmer gap as small as possible in a way where domain experts and developers can collaborate effectively with minimal misunderstandings and arguments.
+
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ubiquitous-language2.png?raw=true)
+
+#### Bounded context
+Sometimes applications can be bounded to multiple domains like delivery, shopping and packaging, or sometimes can be very vast domains like food or transport. So to understand what exact area in the domain, you can divide the domain into different zones which are called Bounded Contexts.
 
 
+
+#### Context map
+A Context Map is the integration of all the domain models in the systems. Each model might have been developed independent of each other. Over the time the proper integration needs to be done in order to make the system to work from end to end.
+
+For example, an online-retail store company might have one system putting in orders, one for inventory, one for shipping (including tracking), one for payments, etc. Here combination of everything makes the stores business efficient and complete.
+
+#### Entity
+An entity is a class with business logic, uniquely identified by an ID or attributes, maintaining consistent identity throughout its existence.
+
+#### Value Object
+Value Objects are immutable and do not have a unique identity, are defined only by the values of their attributes. The fact that value objects are also immutable makes business operations thread-safe and side-effect free
+
+For example, if the user has such fields as: street, city and zip code, they should create a separate value object of the address of residence and refer to the entity with the user.
+
+They are descriptors or properties which are important in the domain you are modelling. Value objects mainly have no setters and immutable in nature. They don't have an identity but they describe the things that do have identities.
+
+Person: is an entity.
+
+Address: is a value object; because 2 people can have same address.
+
+#### Aggregate
+A collection of objects that are bound together by a root entity, otherwise known as an aggregate root. The aggregate root guarantees the consistency of changes being made within the aggregate by forbidding external objects from holding references to its members. The idea of an aggregate is to guarantee consistency, being the root responsible for data integrity and forcing invariants.
+
+Example: When you drive a car, you do not have to worry about what the attribute make it move, making the engine combust with spark and fuel, etc.; you are simply driving the car. In this context, the car is an aggregate of several other objects and serves as the aggregate root to all the other systems.
+
+#### Invariant
+A business invariant is a rule or constraint in a business domain that must always hold true.
+
+#### Domain Event
+A domain object that defines an event (something that happens) and is an event that domain experts care about.
+
+#### Service
+Services can be categorized into three types in domain driven design.
+
+#### Services can be of three types:
+- Domain Services
+- Application Services
+- Infrastructure Services
+
+#### Domain Services
+Domain Services contain operations, actions, or business process and provides the functionality that the domain needs. It deals with all the domain related manipulation.
+
+An example of domain services are catalog service for ecommerce domain which deals with all the catalog related information or account service in accounts domain which deals with all information related to accounts.
+
+#### Application Services
+Application Services are the services used by the outside world which may have representations of data. Example of application service is a database CRUD operation.
+
+#### Infrastructure services
+An Infrastructure Service is service that communicates directly with external resource . For example, accessing file system, registry, SMTP, database etc in the application.
 
 #### References
 1. https://martinfowler.com/bliki/DomainDrivenDesign.html 
-
+2. https://medium.com/@mazraara/the-building-blocks-of-domain-driven-design-ddd-af745a53a9eb
+3. https://ddd-practitioners.com/category/ddd/
+4. https://devopedia.org/domain-driven-design
+5. 
 ## Cloud
 
 
