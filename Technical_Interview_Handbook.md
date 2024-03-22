@@ -985,6 +985,11 @@ The main goal is to close the gap between domain, problem, and detailed technica
 
 ![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ubiquitous-language2.png?raw=true)
 
+#### Three types of domains in DDD 
+1. **Core Domain**: Represents the unique value and essence of the business, requiring advanced DDD techniques for competitive advantage.
+2. **Supporting Domain**: Provides necessary support functions that complement the core domain, utilizing less complex DDD techniques for efficiency.
+3. **Generic Domain**: Encompasses common functionalities applicable across industries, focusing on reusability and adaptability without the need for intensive DDD techniques.
+
 #### Bounded context
 Sometimes applications can be bounded to multiple domains like delivery, shopping and packaging, or sometimes can be very vast domains like food or transport. So to understand what exact area in the domain, you can divide the domain into different zones which are called Bounded Contexts.
 
