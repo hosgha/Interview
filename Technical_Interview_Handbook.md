@@ -19,7 +19,7 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 **[IOC](#ioc)**<br>
 **[Message Broker](#message-broker)**<br>
 **[Observability and Monitoring](#observability-and-monitoring)**<br>
-**[system Design and Architecture](#system-design-and-architecture)**<br>
+**[System Design and Architecture](#system-design-and-architecture)**<br>
 **[Cloud](#cloud)**<br>
 
 ## OOP Concepts
@@ -948,7 +948,7 @@ Priorities.
 * HTTP & WebSocket.
 
 ## Observability and Monitoring
-## system Design and Architecture
+## System Design and Architecture
 ### Domain-Driven Design (DDD)
 
 <img src="https://github.com/hosgha/Interview/blob/master/assets/images/ddd.jpg?raw=true" alt="DDD" width=700; height=700>
