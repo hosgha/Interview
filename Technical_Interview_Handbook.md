@@ -995,7 +995,7 @@ A Context Map is the integration of all the domain models in the systems. Each m
 
 For example, an online-retail store company might have one system putting in orders, one for inventory, one for shipping (including tracking), one for payments, etc. Here combination of everything makes the stores business efficient and complete.
 
-<img src="https://github.com/hosgha/Interview/blob/master/assets/images/ddd-context-map.png?raw=true" alt="ConextMap" width=350; height=350>
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/ddd-context-map.png?raw=true" alt="ConextMap" width=350; height=450>
 
 **Integration Patterns** </br> 
 Here is the list of DDD integration patterns in no particular order: **Customer/Supplier**, **Shared Kernel**, **Open Host Service**, **Published Language**, **Anticorruption Layer**, **Conformist** and **Separate Ways**.
