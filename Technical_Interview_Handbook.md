@@ -951,10 +951,10 @@ Priorities.
 ## System Design and Architecture
 
 ### Non-relational databases are grouped into four categories:
- key-value stores : Redis, Apache Cassandra, Amazon DynamoDB 
- graph stores: Neo4j, Amazon Neptune
- column stores: Cassandra, HBase, Amazon Redshift
-document stores: MongoDB, Couchbase, Elasticsearch
+ - key-value stores : Redis, Apache Cassandra, Amazon DynamoDB 
+ - graph stores: Neo4j, Amazon Neptune
+ - column stores: Cassandra, HBase, Amazon Redshift
+- document stores: MongoDB, Couchbase, Elasticsearch
 
 ### Non-relational databases might be the right choice if:
 • Your application requires super-low latency.
@@ -974,7 +974,7 @@ website/app goes down with it completely.
 Horizontal scaling is more desirable for large scale applications due to the limitations of
 vertical scaling.
 
-###Load balancer
+### Load balancer
 A load balancer evenly distributes incoming traffic among web servers that are defined in a load-balanced set.
 
 ### Database replication
