@@ -987,10 +987,17 @@ The main goal is to close the gap between domain, problem, and detailed technica
 
 ![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ubiquitous-language2.png?raw=true)
 
+#### E-Commerce Sample
+
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ddd-problem-space.png?raw=true)
+
 #### Three Types of Subdomains in DDD 
 1. **Core Domain**: Represents the unique value and essence of the business, requiring advanced DDD techniques for competitive advantage.
 2. **Supporting Domain**: Provides necessary support functions that complement the core domain, utilizing less complex DDD techniques for efficiency.
 3. **Generic Domain**: Encompasses common functionalities applicable across industries, focusing on reusability and adaptability without the need for intensive DDD techniques.
+
+![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/bounded-context-subdomains.png?raw=true)
+
 
 #### Bounded context
 Sometimes applications can be bounded to multiple domains like delivery, shopping and packaging, or sometimes can be very vast domains like food or transport. So to understand what exact area in the domain, you can divide the domain into different zones which are called Bounded Contexts.
