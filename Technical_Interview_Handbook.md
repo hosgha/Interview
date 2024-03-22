@@ -1004,7 +1004,10 @@ Sometimes applications can be bounded to multiple domains like delivery, shoppin
 
 <img src="https://github.com/hosgha/Interview/blob/master/assets/images/bounded-context2.png?raw=true" alt="Deadlock" width=600; height=400>
 
-#### Context map
+#### Context Map
+
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/context-map.png?raw=true" alt="ContextMap" width=600; height=450>
+
 A Context Map is the integration of all the domain models in the systems. Each model might have been developed independent of each other. Over the time the proper integration needs to be done in order to make the system to work from end to end.
 
 For example, an online-retail store company might have one system putting in orders, one for inventory, one for shipping (including tracking), one for payments, etc. Here combination of everything makes the stores business efficient and complete.
