@@ -951,11 +951,11 @@ Priorities.
 
 <img src="https://github.com/hosgha/Interview/blob/master/assets/images/ddd.jpg?raw=true" alt="DDD" width=700; height=700>
 
-Writing software involves software architects and programmers. They understand software concepts, tools and implementation details. But they may be disconnected from the business and hence have an incomplete understanding of the problem they're trying to solve. Domain-Driven Design (DDD) is an approach towards a shared understanding within the context of the domain. 
+Writing software involves software architects and programmers. They understand software concepts, tools and implementation details. But they may be disconnected from the business and hence have an incomplete understanding of the problem they're trying to solve. **Domain-Driven Design (DDD) is an approach towards a shared understanding within the context of the domain**. 
 
-Large software projects are complex. DDD manages this complexity by decomposing the domain into smaller subdomains. Then it establishes a consistent language within each subdomain so that everyone understands the problem (and the solution) without ambiguity. 
+**Large software projects are complex. DDD manages this complexity by decomposing the domain into smaller subdomains**. Then it establishes a consistent language within each subdomain so that everyone understands the problem (and the solution) without ambiguity. 
 
-DDD is object-oriented design done right. Among its many benefits are better communication, common understanding, flexible design, improved patterns, meeting deadlines, and minimizing technical debt. However, DDD requires domain experts, additional effort and hence best applied for complex applications.
+DDD is object-oriented design done right. Among its many benefits are better communication, common understanding, flexible design, improved patterns, meeting deadlines, and minimizing technical debt. However, **DDD requires domain experts, additional effort and hence best applied for complex applications**.
 
 ![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ddd-concepts.png?raw=true)
 
