@@ -1063,15 +1063,16 @@ Maybe the integrations between different contexts don’t always follow exactly 
 An entity is a class with business logic, uniquely identified by an ID or attributes, maintaining consistent identity throughout its existence.
 
 #### Value Object
-Value Objects are immutable and do not have a unique identity, are defined only by the values of their attributes. The fact that value objects are also immutable makes business operations thread-safe and side-effect free
+Value Objects are **immutable** and **do not have a unique identity**, are **defined only by the values of their attributes**. Value Objects are employed when there is a need to encapsulate specific values required for a business application, ensuring immutability, simplifying business logic, ensuring data validity, and increasing modularity for better code quality and readability
 
-For example, if the user has such fields as: street, city and zip code, they should create a separate value object of the address of residence and refer to the entity with the user.
-
-They are descriptors or properties which are important in the domain you are modelling. Value objects mainly have no setters and immutable in nature. They don't have an identity but they describe the things that do have identities.
-
+For example:
 Person: is an entity.
-
 Address: is a value object; because 2 people can have same address.
+
+**Rules of Value Object**: </br>
+1. **Immutability**: Value Objects are immutable, meaning their values cannot change once the object is created. To modify a value, a new object must be created, promoting simplicity and thread safety
+2. **No Identity**: Value Objects lack a unique identifier and are compared based on their values rather than an identity field. This distinguishes them from entities and emphasizes value-based comparisons
+3. **Lifetime Shortening**: Value Objects require a parent entity to exist, as they cannot stand alone. This relationship ensures that value objects are always associated with an entity, leading to a composition-based structure and preventing separate tables in databases
 
 #### Aggregate
 A collection of objects that are bound together by a root entity, otherwise known as an aggregate root. The **aggregate root guarantees the consistency** of changes being made within the aggregate by forbidding external objects from holding references to its members. The idea of an aggregate is to guarantee consistency, being the root responsible for data integrity and forcing invariants.
