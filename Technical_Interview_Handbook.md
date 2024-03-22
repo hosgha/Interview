@@ -1091,11 +1091,6 @@ A domain object that defines an event (something that happens) and is an event t
 #### Service
 Services can be categorized into three types in domain driven design.
 
-#### Services can be of three types:
-- Domain Services
-- Application Services
-- Infrastructure Services
-
 1. **Domain Services** </br>
 Domain Services contain operations, actions, or business process and provides the functionality that the domain needs. It deals with all the domain related manipulation.
 An example of domain services are catalog service for ecommerce domain which deals with all the catalog related information or account service in accounts domain which deals with all information related to accounts.
