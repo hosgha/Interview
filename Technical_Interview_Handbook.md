@@ -1074,12 +1074,15 @@ Person: is an entity.
 Address: is a value object; because 2 people can have same address.
 
 #### Aggregate
-A collection of objects that are bound together by a root entity, otherwise known as an aggregate root. The aggregate root guarantees the consistency of changes being made within the aggregate by forbidding external objects from holding references to its members. The idea of an aggregate is to guarantee consistency, being the root responsible for data integrity and forcing invariants.
+A collection of objects that are bound together by a root entity, otherwise known as an aggregate root. The **aggregate root guarantees the consistency** of changes being made within the aggregate by forbidding external objects from holding references to its members. The idea of an aggregate is to guarantee consistency, being the root responsible for data integrity and forcing invariants.
 
-Example: When you drive a car, you do not have to worry about what the attribute make it move, making the engine combust with spark and fuel, etc.; you are simply driving the car. In this context, the car is an aggregate of several other objects and serves as the aggregate root to all the other systems.
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/ddd-aggregate.png?raw=true" alt="Deadlock" width=600; height=400>
+
 
 #### Invariant
 A business invariant is a rule or constraint in a business domain that must always hold true.
+
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/ddd-invariant.png?raw=true" alt="Deadlock" width=600; height=400>
 
 #### Domain Event
 A domain object that defines an event (something that happens) and is an event that domain experts care about.
@@ -1092,15 +1095,15 @@ Services can be categorized into three types in domain driven design.
 - Application Services
 - Infrastructure Services
 
-#### Domain Services
+1. **Domain Services** </br>
 Domain Services contain operations, actions, or business process and provides the functionality that the domain needs. It deals with all the domain related manipulation.
 
 An example of domain services are catalog service for ecommerce domain which deals with all the catalog related information or account service in accounts domain which deals with all information related to accounts.
 
-#### Application Services
+2. **Application Services** </br>
 Application Services are the services used by the outside world which may have representations of data. Example of application service is a database CRUD operation.
 
-#### Infrastructure services
+3. **Infrastructure services** </br>
 An Infrastructure Service is service that communicates directly with external resource . For example, accessing file system, registry, SMTP, database etc in the application.
 
 #### References
