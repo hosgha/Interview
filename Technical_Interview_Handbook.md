@@ -987,7 +987,7 @@ The main goal is to close the gap between domain, problem, and detailed technica
 
 ![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ubiquitous-language2.png?raw=true)
 
-#### Three types of domains in DDD 
+#### Three Types of Subdomains in DDD 
 1. **Core Domain**: Represents the unique value and essence of the business, requiring advanced DDD techniques for competitive advantage.
 2. **Supporting Domain**: Provides necessary support functions that complement the core domain, utilizing less complex DDD techniques for efficiency.
 3. **Generic Domain**: Encompasses common functionalities applicable across industries, focusing on reusability and adaptability without the need for intensive DDD techniques.
