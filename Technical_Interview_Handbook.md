@@ -10,7 +10,8 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 **[Clean Code](#clean-code)**<br>
 **[Testing](#testing)**<br>
 **[Refactoring](#refactoring)**<br>
-**[Relational Databeses](#relational-databeses)**<br>
+**[Relational_Databases](#relational-databeses)**<br>
+**[Garbage_Collection](#garbage-collection)**<br>
 **[NoSql](#nosql)**<br>
 **[Caching](#caching)**<br>
 **[Logging](#logging)**<br>
@@ -824,7 +825,8 @@ Description: Empties a database table by removing all rows, effectively resettin
 Example: Before running regression tests on a customer database, the testing script truncates the "Orders" table to ensure a clean starting point for each test iteration.
 
 ## Refactoring
-## Relational Databeses
+## Relational Databases
+## Garbage Collection
 ## NoSql
 ## Caching
 ## Logging
