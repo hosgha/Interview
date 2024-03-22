@@ -1079,7 +1079,11 @@ A collection of objects that are bound together by a root entity, otherwise know
 
 <img src="https://github.com/hosgha/Interview/blob/master/assets/images/ddd-aggregate.png?raw=true" alt="Deadlock" width=600; height=400>
 
-
+**Aggregate Root**: </br>
+1. An aggregate can only be accessed through its aggregate root.
+2. The aggregate root is an entity and cannot be a value object.
+3. The aggregate root has a global identity that is unique throughout the application. 
+    
 #### Invariant
 A business invariant is a rule or constraint in a business domain that must always hold true.
 
