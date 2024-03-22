@@ -988,7 +988,7 @@ The main goal is to close the gap between domain, problem, and detailed technica
 #### Bounded context
 Sometimes applications can be bounded to multiple domains like delivery, shopping and packaging, or sometimes can be very vast domains like food or transport. So to understand what exact area in the domain, you can divide the domain into different zones which are called Bounded Contexts.
 
-
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/bounded-context2.png?raw=true" alt="Deadlock" width=600; height=400>
 
 #### Context map
 A Context Map is the integration of all the domain models in the systems. Each model might have been developed independent of each other. Over the time the proper integration needs to be done in order to make the system to work from end to end.
