@@ -1082,7 +1082,7 @@ A collection of objects that are bound together by a root entity, otherwise know
 #### Invariant
 A business invariant is a rule or constraint in a business domain that must always hold true.
 
-<img src="https://github.com/hosgha/Interview/blob/master/assets/images/ddd-invariant.png?raw=true" alt="Deadlock" width=600; height=300>
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/ddd-invariant.png?raw=true" alt="Deadlock" width=800; height=300>
 
 #### Domain Event
 A domain object that defines an event (something that happens) and is an event that domain experts care about.
