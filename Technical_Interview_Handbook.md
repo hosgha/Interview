@@ -949,7 +949,7 @@ Priorities.
 ## system Design and Architecture
 ### Domain-Driven Design (DDD)
 
-<img src="https://github.com/hosgha/Interview/blob/master/assets/images/ddd.jpg?raw=true" alt="DDD" width=500; height=700>
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/ddd.jpg?raw=true" alt="DDD" width=700; height=700>
 
 Writing software involves software architects and programmers. They understand software concepts, tools and implementation details. But they may be disconnected from the business and hence have an incomplete understanding of the problem they're trying to solve. Domain-Driven Design (DDD) is an approach towards a shared understanding within the context of the domain. 
 
