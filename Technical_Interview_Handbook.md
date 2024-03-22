@@ -995,6 +995,82 @@ A Context Map is the integration of all the domain models in the systems. Each m
 
 For example, an online-retail store company might have one system putting in orders, one for inventory, one for shipping (including tracking), one for payments, etc. Here combination of everything makes the stores business efficient and complete.
 
+<img src="https://github.com/hosgha/Interview/blob/master/assets/images/ddd-context-map.png?raw=true" alt="ConextMap" width=350; height=350>
+
+**Integration Patterns** </br> 
+Here is the list of DDD integration patterns in no particular order: **Customer/Supplier**, **Shared Kernel**, **Open Host Service**, **Published Language**, **Anticorruption Layer**, **Conformist** and **Separate Ways**.
+
+The integration patterns can be aligned on two axes. The first is how good the involved teams communicate and adhere to the commitments they make. The second is how much control you have over the involved systems. When deciding on which pattern to use it is helpful to keep these in mind. The following introductions to the different patterns include a hint on where the pattern is located on the axes.
+
+1. **Customer/Supplier** </br>
+In the customer/supplier pattern, as the name implies, one context is the supplier of data or functions to the other. In planning sessions, the teams act according to their role, negotiate deliverables and schedule.
+
+Because the supplier implements functionality the customer needs, the same rules apply as for an external customer to the business. The customer needs to be available for questions the supplier team may have.
+
+On the other hand, the customer is king. Their needs do have to have priority for the supplier team. Otherwise, the customer team may be blocked and cannot continue to deliver value to the company.
+
+Level of communication and commitment: Medium
+Level of control over the involved systems: Medium
+
+2. **Shared Kernel** </br>
+When two contexts seem to have a common set of entities they may want to use a shared kernel. Both teams need to be willing to cooperate with and regard each other’s needs.
+
+A shared kernel should include both model and data persistence. It should be automatically tested on each change with suites from both teams to ensure compatibility.
+
+With the shared kernel duplication can be reduced and we can easily integrate contexts. However, big commitment is needed from the teams because they cannot change the kernel freely.
+
+Level of communication and commitment: High
+Level of control over the involved systems: High
+
+3. **Open Host Service** </br>
+When we need to integrate a bounded context with many others, it can be useful to build a common model for all integrations. This model is published as a set of services that the other contexts use.
+
+It is only feasible to implement an open host service when we can find a common model, and the other contexts are willing to accept it. Of course, each consuming context can build an anti-corruption layer on his end, but this defeats the use of the open host service somewhat.
+
+Level of communication and commitment: High
+Level of control over the involved systems: Medium
+
+4. **Published Language** </br>
+Further development of the open host service may lead to (the use of) a published language that has it’s own bounded context. The language could be a model defined by some industry association or state for example.
+
+As source context, we may translate into the published language and out of it if our model doesn’t match. We provide our services in the published language.
+
+Level of communication and commitment: High
+Level of control over the involved systems: Low
+
+5. **Conformist** </br>
+With the conformist integration pattern, we adapt our model fully to the model of the other context we would like to connect. There are two reasons why it may is a good idea to be a conformist.
+
+The first is if the translation from and to the other model would be very complex. It could be complex because we have no control over the other context for example. Alternatively, it is a very different context that is naturally difficult to translate into our own.
+
+The second reason is if the other context is based on a common standard or component. Most probably the model of this context is very mature in its area. Your model may didn’t get this far yet.
+
+Level of communication and commitment: Low
+Level of control over the involved systems: Low
+
+6. **Anticorruption Layer** </br>
+If we have no control over the context we would like to connect to, and its model doesn’t fit ourselves an anticorruption layer should be considered. This layer communicates with the other context in its language and translates from and to it.
+
+The anticorruption layer can be especially useful when migrating a legacy system. It encapsulates the legacy system, and our new shiny solution communicates only with this layer in a clean language.
+
+Level of communication and commitment: Low
+Level of control over the involved systems: Low
+
+7. **Separate Ways** </br>
+Because integration always has an associated cost you may want to go separate ways instead. Maybe you rather duplicate some logic and data in your own context than build a complex integration layer.
+
+The two contexts may still be connected through a middleware tire or on the GUI level. However, take care not to connect them on a model level accidentally.
+
+Level of communication and commitment: Low
+Level of control over the involved systems: Low
+
+**Wrap Up / Final Thoughts** </br>
+I think the benefit of context mapping is very obvious. It is beneficial for teams if they know their relationship to other parts of the software system they build.
+
+Maybe the integrations between different contexts don’t always follow exactly one of the patterns. I think they can be altered or even combined at times.
+
+
+
 #### Entity
 An entity is a class with business logic, uniquely identified by an ID or attributes, maintaining consistent identity throughout its existence.
 
@@ -1044,7 +1120,8 @@ An Infrastructure Service is service that communicates directly with external re
 2. https://medium.com/@mazraara/the-building-blocks-of-domain-driven-design-ddd-af745a53a9eb
 3. https://ddd-practitioners.com/category/ddd/
 4. https://devopedia.org/domain-driven-design
-5. 
+5. https://opus.ch/ddd-concepts-and-patterns-context-map/
+    
 ## Cloud
 
 
