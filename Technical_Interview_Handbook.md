@@ -961,12 +961,12 @@ DDD is object-oriented design done right. Among its many benefits are better com
 
 #### There are two main phases in DDD
 
-1. Strategical design phase
+1. **Strategical design phase**
  Includes the strategic principles and methodologies for analysing and modeling domains as well as organised techniques for forming the development process.
 
 ![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ddd-strategic-design-phase.png?raw=true)
   
-2. Tactical design phase
+2. **Tactical design phase**
 Comes after the strategic phase and focuses on the refinement domain model to the point where it can be translated into working code.
 
 ![alt text](https://github.com/hosgha/Interview/blob/master/assets/images/ddd-tactical-design-phase.png?raw=true)
