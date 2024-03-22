@@ -10,7 +10,7 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 **[Clean Code](#clean-code)**<br>
 **[Testing](#testing)**<br>
 **[Refactoring](#refactoring)**<br>
-**[Relational_Databases](#relational-databeses)**<br>
+**[Relational_Databases](#relational-databases)**<br>
 **[Garbage_Collection](#garbage-collection)**<br>
 **[NoSql](#nosql)**<br>
 **[Caching](#caching)**<br>
