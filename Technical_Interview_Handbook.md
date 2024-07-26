@@ -868,7 +868,7 @@ Less delay in freeing space
 Reserves freed space for potential future use
 Each GC thread is assigned a portion of Heap memory to clean
 
-For more detailed information on ![.NET Garbage Collection](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/), refer to the official Microsoft documentation.
+For more detailed information on [.NET Garbage Collection](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/), refer to the official Microsoft documentation.
 
 ## NoSql
 ## Caching
