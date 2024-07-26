@@ -828,27 +828,47 @@ Example: Before running regression tests on a customer database, the testing scr
 ## Relational Databases
 ## Garbage Collection
 
+Garbage Collection (GC) in .NET
 How GC Works
-In .NET, managed resources are handled automatically by the GC, and we don't have direct control over it (even by calling the Dispose method, etc.), unless we force its execution using the GC.Collect command (which is not recommended and may cause performance issues). (This command collects all unused objects, not just a specific one.)
-Note that GC only happens for the Heap memory, while Stack memory values are automatically popped when exiting the current method's scope and have nothing to do with GC.
-GC occurrence has no specific time or schedule. Instead, it happens when it senses that memory is under pressure and is filling up (this is not the only criterion, and other parameters are involved as well).
-When GC occurs, all threads are paused for a short time, and after the GC operation is completed, they resume their work.
-🔰 The GC process consists of 3 phases:
-1️⃣ Mark phase: In this phase, all threads are paused for a short time, and objects that have no root (no references to them) are marked as garbage.
-2️⃣ Collect phase: In this phase, the marked (garbage) objects from the previous phase are collected, and their occupied space is freed.
-3️⃣ Compact phase: In this phase, defragmentation is performed, and the gaps created in the Heap are eliminated. (However, this doesn't happen for Gen2 and LOH.)
-🔸Note:
-Objects in the Heap are divided into 3 categories based on their lifetime, and GC behaves differently for each category:
-1️⃣ Gen0: For short-lived objects. Every object smaller than 85 kilobytes (SOH) initially goes here and is cleaned up every time GC occurs.
-2️⃣ Gen1: For medium-lived objects. I think if an object still has references when GC occurs and its space can't be released, it moves here. GC happens less frequently here compared to Gen0.
-3️⃣ Gen2: For long-lived objects. If an object can't release its space during Gen1 GC, it moves here. GC happens less frequently here compared to Gen1. Also, objects larger than or equal to 85 kilobytes (LOH) are moved here by default.
-✅ Server and Workstation modes in GC
-In .NET, we have two types of GC:
-1️⃣ Workstation type:
-Optimized for desktop and single-thread applications. In this method, one thread performs the Collect operation, so there's more delay in freeing up space, but it immediately releases and unallocates the freed space.
-2️⃣ Server type:
-Optimized for server-side and multi-thread applications. In this method, multiple threads (equal to the number of logical CPU cores) perform the Collect operation simultaneously. So, there's less delay in freeing up space, but it reserves the freed space for a while in case it's needed in the future.
-In this method, a portion of the Heap memory is assigned to each GC thread, and each thread cleans up its own space.
+In .NET, managed resources are handled automatically by the GC. We don't have direct control over it (even by calling the Dispose method), unless we force its execution using the GC.Collect command (which is not recommended and may cause performance issues).
+Note: GC.Collect collects all unused objects, not just a specific one.
+GC only happens for the Heap memory.
+Stack memory values are automatically popped when exiting the current method's scope.
+GC occurrence has no specific time or schedule.
+It happens when memory is under pressure and filling up (among other criteria).
+When GC occurs, all threads are paused briefly before resuming.
+GC Process Phases
+Mark phase: All threads are paused briefly. Objects with no root (no references) are marked as garbage.
+Collect phase: Marked (garbage) objects are collected, and their space is freed.
+Compact phase: Defragmentation is performed, eliminating gaps in the Heap.
+This doesn't happen for Gen2 and LOH.
+Object Generations in Heap
+Objects in the Heap are divided into 3 categories based on their lifetime:
+Gen0: Short-lived objects
+Objects < 85 KB (SOH) start here
+Cleaned up every GC cycle
+Gen1: Medium-lived objects
+Objects that survive Gen0 collection
+Less frequent GC than Gen0
+Gen2: Long-lived objects
+Objects that survive Gen1 collection
+Least frequent GC
+Objects ≥ 85 KB (LOH) start here by default
+GC Modes
+.NET has two types of GC:
+1. Workstation Mode
+Optimized for desktop and single-thread applications
+One thread performs collection
+More delay in freeing space
+Immediately releases and unallocates freed space
+2. Server Mode
+Optimized for server-side and multi-thread applications
+Multiple threads (equal to logical CPU cores) perform collection simultaneously
+Less delay in freeing space
+Reserves freed space for potential future use
+Each GC thread is assigned a portion of Heap memory to clean
+
+For more detailed information on ![.NET Garbage Collection](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/), refer to the official Microsoft documentation.
 
 ## NoSql
 ## Caching
