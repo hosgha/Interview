@@ -565,13 +565,12 @@ A non-exclusive lock permits multiple threads to enter the lock block and read o
 |5| Mutex                 | Kernel Mode  | Cross Process         | Locking            | Exclusive     | YES        | YES      | YES     | Stands for “mutual exclusion” |
 |6| Semaphore             | Kernel Mode  | Cross Process         | Locking            | Non-Exclusive              | NO         | YES      |  NO    | Allows setting a limit on the number of threads accessing a critical section |
 |7| Barrier             | Hybrid Mode  | In Process         | Signaling            | Non-Exclusive   |  NO   | YES      |    | Enables multiple tasks to cooperatively work on an algorithm in parallel through multiple phases |
-|8| Volatile | User Mode  |      -     | Lock-Free            |    -   |  -   |    -   |  -  | Enables multiple tasks to cooperatively work on an algorithm in parallel through multiple phases |
-|9| CountDownEvent | Hybrid Mode  | In Process         | Signaling            | Exclusive   |      | YES      |   -   | Ensures direct memory access for reads and writes, bypassing caching and prevents compiler and jitter optimizations on the variable. |
-|10| AutoResetEvent | Kernel Mode  | Cross Process (Only using EventWaitHandle) | Signaling            | Exclusive              |  -    | YES  | YES     | Represents a thread synchronization event that, when signaled, releases one single waiting thread, and the event resets automatically |
-|11| ManualResetEvent  | Kernel Mode  | Cross Process         | Signaling            | Non-Exclusive  | - | YES |   YES   | Represents a thread synchronization event that, when signaled, must be reset manually |
-|12| ManualResetEventSlim             | Hybrid Mode  | In Process         | Signaling            | Non-Exclusive   |     | YES      |    | This class is a lightweight alternative to ManualResetEvent |
-|13| ReaderWriterLock 	|          	|  	    	| Locking 		|          |            |  YES		|          | Not Recomended (Use Slim Version Instead) _ Defines a lock that supports single writers and multiple readers.| 
-|14| ReaderWriterLockSlim 	| Hybrid Mode 	| In Process 		| Locking 		|              |            |   Yes 	|      | A lock that protect a resource that is read by multiple threads and written to by one thread at a time |
+|8| CountDownEvent | Hybrid Mode  | In Process         | Signaling            | Exclusive   |      | YES      |   -   | Ensures direct memory access for reads and writes, bypassing caching and prevents compiler and jitter optimizations on the variable. |
+|9| AutoResetEvent | Kernel Mode  | Cross Process (Only using EventWaitHandle) | Signaling            | Exclusive              |  -    | YES  | YES     | Represents a thread synchronization event that, when signaled, releases one single waiting thread, and the event resets automatically |
+|10| ManualResetEvent  | Kernel Mode  | Cross Process         | Signaling            | Non-Exclusive  | - | YES |   YES   | Represents a thread synchronization event that, when signaled, must be reset manually |
+|11| ManualResetEventSlim             | Hybrid Mode  | In Process         | Signaling            | Non-Exclusive   |     | YES      |    | This class is a lightweight alternative to ManualResetEvent |
+|12| ReaderWriterLock 	|          	|  	    	| Locking 		|          |            |  YES		|          | Not Recomended (Use Slim Version Instead) _ Defines a lock that supports single writers and multiple readers.| 
+|13| ReaderWriterLockSlim 	| Hybrid Mode 	| In Process 		| Locking 		|              |            |   Yes 	|      | A lock that protect a resource that is read by multiple threads and written to by one thread at a time |
 
 #### Synchronization Libraries
 
