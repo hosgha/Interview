@@ -1040,11 +1040,25 @@ Dependency-aware replication
 
 ---
 
+**ACID:**
+
+<img width="793" height="393" alt="acid" src="https://github.com/user-attachments/assets/5e617bc7-bd44-42c7-97c5-d0ef19c213b7" />
+<br />
 **BASE Principles:**
 
 * **B**asically **A**vailable
 * **S**oft state
 * **E**ventual consistency
+
+| Feature | ACID | BASE |
+|---------|------|------|
+| **Main Goal** | Ensure strict data consistency | Ensure high availability and scalability |
+| **Consistency** | Always consistent (Strong Consistency) | Eventually consistent (Eventual Consistency) |
+| **Availability** | May decrease during failures | Always responds, even with stale data |
+| **State** | Stable and precise | Soft state, may temporarily differ |
+| **Use Cases** | Banking, financial transactions, critical systems | Social networks, caching, large distributed systems |
+| **Replication** | Synchronous | Asynchronous |
+| **Examples** | SQL Server, Oracle | Cassandra, DynamoDB, MongoDB (BASE mode) |
 
 
 # 3. Service Design & Domain Decomposition
