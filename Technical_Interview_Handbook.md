@@ -925,6 +925,10 @@ timeline
                      : Security by Default
 ```
 
+### Popular Service Mesh:
+
+<img width="481" height="298" alt="ServiceMesh" src="https://github.com/user-attachments/assets/9a1a0d11-b5d5-405e-a117-2d1adc4ad929" />
+
 ---
 
 ## Key Decision Factors
@@ -965,7 +969,7 @@ Five 9s,99.999%,5.26 minutes,0.605 seconds
 
 ## Consistency Models Spectrum
 
-<img width="676" height="410" alt="consitency" src="https://github.com/user-attachments/assets/bd260554-9f4f-400c-a624-7e05b70281aa" />
+<img width="808" height="408" alt="Types Of Consistency" src="https://github.com/user-attachments/assets/5fc59305-3d08-4c6e-8d67-bc77ceee3dde" />
 
 
 * **Partition Tolerance** A distributed system's ability to continue operating even when network failures occur between its nodes (servers, services, or data centers)
