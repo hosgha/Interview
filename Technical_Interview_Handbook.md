@@ -965,7 +965,7 @@ Five 9s,99.999%,5.26 minutes,0.605 seconds
 
 ## Consistency Models Spectrum
 
-<img width="1536" height="1024" alt="consitency" src="https://github.com/user-attachments/assets/ccd3a472-bdf3-46b9-9b11-546053388d05" />
+<img width="676" height="410" alt="consitency" src="https://github.com/user-attachments/assets/bd260554-9f4f-400c-a624-7e05b70281aa" />
 
 
 * **Partition Tolerance** A distributed system's ability to continue operating even when network failures occur between its nodes (servers, services, or data centers)
