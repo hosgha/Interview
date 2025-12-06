@@ -973,6 +973,67 @@ Five 9s,99.999%,5.26 minutes,0.605 seconds
 
 <img width="808" height="408" alt="Types Of Consistency" src="https://github.com/user-attachments/assets/5fc59305-3d08-4c6e-8d67-bc77ceee3dde" />
 
+1. Strong Consistency
+
+Definition: All reads return the latest write; all nodes see the same data immediately.
+
+Use Cases: Banking, inventory, financial transactions.
+
+Implementation:
+
+Consensus protocols: Paxos, Raft
+
+Synchronous replication: Writes applied to all replicas before success
+
+Saga pattern: Distributed transactions with rollback/compensation
+
+Diagram:
+
+Time →
+Node A: W1 → R2 → R3
+Node B: W1 → R2 → R3
+
+2. Eventual Consistency
+
+Definition: Updates propagate asynchronously; nodes may see stale data but converge eventually.
+
+Use Cases: Social feeds, caching, DNS.
+
+Implementation:
+
+Message brokers / streaming: Kafka, RabbitMQ, NATS
+
+Asynchronous replication
+
+Conflict resolution: LWW, Vector Clocks, CRDTs
+
+Diagram:
+
+Time →
+Node A: W1 → R2 → R3
+Node B:      R2 (stale) → R3 (updated)
+
+3. Causal Consistency
+
+Definition: Causally related writes seen in the same order; concurrent independent writes may vary.
+
+Use Cases: Collaborative editing, distributed messaging.
+
+Implementation:
+
+Version vectors / logical clocks
+
+Dependency-aware replication
+
+Diagram:
+
+W1 → W2 (depends on W1)
+W3 (independent)
+All nodes: W1 → W2 in order; W3 can appear anytime
+
+
+<img width="666" height="760" alt="Consistency-Strategies" src="https://github.com/user-attachments/assets/3fe3d6f7-cc95-460d-97ca-e370976b94d7" />
+
 
 * **Partition Tolerance** A distributed system's ability to continue operating even when network failures occur between its nodes (servers, services, or data centers)
 
