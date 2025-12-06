@@ -955,8 +955,7 @@ timeline
 
 
 * **Partition Tolerance** (is non-negotiable in distributed systems)
-<br />
-A distributed system's ability to continue operating even when network failures occur between its nodes (servers, services, or data centers)
+- A distributed system's ability to continue operating even when network failures occur between its nodes (servers, services, or data centers)
 
 * **Real-world choice:** AP (Availability + Partition Tolerance)
 
