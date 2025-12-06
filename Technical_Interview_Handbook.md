@@ -879,23 +879,6 @@ For more detailed information on [.NET Garbage Collection](https://learn.microso
 ## IOC
 ## Microservice
 
----
-marp: true
-theme: default
-size: 16:9
-paginate: true
-headingDivider: 1
-math: katex
-
-# Optional: Keep invert if you need specific contrast effects
-class: invert 
-
-mermaid: true
-
-# Presentation Headers
-header: 'Microservices Architecture: From Theory to Practice'
-footer: 'Presented by Hossein Ghasemi | DEC-2025'
--------------------------------------------------
 # 🚀 Microservices Architecture: Microservices Architecture Essentials
 
 ## Engineering Distributed Systems for Scale, Availability, Performance, and Resilience
