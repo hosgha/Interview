@@ -931,10 +931,13 @@ timeline
 
 **When to Choose Microservices:**
 
-* Multiple teams working on same product
-* Need for independent scaling of components
-* Desire for polyglot technology stack
-* System complexity requires clear domain boundaries
+* Multiple teams working on same product requiring autonomy and parallel development.
+
+* Need for independent scaling of components based on demand patterns and resource requirements.
+
+* Desire for polyglot technology stack (Freedom to choose appropriate technology per component such as languages, databases, frameworks).
+  
+* System complexity requires clear domain boundaries (Complex system decomposed into bounded contexts with well-defined domain interfaces.)
 
 **When to Avoid:**
 
