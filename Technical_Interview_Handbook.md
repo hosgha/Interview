@@ -883,11 +883,6 @@ For more detailed information on [.NET Garbage Collection](https://learn.microso
 
 ## Engineering Distributed Systems for Scale, Availability, Performance, and Resilience
 
-**Presenter:** Hossein Ghasemi
-**Audience:** Developers, Architects, DevOps Engineers
-**Prerequisites:** Basic distributed systems knowledge
-
-
 # 1. Introduction: The Evolution of Architecture
 
 ## The Monolithic Crisis
