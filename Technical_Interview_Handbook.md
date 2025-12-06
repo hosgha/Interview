@@ -949,13 +949,42 @@ timeline
 
 # 2. Distributed Systems Foundations
 
+
+Property	Meaning	When to Choose	Real Example
+Consistency	All users see same data	Financial systems, inventory	Bank transfer shows same balance everywhere
+Availability	System always responds	User-facing apps, websites	Website loads even during maintenance
+Partition Tolerance	Works during network failures	Global applications, cloud	App works when data centers disconnect
+
+
+## Consistency Models Spectrum
+
+Strong Consistency ━━━━━━━━━━ Causal Consistency ━━━━━━━━━━ Eventual Consistency
+      (ACID)                       (Causal)                       (BASE)
+
+┌───────────────────┬───────────────────────┬─────────────────────────────┐
+│ • Immediate       │ • Causally related    │ • Stale reads possible      │
+│   visibility      │   operations ordered  │                             │
+│                   │                       │ • Best-effort ordering      │
+├───────────────────┼───────────────────────┼─────────────────────────────┤
+│ • Global ordering │ • Preserves cause-    │ • Simple, scalable          │
+│   of all ops      │   effect relationships│                             │
+│                   │                       │ • Lower latency             │
+├───────────────────┼───────────────────────┼─────────────────────────────┤
+│ • Complex         │ • Moderate complexity │ • Minimal coordination      │
+│   coordination    │                       │                             │
+│                   │ • No cycles in        │ • No ordering guarantees    │
+│ • Higher latency  │   dependency graph    │   except eventual convergence│
+└───────────────────┴───────────────────────┴─────────────────────────────┘
+
+* **Partition Tolerance** A distributed system's ability to continue operating even when network failures occur between its nodes (servers, services, or data centers)
+
+<img width="565" height="403" alt="Partition_Tolerance" src="https://github.com/user-attachments/assets/eb77259d-94a2-485d-959b-11e1ad2a5be6" />
+
+
 ## The CAP Theorem in Practice
 
-![Cap-Theorem](https://github.com/user-attachments/assets/f4e0aa66-3c6a-4c47-bf58-79aa237ef6c2)
-
-
 * **Partition Tolerance** (is non-negotiable in distributed systems)
-***A distributed system's ability to continue operating even when network failures occur between its nodes (servers, services, or data centers)***
+
 
 * **Real-world choice:** AP (Availability + Partition Tolerance)
 
@@ -968,18 +997,6 @@ timeline
 * **Microservices typically:** PA/EL (Prioritize Availability, then Low Latency)
 
 ---
-
-## Consistency Models Spectrum
-
-```
-Strong Consistency ━━━━━━━━━━━━━━━━━━━━━━━━ Eventual Consistency
-      (ACID)                                        (BASE)
-
-• Immediate visibility           • Stale reads possible
-• Global ordering                • Best-effort ordering
-• Complex coordination           • Simple, scalable
-• Higher latency                 • Lower latency
-```
 
 **BASE Principles:**
 
