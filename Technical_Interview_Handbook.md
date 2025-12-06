@@ -949,32 +949,24 @@ timeline
 
 # 2. Distributed Systems Foundations
 
+## Availability 
+Availability is a core non-functional requirement and a key measure of a system's resilience. In the context of computing, especially distributed systems, it is the system's ability to remain operational and perform its intended function successfully when required.
 
-Property	Meaning	When to Choose	Real Example
-Consistency	All users see same data	Financial systems, inventory	Bank transfer shows same balance everywhere
-Availability	System always responds	User-facing apps, websites	Website loads even during maintenance
-Partition Tolerance	Works during network failures	Global applications, cloud	App works when data centers disconnect
+It is most commonly quantified as a percentage of uptime over a specific period (like a year). Higher availability means lower downtime.
+
+### The "Nines" of Availability
+
+Nines,Availability (%),Max Annual Downtime,Max Weekly Downtime
+Two 9s,99.0%,3.65 days,1.68 hours
+Three 9s,99.9%,8.76 hours,10.1 minutes
+Four 9s,99.99%,52.56 minutes,6.05 seconds
+Five 9s,99.999%,5.26 minutes,0.605 seconds
 
 
 ## Consistency Models Spectrum
 
-Strong Consistency ━━━━━━━━━━ Causal Consistency ━━━━━━━━━━ Eventual Consistency
-      (ACID)                       (Causal)                       (BASE)
+<img width="1536" height="1024" alt="consitency" src="https://github.com/user-attachments/assets/ccd3a472-bdf3-46b9-9b11-546053388d05" />
 
-┌───────────────────┬───────────────────────┬─────────────────────────────┐
-│ • Immediate       │ • Causally related    │ • Stale reads possible      │
-│   visibility      │   operations ordered  │                             │
-│                   │                       │ • Best-effort ordering      │
-├───────────────────┼───────────────────────┼─────────────────────────────┤
-│ • Global ordering │ • Preserves cause-    │ • Simple, scalable          │
-│   of all ops      │   effect relationships│                             │
-│                   │                       │ • Lower latency             │
-├───────────────────┼───────────────────────┼─────────────────────────────┤
-│ • Complex         │ • Moderate complexity │ • Minimal coordination      │
-│   coordination    │                       │                             │
-│                   │ • No cycles in        │ • No ordering guarantees    │
-│ • Higher latency  │   dependency graph    │   except eventual convergence│
-└───────────────────┴───────────────────────┴─────────────────────────────┘
 
 * **Partition Tolerance** A distributed system's ability to continue operating even when network failures occur between its nodes (servers, services, or data centers)
 
