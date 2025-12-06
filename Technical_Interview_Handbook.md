@@ -954,8 +954,12 @@ timeline
 ![Cap-Theorem](https://github.com/user-attachments/assets/f4e0aa66-3c6a-4c47-bf58-79aa237ef6c2)
 
 
-* **Partition Tolerance** is non-negotiable in distributed systems
+* **Partition Tolerance** (is non-negotiable in distributed systems)
+<br />
+A distributed system's ability to continue operating even when network failures occur between its nodes (servers, services, or data centers)
+
 * **Real-world choice:** AP (Availability + Partition Tolerance)
+
 * **Consequence:** Embrace eventual consistency
 
 ## The Modern Interpretation: PACELC
