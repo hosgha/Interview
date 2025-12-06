@@ -987,11 +987,6 @@ Synchronous replication: Writes applied to all replicas before success
 
 Saga pattern: Distributed transactions with rollback/compensation
 
-Diagram:
-
-Time →
-Node A: W1 → R2 → R3
-Node B: W1 → R2 → R3
 
 2. Eventual Consistency
 
@@ -1007,12 +1002,6 @@ Asynchronous replication
 
 Conflict resolution: LWW, Vector Clocks, CRDTs
 
-Diagram:
-
-Time →
-Node A: W1 → R2 → R3
-Node B:      R2 (stale) → R3 (updated)
-
 3. Causal Consistency
 
 Definition: Causally related writes seen in the same order; concurrent independent writes may vary.
@@ -1024,12 +1013,6 @@ Implementation:
 Version vectors / logical clocks
 
 Dependency-aware replication
-
-Diagram:
-
-W1 → W2 (depends on W1)
-W3 (independent)
-All nodes: W1 → W2 in order; W3 can appear anytime
 
 
 <img width="666" height="760" alt="Consistency-Strategies" src="https://github.com/user-attachments/assets/3fe3d6f7-cc95-460d-97ca-e370976b94d7" />
