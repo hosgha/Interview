@@ -887,6 +887,8 @@ For more detailed information on [.NET Garbage Collection](https://learn.microso
 
 ## The Monolithic Crisis
 
+![monolothic](https://github.com/user-attachments/assets/ae9bed0d-83f5-407a-81e4-0e6fbbe68713)
+
 * Single codebase becomes unmaintainable as team grows
 * All-or-nothing deployments create release bottlenecks
 * Scaling limitations - must scale entire application
