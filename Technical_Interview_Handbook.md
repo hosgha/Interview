@@ -951,6 +951,9 @@ timeline
 
 ## The CAP Theorem in Practice
 
+![Cap-Theorem](https://github.com/user-attachments/assets/f4e0aa66-3c6a-4c47-bf58-79aa237ef6c2)
+
+
 * **Partition Tolerance** is non-negotiable in distributed systems
 * **Real-world choice:** AP (Availability + Partition Tolerance)
 * **Consequence:** Embrace eventual consistency
