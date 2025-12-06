@@ -17,6 +17,7 @@ We hope it helps us to prepare for the **ASP.Net Core Developer** interview in a
 **[Logging](#logging)**<br>
 **[Identity](#identity)**<br>
 **[IOC](#ioc)**<br>
+**[Microservice](#microservice)**<br>
 **[Message Broker](#message-broker)**<br>
 **[Observability and Monitoring](#observability-and-monitoring)**<br>
 **[System Design and Architecture](#system-design-and-architecture)**<br>
@@ -876,6 +877,757 @@ For more detailed information on [.NET Garbage Collection](https://learn.microso
 ## Logging
 ## Identity
 ## IOC
+## Microservice
+
+---
+marp: true
+theme: default
+size: 16:9
+paginate: true
+headingDivider: 1
+math: katex
+
+# Optional: Keep invert if you need specific contrast effects
+class: invert 
+
+mermaid: true
+
+# Presentation Headers
+header: 'Microservices Architecture: From Theory to Practice'
+footer: 'Presented by Hossein Ghasemi | DEC-2025'
+-------------------------------------------------
+# 🚀 Microservices Architecture: Microservices Architecture Essentials
+
+## Engineering Distributed Systems for Scale, Availability, Performance, and Resilience
+
+**Presenter:** Hossein Ghasemi
+**Audience:** Developers, Architects, DevOps Engineers
+**Prerequisites:** Basic distributed systems knowledge
+
+
+# 1. Introduction: The Evolution of Architecture
+
+## The Monolithic Crisis
+
+* Single codebase becomes unmaintainable as team grows
+* All-or-nothing deployments create release bottlenecks
+* Scaling limitations - must scale entire application
+* Technology lock-in across entire organization
+
+---
+
+## Microservices: The Antidote
+
+* **Independent deployability** - teams can ship at their own pace
+* **Fault isolation** - single service failure ≠ system failure
+* **Technology autonomy** - right tool for each job
+* **Organizational alignment** - Conway's Law in action
+
+---
+
+## Architecture Evolution Timeline
+
+
+```mermaid
+timeline
+    title Application Architecture Evolution
+    section 2000s
+        Monolithic : Single App Server
+                    : Shared Database
+    section 2010s
+        SOA : Enterprise Service Bus
+             : Heavy XML/SOAP
+    section 2015+
+        Microservices : Independent Services
+                      : Lightweight REST/gRPC
+                      : Containerized
+    section 2020+
+        Service Mesh : Infrastructure Layer
+                     : Advanced Traffic Management
+                     : Security by Default
+```
+
+---
+
+## Key Decision Factors
+
+**When to Choose Microservices:**
+
+* Multiple teams working on same product
+* Need for independent scaling of components
+* Desire for polyglot technology stack
+* System complexity requires clear domain boundaries
+
+**When to Avoid:**
+
+* Small team (< 10 engineers)
+* Simple application with limited scope
+* Limited DevOps/SRE expertise
+* High consistency requirements without eventual consistency tolerance
+
+
+# 2. Distributed Systems Foundations
+
+## The CAP Theorem in Practice
+
+* **Partition Tolerance** is non-negotiable in distributed systems
+* **Real-world choice:** AP (Availability + Partition Tolerance)
+* **Consequence:** Embrace eventual consistency
+
+## The Modern Interpretation: PACELC
+
+* **If Partition occurs:** Choose between Availability and Consistency
+* **Else (normal operation):** Choose between Latency and Consistency
+* **Microservices typically:** PA/EL (Prioritize Availability, then Low Latency)
+
+---
+
+## Consistency Models Spectrum
+
+```
+Strong Consistency ━━━━━━━━━━━━━━━━━━━━━━━━ Eventual Consistency
+      (ACID)                                        (BASE)
+
+• Immediate visibility           • Stale reads possible
+• Global ordering                • Best-effort ordering
+• Complex coordination           • Simple, scalable
+• Higher latency                 • Lower latency
+```
+
+**BASE Principles:**
+
+* **B**asically **A**vailable
+* **S**oft state
+* **E**ventual consistency
+
+
+# 3. Service Design & Domain Decomposition
+
+## Domain-Driven Design (DDD) Alignment
+
+* **Bounded Contexts** → **Microservices**
+* **Aggregates** → **Service boundaries**
+* **Ubiquitous Language** → **API contracts**
+
+---
+
+## Database Per Service: The Golden Rule
+
+```yaml
+Good Pattern:
+  order-service:
+    database: orders_db
+    tables: [orders, order_items]
+    
+  inventory-service:
+    database: inventory_db
+    tables: [products, stock]
+
+Anti-Pattern:
+  shared-database:
+    tables: [orders, products, users, payments]  # ❌
+```
+
+---
+
+## API Design Principles
+
+* **RESTful APIs:** Use HATEOAS for discoverability
+* **gRPC:** For internal service communication (high performance)
+* **GraphQL:** For complex client requirements (BFF pattern)
+* **Async APIs:** Event-driven for loose coupling
+
+**Versioning Strategy:**
+
+* URI versioning (`/api/v1/orders`)
+* Header versioning (`Accept: application/vnd.company.v1+json`)
+* Never break backward compatibility without migration path
+
+
+# 4. Communication Patterns Deep Dive
+
+## Synchronous Communication
+
+```mermaid
+    sequenceDiagram
+        Client->>+Service A: HTTP Request
+        Service A->>+Service B: gRPC Call
+        Service B-->>-Service A: Response
+        Service A-->>-Client: HTTP Response
+```
+
+**Considerations:**
+
+* Chain of synchronous calls → latency multiplication
+* Implement circuit breakers and timeouts
+* Consider async alternatives for long operations
+
+---
+
+## Asynchronous Communication (Event-Driven)
+
+```mermaid
+sequenceDiagram
+    participant O as Order Service
+    participant K as Kafka/RabbitMQ
+    participant I as Inventory Service
+    participant N as Notification Service
+    
+    O->>K: OrderPlaced Event
+    K->>I: Event (async)
+    K->>N: Event (async)
+    I-->>K: InventoryReserved
+    N-->>K: EmailSent
+```
+
+**Benefits:**
+
+* Loose coupling between services
+* Better resilience during partial failures
+* Natural support for event sourcing and CQRS
+
+---
+
+## Advanced Patterns
+
+### Saga Pattern Implementation
+
+```python
+# Choreography-based Saga Example
+class OrderSaga:
+    def create_order(self, order_data):
+        # 1. Reserve inventory (Inventory Service)
+        # 2. Process payment (Payment Service)
+        # 3. Create order (Order Service)
+        # If any step fails, execute compensating transactions:
+        # - Release inventory
+        # - Refund payment
+        # - Cancel order
+```
+
+---
+
+### CQRS (Command Query Responsibility Segregation)
+
+* Separate models for reading and writing
+* Optimized read models (denormalized, materialized views)
+* Event sourcing as foundation
+
+
+# 5. Resilience Engineering ( The Resilience Toolbox)
+
+
+| Pattern            | Purpose                     | .NET Implementation                                                  | NuGet Packages                                                               |
+| ------------------ | --------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Circuit Breaker    | Prevent cascade failures    | Polly Circuit Breaker, Microsoft.Extensions.Http.Resilience          | Polly, Microsoft.Extensions.Http.Resilience, Microsoft.Extensions.Resilience |
+| Retry with Backoff | Handle transient failures   | Polly Retry (exponential backoff), IHttpClientFactory retry policies | Polly, Microsoft.Extensions.Http.Polly                                       |
+| Bulkhead           | Isolate failures            | Polly Bulkhead isolation, ConcurrentDictionary + semaphores          | Polly                                                                        |
+---
+
+| Pattern            | Purpose                     | .NET Implementation                                                  | NuGet Packages                                                               |
+| ------------------ | --------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Fallback           | Graceful degradation        | Polly Fallback, IMemoryCache stale‑while‑revalidate                  | Polly, Microsoft.Extensions.Caching.Memory                                   |
+| Timeout            | Prevent resource exhaustion | Polly Timeout, CancellationToken timeout, HttpClient.Timeout         | Polly, System.Threading                                                      |
+| Rate Limiting      | Control request frequency   | System.Threading.RateLimiting, Microsoft.AspNetCore.RateLimiting     | System.Threading.RateLimiting, Microsoft.AspNetCore.RateLimiting             |
+| Health Checks      | Monitor service health      | Microsoft.Extensions.Diagnostics.HealthChecks, custom IHealthCheck   | Microsoft.Extensions.Diagnostics.HealthChecks, AspNetCore.HealthChecks.*     |
+
+---
+
+## Health Check Hierarchy
+
+```yaml
+Liveness Probe:
+  - Is the process running?
+  - Failure → restart container
+  
+Readiness Probe:
+  - Can accept traffic?
+  - Failure → remove from load balancer
+  
+Startup Probe:
+  - Is application initialized?
+  - For slow-starting applications
+```
+---
+**Best Practice:** External health endpoints for dependencies
+
+* `/health` - Basic application health
+* `/health/ready` - Readiness for traffic
+* `/health/live` - Liveness check
+* `/health/dependencies` - External dependency status
+
+
+# 6. Observability: Beyond Monitoring
+
+## The Three Pillars in Practice
+
+### 1. Metrics (Prometheus + Grafana)
+
+```prometheus
+# Business Metrics
+orders_created_total
+payment_failed_total
+
+# System Metrics
+http_request_duration_seconds
+container_memory_usage_bytes
+
+# RED Method
+rate(http_requests_total[5m])        # Requests
+sum(rate(http_requests_total{status=~"5.."}[5m]))  # Errors
+histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))  # Duration
+```
+
+---
+
+### 2. Distributed Tracing (Jaeger/Zipkin)
+
+```mermaid
+graph LR
+    A[Trace: Order-123] --> B[Span: API Gateway]
+    B --> C[Span: Auth Service]
+    B --> D[Span: Order Service]
+    D --> E[Span: Payment Service]
+    D --> F[Span: Inventory Service]
+    
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#e8f5e8
+    style D fill:#fff3e0
+```
+
+**Trace Context Propagation:**
+
+* W3C Trace Context standard
+* Pass `traceparent` header through all services
+* Correlation ID for business transactions
+
+---
+
+### 3. Structured Logging
+
+````json
+{
+  "timestamp": "2025-12-06T10:30:00Z",
+  "level": "ERROR",
+  "service": "order-service",
+  "trace_id": "00-0af7651916cd43dd8448eb211c80319c-00f067aa0ba902b7-01",
+  "span_id": "00f067aa0ba902b7",
+  "user
+
+
+---
+
+# 7. Visual Summaries (Pictures & Diagrams)
+
+## Microservices vs Monolith (High-Level Picture)
+
+```mermaid
+graph LR
+    A[Monolith]
+    A -->|Single Codebase| B[Single Deployment]
+    A -->|Shared Database| C[One DB]
+
+    D[Microservices]
+    D --> E[Service A]
+    D --> F[Service B]
+    D --> G[Service C]
+    E -->|Own DB| H[(DB A)]
+    F -->|Own DB| I[(DB B)]
+    G -->|Own DB| J[(DB C)]
+````
+
+---
+
+## CAP Theorem Illustration
+
+```mermaid
+graph TD
+    P[Partition Tolerance] --> A[Availability]
+    P --> C[Consistency]
+
+    A -->|AP Systems| X[Eventual Consistency]
+    C -->|CP Systems| Y[Strong Consistency]
+```
+
+---
+
+## Event-Driven Architecture (Picture)
+
+```mermaid
+graph LR
+    Producer -->|Event| Broker((Event Broker))
+    Broker --> ServiceA
+    Broker --> ServiceB
+    Broker --> ServiceC
+```
+
+---
+
+## Saga Pattern Simplified
+
+```mermaid
+sequenceDiagram
+    participant O as Order
+    participant I as Inventory
+    participant P as Payment
+
+    O->>I: Reserve Inventory
+    I-->>O: OK
+    O->>P: Process Payment
+    P-->>O: OK
+    O->>O: Complete Order
+```
+
+---
+
+## Observability Pillars Overview
+
+```mermaid
+graph LR
+    A[Metrics] --> D[Observability]
+    B[Logs] --> D
+    C[Traces] --> D
+```
+
+---
+
+## Health Check Hierarchy
+
+```yaml
+Liveness Probe:
+  - Is the process running?
+  - Failure → restart container
+  
+Readiness Probe:
+  - Can accept traffic?
+  - Failure → remove from load balancer
+  
+Startup Probe:
+  - Is application initialized?
+  - For slow-starting applications
+```
+
+---
+
+**Best Practice:** External health endpoints for dependencies
+
+* `/health` - Basic application health
+* `/health/ready` - Readiness for traffic
+* `/health/live` - Liveness check
+* `/health/dependencies` - External dependency status
+
+
+
+# 6. Observability: Beyond Monitoring
+
+## The Three Pillars in Practice
+
+### 1. Metrics (Prometheus + Grafana)
+
+```prometheus
+# Business Metrics
+orders_created_total
+payment_failed_total
+
+# System Metrics
+http_request_duration_seconds
+container_memory_usage_bytes
+
+# RED Method
+rate(http_requests_total[5m])        # Requests
+sum(rate(http_requests_total{status=~"5.."}[5m]))  # Errors
+histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))  # Duration
+```
+
+---
+
+### 2. Distributed Tracing (Jaeger/Zipkin)
+
+```mermaid
+graph LR
+    A[Trace: Order-123] --> B[Span: API Gateway]
+    B --> C[Span: Auth Service]
+    B --> D[Span: Order Service]
+    D --> E[Span: Payment Service]
+    D --> F[Span: Inventory Service]
+    
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#e8f5e8
+    style D fill:#fff3e0
+```
+
+**Trace Context Propagation:**
+
+* W3C Trace Context standard
+* Pass `traceparent` header through all services
+* Correlation ID for business transactions
+
+---
+
+### 3. Structured Logging
+
+````json
+{
+  "timestamp": "2025-12-06T10:30:00Z",
+  "level": "ERROR",
+  "service": "order-service",
+  "trace_id": "00-0af7651916cd43dd8448eb211c80319c-00f067aa0ba902b7-01",
+  "span_id": "00f067aa0ba902b7",
+  "user":"Test"
+}
+````
+
+## Microservices vs Monolith (High-Level Picture)
+
+```mermaid
+graph LR
+    A[Monolith]
+    A -->|Single Codebase| B[Single Deployment]
+    A -->|Shared Database| C[One DB]
+
+    D[Microservices]
+    D --> E[Service A]
+    D --> F[Service B]
+    D --> G[Service C]
+    E -->|Own DB| H[(DB A)]
+    F -->|Own DB| I[(DB B)]
+    G -->|Own DB| J[(DB C)]
+````
+
+---
+
+## CAP Theorem Illustration
+
+```mermaid
+graph TD
+    P[Partition Tolerance] --> A[Availability]
+    P --> C[Consistency]
+
+    A -->|AP Systems| X[Eventual Consistency]
+    C -->|CP Systems| Y[Strong Consistency]
+```
+
+---
+
+## Event-Driven Architecture (Picture)
+
+```mermaid
+graph LR
+    Producer -->|Event| Broker((Event Broker))
+    Broker --> ServiceA
+    Broker --> ServiceB
+    Broker --> ServiceC
+```
+
+---
+
+## Saga Pattern Simplified
+
+```mermaid
+sequenceDiagram
+    participant O as Order
+    participant I as Inventory
+    participant P as Payment
+
+    O->>I: Reserve Inventory
+    I-->>O: OK
+    O->>P: Process Payment
+    P-->>O: OK
+    O->>O: Complete Order
+```
+
+---
+
+## Observability Pillars Overview
+
+```mermaid
+graph LR
+    A[Metrics] --> D[Observability]
+    B[Logs] --> D
+    C[Traces] --> D
+```
+---
+
+
+### 1. Metrics (Prometheus + Grafana)
+
+```prometheus
+# Business Metrics
+orders_created_total
+payment_failed_total
+
+# System Metrics
+http_request_duration_seconds
+container_memory_usage_bytes
+
+# RED Method
+rate(http_requests_total[5m])        # Requests
+sum(rate(http_requests_total{status=~"5.."}[5m]))  # Errors
+histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))  # Duration
+```
+
+---
+
+### 2. Distributed Tracing (Jaeger/Zipkin)
+
+```mermaid
+graph LR
+    A[Trace: Order-123] --> B[Span: API Gateway]
+    B --> C[Span: Auth Service]
+    B --> D[Span: Order Service]
+    D --> E[Span: Payment Service]
+    D --> F[Span: Inventory Service]
+    
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#e8f5e8
+    style D fill:#fff3e0
+```
+
+**Trace Context Propagation:**
+
+* W3C Trace Context standard
+* Pass `traceparent` header through all services
+* Correlation ID for business transactions
+
+---
+
+### 3. Structured Logging
+
+```json
+{
+  "timestamp": "2025-12-06T10:30:00Z",
+  "level": "ERROR",
+  "service": "order-service",
+  "trace_id": "00-0af7651916cd43dd8448eb211c80319c-00f067aa0ba902b7-01",
+  "span_id": "00f067aa0ba902b7",
+  "user
+
+```
+
+---
+
+## 📚 Microservices References 
+
+### 1. Books (Foundation, Design, and Resilience)
+
+This section is ordered to reflect the progression of knowledge: Architecture Fundamentals $\rightarrow$ Design Principles $\rightarrow$ Operational Realities.
+
+* **I. Core Microservices Architecture**
+    1.  **Building Microservices** — Sam Newman
+        * *Link:* [https://www.oreilly.com/library/view/building-microservices-2nd/9781492034018/](https://www.oreilly.com/library/view/building-microservices-2nd/9781492034018/)
+    2.  **Microservices Patterns** — Chris Richardson
+        * *Link:* [https://www.manning.com/books/microservices-patterns](https://www.manning.com/books/microservices-patterns)
+---
+
+* **II. Foundational Design Principles (DDD)**
+    3.  **Domain-Driven Design** — Eric Evans (The original conceptual framework.)
+        * *Link:* [https://www.informit.com/store/domain-driven-design-tackling-complexity-in-the-heart-9780321125217](https://www.informit.com/store/domain-driven-design-tackling-complexity-in-the-heart-9780321125217)
+    4.  **Implementing Domain-Driven Design** — Vaughn Vernon
+        * *Link:* [https://www.oreilly.com/library/view/implementing-domain-driven-design/9780133039900/](https://www.oreilly.com/library/view/implementing-domain-driven-design/9780133039900/)
+---
+
+* **III. Resilience, Operations, and Data**
+    5.  **Designing Data-Intensive Applications** — Martin Kleppmann (Essential for understanding CAP and distributed consistency.)
+        * *Link:* [https://dataintensive.net/](https://dataintensive.net/)
+
+    6.  **Release It!** — Michael Nygard (The foundational text on resilience and stability patterns.)
+        * *Link:* [https://pragprog.com/titles/mnee2/release-it-second-edition/](https://pragprog.com/titles/mnee2/release-it-second-edition/)
+
+---
+
+* **IV. Implementation & Migration**
+    7.  **Monolith to Microservices** — Sam Newman
+        * *Link:* [https://www.oreilly.com/library/view/monolith-to-microservices/9781492047834/](https://www.oreilly.com/library/view/monolith-to-microservices/9781492047834/)
+    8.  **Kubernetes Up & Running** — Hightower, Burns, Beda
+        * *Link:* [https://www.oreilly.com/library/view/kubernetes-up-and/9781492046523/](https://www.oreilly.com/library/view/kubernetes-up-and/9781492046523/)
+    9.  **The Design of Web APIs** — Arnaud Lauret **(New Recommendation: API Design)**
+        * *Rationale: Provides practical guidance on creating user-friendly contracts between services.*
+
+---
+
+### 2. Official Documentation & Guides (Technology and Standards)
+
+This section is ordered by scope: Standards $\rightarrow$ Orchestration $\rightarrow$ Service Mesh $\rightarrow$ Cloud Guidance.
+
+* **I. Core Standards (Observability & Security)**
+    1.  **OpenTelemetry Documentation**
+        * *Link:* [https://opentelemetry.io/docs/](https://opentelemetry.io/docs/)
+    2.  **OWASP API Security Top 10** **(New Recommendation: Security Standard and The definitive guide for securing the APIs that connect your microservices.)**
+    * *Link:* [https://owasp.org/www-project-top-ten/](https://owasp.org/www-project-top-ten/)
+---
+
+* **II. Orchestration and Infrastructure**
+    3.  **Kubernetes Documentation**
+        * *Link:* [https://kubernetes.io/docs/](https://kubernetes.io/docs/)
+    4.  **CNCF Cloud Native Landscape** (Great visual resource for all tools)
+        * *Link:* [https://landscape.cncf.io](https://landscape.cncf.io)
+
+* **III. Service Mesh & Proxy**
+    5.  **Istio Service Mesh Documentation**
+        * *Link:* [https://istio.io/latest/docs/](https://istio.io/latest/docs/)
+    6.  **Envoy Proxy Docs**
+        * *Link:* [https://www.envoyproxy.io/docs](https://www.envoyproxy.io/docs)
+
+---
+
+* **IV. Cloud Architecture Guidance**
+    7.  **AWS Well-Architected Framework — Microservices Lens**
+        * *Link:* [https://docs.aws.amazon.com/wellarchitected/latest/microservices-lens/](https://docs.aws.amazon.com/wellarchitected/latest/microservices-lens/)
+    8.  **Azure Architecture Center — Microservices Guidance**
+        * *Link:* [https://learn.microsoft.com/azure/architecture/microservices/](https://learn.microsoft.com/azure/architecture/microservices/)
+    9.  **Google Cloud Architecture Framework**
+        * *Link:* [https://cloud.google.com/architecture/framework](https://cloud.google.com/architecture/framework)
+
+---
+
+### 3. Blogs & Articles (Practical Implementation and Experience)
+
+* **microservices.io** — Chris Richardson (A must-read encyclopedia of patterns.)
+    * *Link:* [https://microservices.io/](https://microservices.io/)
+* **Martin Fowler’s Microservices Articles**
+    * *Link:* [https://martinfowler.com/microservices/](https://martinfowler.com/microservices/)
+* **Netflix Tech Blog** (Pioneers of resilience and Chaos Engineering.)
+    * *Link:* [https://netflixtechblog.com/](https://netflixtechblog.com/)
+
+---
+
+* **Principles of Chaos Engineering** (*note: Essential for understanding why you must proactively test failure.*)
+    * *Link:* [https://principlesofchaos.org/](https://principlesofchaos.org/)
+
+* **Microsoft: .NET Microservices: Architecture for Containerized .NET Applications** 
+    * *Link:* [https://learn.microsoft.com/en-us/dotnet/architecture/microservices/](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/)
+
+* **Microsoft: Introducing eShopOnContainers reference app (Sample)**
+* *Link:* [https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/introduce-eshoponcontainers-reference-app](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/introduce-eshoponcontainers-reference-app)
+
+---
+* **Uber Engineering Blog**
+    * *Link:* [https://eng.uber.com/](https://eng.uber.com/)
+
+* **AWS Architecture Blog**
+    * *Link:* [https://aws.amazon.com/blogs/architecture/](https://aws.amazon.com/blogs/architecture/)
+* **Google Cloud Architecture Blog**
+    * *Link:* [https://cloud.google.com/blog/topics/architecture](https://cloud.google.com/blog/topics/architecture)
+
+---
+
+### 4. Courses (Learning Paths)
+
+* **Microservices Fundamentals** — Pluralsight
+    * *Link:* [https://www.pluralsight.com/courses/microservices-fundamentals](https://www.pluralsight.com/courses/microservices-fundamentals)
+* **Domain-Driven Design Fundamentals** — Pluralsight
+    * *Link:* [https://www.pluralsight.com/courses/domain-driven-design-fundamentals](https://www.pluralsight.com/courses/domain-driven-design-fundamentals)
+* **Building Scalable Distributed Systems** — Coursera
+    * *Link:* [https://www.coursera.org/learn/building-scalable-systems](https://www.coursera.org/learn/building-scalable-systems)
+* **Kubernetes for Developers** — Udacity
+    * *Link:* [https://www.udacity.com/course/kubernetes-for-developers--ud615](https://www.udacity.com/course/kubernetes-for-developers--ud615)
+* Microservices with .NET — Pluralsight
+    * *Link:* [https://www.pluralsight.com/search?q=microservices+dotnet](https://www.pluralsight.com/search?q=microservices+dotnet)
+
+
 ## Message Broker
 
 ### When to use a message broker instead of other communication methods in programming:
