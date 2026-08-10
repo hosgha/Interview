@@ -11,7 +11,8 @@ from bidi.algorithm import get_display
 TEMPLATE = Path(
     "/home/ubuntu/.cursor/projects/workspace/uploads/serverrequest_7090.pdf"
 )
-OUTPUT = Path(__file__).with_name("serverrequest_4_servers.pdf")
+OUTPUT_DIR = Path(__file__).parent
+COMBINED_OUTPUT = OUTPUT_DIR / "serverrequest_4_servers.pdf"
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 FONT_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 
@@ -149,6 +150,36 @@ def fill_form(page: pymupdf.Page, server: dict[str, str]) -> None:
     )
 
 
+def add_form_page(
+    output: pymupdf.Document,
+    template: pymupdf.Document,
+    server: dict[str, str],
+) -> None:
+    page = output.new_page(
+        width=template[0].rect.width,
+        height=template[0].rect.height,
+    )
+    page.show_pdf_page(page.rect, template, 0)
+    fill_form(page, server)
+
+
+def save_document(
+    output: pymupdf.Document,
+    path: Path,
+    title: str,
+) -> None:
+    output.set_metadata(
+        {
+            "title": title,
+            "subject": "Completed server request form",
+            "creator": "PyMuPDF",
+        }
+    )
+    output.save(path, garbage=4, deflate=True)
+    output.close()
+    print(path)
+
+
 def main() -> None:
     if not TEMPLATE.exists():
         raise FileNotFoundError(f"Template not found: {TEMPLATE}")
@@ -157,24 +188,22 @@ def main() -> None:
     output = pymupdf.open()
 
     for server in SERVERS:
-        page = output.new_page(
-            width=template[0].rect.width,
-            height=template[0].rect.height,
-        )
-        page.show_pdf_page(page.rect, template, 0)
-        fill_form(page, server)
+        add_form_page(output, template, server)
 
-    output.set_metadata(
-        {
-            "title": "Server Resource Requests - DB1, DB2, DB3, Monitoring",
-            "subject": "Completed server request forms",
-            "creator": "PyMuPDF",
-        }
+        individual = pymupdf.open()
+        add_form_page(individual, template, server)
+        save_document(
+            individual,
+            OUTPUT_DIR / f"serverrequest_{server['name']}.pdf",
+            f"Server Resource Request - {server['name']}",
+        )
+
+    save_document(
+        output,
+        COMBINED_OUTPUT,
+        "Server Resource Requests - DB1, DB2, DB3, Monitoring",
     )
-    output.save(OUTPUT, garbage=4, deflate=True)
-    output.close()
     template.close()
-    print(OUTPUT)
 
 
 if __name__ == "__main__":
