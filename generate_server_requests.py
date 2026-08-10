@@ -12,8 +12,8 @@ TEMPLATE = Path(
     "/home/ubuntu/.cursor/projects/workspace/uploads/serverrequest_7090.pdf"
 )
 OUTPUT = Path(__file__).with_name("serverrequest_4_servers.pdf")
-FONT = "/usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf"
-FONT_BOLD = "/usr/share/fonts/truetype/noto/NotoNaskhArabic-Bold.ttf"
+FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+FONT_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 
 SERVERS = (
     {
@@ -76,7 +76,7 @@ def add_text(
     result = page.insert_textbox(
         pymupdf.Rect(rect),
         text,
-        fontname="NotoNaskhBold" if bold else "NotoNaskh",
+        fontname="DejaVuSansBold" if bold else "DejaVuSans",
         fontfile=FONT_BOLD if bold else FONT,
         fontsize=size,
         color=(0.05, 0.05, 0.05),
